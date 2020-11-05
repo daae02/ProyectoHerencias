@@ -5,17 +5,21 @@
  */
 package juego;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Diego Álvarez
  */
 public class Juego {
-
+    ArrayList<Entity>Ejercito = new ArrayList<Character>();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        for(int i=0;i<10;i++){  
+            Ejercito.add(i,new Character(i+""));
+        } 
     }
     
 }
