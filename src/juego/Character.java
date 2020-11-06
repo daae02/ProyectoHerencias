@@ -11,7 +11,9 @@ package juego;
  */
 public class Character extends Entity {
     String ImgAtk;
-
+ 
+    
+    
     public Character() {
     }
  
