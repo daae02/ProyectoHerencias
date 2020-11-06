@@ -10,11 +10,12 @@ package juego;
  * @author Diego Álvarez
  */
 public class GUI extends javax.swing.JFrame {
-
+    Match currentMatch;
     /**
      * Creates new form GUI
      */
     public GUI() {
+        currentMatch = new Match(this);
         initComponents();
     }
 
