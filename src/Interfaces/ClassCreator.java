@@ -208,10 +208,10 @@ public class ClassCreator extends javax.swing.JFrame {
         if(option==JFileChooser.APPROVE_OPTION){
             txtRuteImgMov.setText(selector.getSelectedFile().getPath());   
             ImageIcon icon = new ImageIcon(txtRuteImgMov.getText());
-            Image img = icon.getImage();
-            img = img.getScaledInstance(90, 90,java.awt.Image.SCALE_SMOOTH);
-            ImageIcon newIcon = new ImageIcon(img);
-            showImgMov.setIcon(icon);
+            int width = 90;
+            int height = 90;
+            icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+            showImgMov.setIcon(icon);   
         }
         
     }//GEN-LAST:event_btnFileSelectorImgMovActionPerformed
@@ -232,10 +232,10 @@ public class ClassCreator extends javax.swing.JFrame {
         if(option==JFileChooser.APPROVE_OPTION){
             txtRuteImgAtk.setText(selector.getSelectedFile().getPath());
             ImageIcon icon = new ImageIcon(txtRuteImgAtk.getText());
-            Image img = icon.getImage();
-            img = img.getScaledInstance(90, 90,java.awt.Image.SCALE_SMOOTH);
-            ImageIcon newIcon = new ImageIcon(img);
-            showImgAtk.setIcon(newIcon);
+            int width = 90;
+            int height = 90;
+            icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+            showImgAtk.setIcon(icon);
         }
     }//GEN-LAST:event_btnFileSelectorImgAtkActionPerformed
 
