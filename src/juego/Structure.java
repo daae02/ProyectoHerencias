@@ -5,6 +5,7 @@
  */
 package juego;
 
+import Interfaces.GUI;
 import javax.swing.JLabel;
 
 /**
