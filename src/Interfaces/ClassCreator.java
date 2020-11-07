@@ -202,7 +202,7 @@ public class ClassCreator extends javax.swing.JFrame {
 
     private void btnFileSelectorImgMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgMovActionPerformed
         // TODO add your handling code here:
-        JFileChooser selector = new JFileChooser();
+        JFileChooser selector = new JFileChooser();//achu
         selector.setFileFilter(filter);
         int option = selector.showOpenDialog(this);
         if(option==JFileChooser.APPROVE_OPTION){
