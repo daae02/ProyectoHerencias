@@ -131,16 +131,18 @@ public class ClassCreator extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtRuteImgAtk)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblImgAtk)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnFileSelectorImgAtk))
+                            .addComponent(txtRuteImgMov)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblImgMov)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnFileSelectorImgMov)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtRuteImgMov))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblImgMov)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnFileSelectorImgMov))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblImgAtk)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(btnFileSelectorImgAtk)))
+                                .addGap(0, 57, Short.MAX_VALUE)))
                         .addGap(61, 61, 61))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,15 +169,15 @@ public class ClassCreator extends javax.swing.JFrame {
                     .addComponent(txtRuteImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblImgAtk)
                     .addComponent(btnFileSelectorImgAtk))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtRuteImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,7 +194,7 @@ public class ClassCreator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,10 +206,10 @@ public class ClassCreator extends javax.swing.JFrame {
         selector.setFileFilter(filter);
         int option = selector.showOpenDialog(this);
         if(option==JFileChooser.APPROVE_OPTION){
-            txtRuteImgMov.setText(selector.getSelectedFile().getPath());
+            txtRuteImgMov.setText(selector.getSelectedFile().getPath());   
             ImageIcon icon = new ImageIcon(txtRuteImgMov.getText());
             Image img = icon.getImage();
-            img = img.getScaledInstance(90, 90,java.awt.Image.SCALE_DEFAULT);
+            img = img.getScaledInstance(90, 90,java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(img);
             showImgMov.setIcon(icon);
         }

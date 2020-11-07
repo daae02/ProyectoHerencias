@@ -61,4 +61,14 @@ public class Character extends Entity {
             
         }
      }
+       public void stopThread(){
+        this.running = false;
+    }
+    
+    public void setPause(){
+        this.pause = !this.pause;
+    }
+    void attack(int damage, Character Objetive){
+        Objetive.HP -= damage; 
+    }
 }
