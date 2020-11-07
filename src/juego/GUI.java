@@ -5,19 +5,77 @@
  */
 package juego;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Diego Álvarez
  */
 public class GUI extends javax.swing.JFrame {
+    ArrayList<JLabel> LabelArray; 
     Match currentMatch;
     /**
      * Creates new form GUI
      */
     public GUI() {
         currentMatch = new Match(this);
+        LabelArray = new ArrayList<JLabel> ();
         initComponents();
     }
+       public JLabel generateLabel(int numeroThread){
+        JLabel newLabel = new JLabel("#" + numeroThread);
+        newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        newLabel.setForeground(new java.awt.Color(255, 255, 255));
+        newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newLabel.setSize(40, 40);
+        jPanel1.add(newLabel);
+        newLabel.setBackground(Color.red);
+        newLabel.setOpaque(true);
+        
+        int x = ((new Random()).nextInt(800)/40) * 40;
+        int y = ((new Random()).nextInt(800) / 40)* 40;
+        newLabel.setLocation(x , y);
+        LabelArray.add(newLabel);
+        return newLabel;
+    }
+        public void moveLabel (int labelIndex){
+        
+        JLabel refLabel = LabelArray.get(labelIndex);
+        
+        int direccion = (new Random()).nextInt(4);
+        int x = refLabel.getLocation().x;
+        int y = refLabel.getLocation().y;
+        
+        //sumo A x O y
+            if (direccion == 0 && y-40 >= 0) //arriba
+                y = y-40;
+            else if (direccion == 1 && y+40 <= 800)
+                y = y+40;
+            else if (direccion == 2 && x+40 <= 800)
+                x = x+40;
+            else if (direccion == 3 && x-40 >= 0)
+                x = x-40;
+            
+        
+        int ocupadoPor = isAvailablePostion(x, y, refLabel);
+        if (ocupadoPor == -1)
+            refLabel.setLocation(x, y);
+        else
+            System.out.println("Esta ocupada " + x + "," + y + " por " + LabelArray.get(ocupadoPor).getText());
+    }
+    
+    public int isAvailablePostion(int x, int y, JLabel refLabel){      
+        for (int i = 0; i < LabelArray.size(); i++) {
+            if(LabelArray.get(i).getLocation().x == x && 
+                    LabelArray.get(i).getLocation().y == y
+                        && !LabelArray.get(i).equals(refLabel))
+                return i;
+        }
+        return -1;
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +86,67 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        start = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(51, 255, 0));
+        jPanel1.setToolTipText("");
+
+        start.setText("START");
+        start.setToolTipText("");
+        start.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startMouseClicked(evt);
+            }
+        });
+        start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(342, 342, 342)
+                .addComponent(start)
+                .addContainerGap(393, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(766, Short.MAX_VALUE)
+                .addComponent(start)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+
+        currentMatch.generateArmy(50);
+        currentMatch.startArmy();
+    }//GEN-LAST:event_startActionPerformed
+
+    private void startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startMouseClicked
 
     /**
      * @param args the command line arguments
@@ -80,5 +184,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 }

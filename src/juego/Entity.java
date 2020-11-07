@@ -11,26 +11,40 @@ import javax.swing.JLabel;
  * @author Diego Álvarez
  */
 public class Entity extends Thread{
-  Match matchReference;
-  private JLabel refLabel;
+  GUI GUIReference;
+  public JLabel refLabel;
+  int index;
   String Img1;
   int    damage;
   int    range;
   int    unlockLvl;
   int    posX;
   int    posY;
+  boolean running;
+  boolean pause;
+
 
     public Entity() {
     }
-    public Entity(Match matchReference, JLabel refLabel, String Img1, int damage, int range, int unlockLvl, int posX, int posY) {
-        this.matchReference = matchReference;
-        this.refLabel = refLabel;
+    public Entity(GUI GUIReference, int index) {
+        this.GUIReference = GUIReference;
+        this.index = index;
+    }
+    public Entity(GUI GUIReference, String Img1, int damage, int range, int unlockLvl,int index) {
+        this.index = index;
+        this.GUIReference = GUIReference;
+        refLabel = GUIReference.generateLabel(index);
         this.Img1 = Img1;
         this.damage = damage;
         this.range = range;
         this.unlockLvl = unlockLvl;
-        this.posX = posX;
-        this.posY = posY;
     }
- 
+     public void stopThread(){
+        this.running = false;
+    }
+    
+    public void setPause(){
+        this.pause = !this.pause;
+    }
+    
 }

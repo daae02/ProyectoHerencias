@@ -15,20 +15,49 @@ public class Character extends Entity {
     String ImgAtk;
     int    HP;
     int    spaces;
+    Character Objetive;
 
     public Character() {
     }
-    public Character(String ImgAtk, int HP, int spaces, Match matchReference, JLabel refLabel, String Img1, int damage, int range, int unlockLvl, int posX, int posY) {
-        super(matchReference, refLabel, Img1, damage, range, unlockLvl, posX, posY);
+    public Character(GUI GUIreference, int index){
+        super(GUIreference,index);
+        refLabel = GUIReference.generateLabel(index);
+                
+    }
+    public Character(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
+        super(GUIReference, Img1, damage, range, unlockLvl, index);
         this.ImgAtk = ImgAtk;
         this.HP = HP;
         this.spaces = spaces;
     }
 
+
     @Override
     public void run(){
-        for(int i=0;i<10;i++){
-            System.out.println("Jujaji");
+        int repeticiones = 100;
+        running = true;
+        while (running){ 
+            try {
+                if (repeticiones == 0) break;
+                    sleep(1000);
+                    GUIReference.moveLabel(index);
+                    refLabel.setText("#" + this.index);         
+                    repeticiones--;
+                
+            } 
+            catch (InterruptedException ex) {
+                
+            }
+            
+            while(pause){
+                try {
+                    sleep(100);
+                } 
+                catch (InterruptedException ex) {
+                    
+                }
+            }
+            
         }
-    }
-    }
+     }
+}
