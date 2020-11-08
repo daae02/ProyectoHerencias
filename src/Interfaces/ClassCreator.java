@@ -111,13 +111,20 @@ public class ClassCreator extends javax.swing.JFrame {
 
         lblSpaces1.setText("Espacios:");
 
+        Spacespinner.setEditor(new javax.swing.JSpinner.DefaultEditor(Spacespinner));
         Spacespinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         Spacespinner.setAutoscrolls(true);
         Spacespinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        HPspinner.setEditor(new javax.swing.JSpinner.DefaultEditor(HPspinner));
         HPspinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         HPspinner.setAutoscrolls(true);
         HPspinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HPspinner.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                HPspinnerPropertyChange(evt);
+            }
+        });
 
         lblHP.setText("Vida:");
 
@@ -161,13 +168,13 @@ public class ClassCreator extends javax.swing.JFrame {
                     .addComponent(lblClass)
                     .addComponent(lblName))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Spacespinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Spacespinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -338,6 +345,10 @@ public class ClassCreator extends javax.swing.JFrame {
     private void txtRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRangeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRangeActionPerformed
+
+    private void HPspinnerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_HPspinnerPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HPspinnerPropertyChange
 
     /**
      * @param args the command line arguments

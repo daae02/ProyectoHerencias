@@ -226,13 +226,13 @@
                           <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtName" min="-2" pref="124" max="-2" attributes="0"/>
                           <Component id="txtRange" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="ComboBoxClass" min="-2" pref="129" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="Spacespinner" alignment="0" pref="74" max="32767" attributes="0"/>
                               <Component id="HPspinner" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Spacespinner" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="67" max="32767" attributes="0"/>
@@ -288,6 +288,9 @@
                   <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Spacespinner.setEditor(new javax.swing.JSpinner.DefaultEditor(Spacespinner));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JSpinner" name="HPspinner">
               <Properties>
@@ -299,6 +302,12 @@
                   <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="HPspinnerPropertyChange"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="HPspinner.setEditor(new javax.swing.JSpinner.DefaultEditor(HPspinner));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblHP">
               <Properties>
