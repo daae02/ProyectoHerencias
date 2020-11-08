@@ -40,20 +40,28 @@ public class ClassCreator extends javax.swing.JFrame {
         lblImgMov = new javax.swing.JLabel();
         lblWelcome = new javax.swing.JLabel();
         btnFileSelectorImgMov = new javax.swing.JButton();
-        lblName = new javax.swing.JLabel();
         txtRuteImgMov = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
-        ComboBoxClass = new javax.swing.JComboBox<>();
-        lblClass = new javax.swing.JLabel();
         lblImgAtk = new javax.swing.JLabel();
         btnFileSelectorImgAtk = new javax.swing.JButton();
         txtRuteImgAtk = new javax.swing.JTextField();
         showImgAtk = new javax.swing.JLabel();
         showImgMov = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblSpaces1 = new javax.swing.JLabel();
+        Spacespinner = new javax.swing.JSpinner();
+        HPspinner = new javax.swing.JSpinner();
+        lblHP = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        lblClass = new javax.swing.JLabel();
+        ComboBoxClass = new javax.swing.JComboBox<>();
+        lblRange = new javax.swing.JLabel();
+        txtRange = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 255, 0));
 
         lblImgMov.setText("Imagen en Movimiento: ");
 
@@ -67,8 +75,6 @@ public class ClassCreator extends javax.swing.JFrame {
             }
         });
 
-        lblName.setText("Nombre : ");
-
         txtRuteImgMov.setEditable(false);
         txtRuteImgMov.setText("Ruta de imagen");
         txtRuteImgMov.addActionListener(new java.awt.event.ActionListener() {
@@ -76,16 +82,6 @@ public class ClassCreator extends javax.swing.JFrame {
                 txtRuteImgMovActionPerformed(evt);
             }
         });
-
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-
-        ComboBoxClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblClass.setText("Clase : ");
 
         lblImgAtk.setText("Imagen de Ataque: ");
 
@@ -109,45 +105,128 @@ public class ClassCreator extends javax.swing.JFrame {
         showImgMov.setBackground(new java.awt.Color(255, 255, 255));
         showImgMov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULL.png"))); // NOI18N
 
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setForeground(new java.awt.Color(255, 255, 51));
+
+        lblSpaces1.setText("Espacios:");
+
+        Spacespinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        Spacespinner.setAutoscrolls(true);
+        Spacespinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        HPspinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        HPspinner.setAutoscrolls(true);
+        HPspinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblHP.setText("Vida:");
+
+        lblName.setText("Nombre : ");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
+        lblClass.setText("Clase : ");
+
+        ComboBoxClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contacto", "Rango", "Aereo", "Besia", "Heroe" }));
+        ComboBoxClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxClassActionPerformed(evt);
+            }
+        });
+
+        lblRange.setText("Rango: ");
+
+        txtRange.setEditable(false);
+        txtRange.setText("1");
+        txtRange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRangeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRange)
+                    .addComponent(lblHP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSpaces1)
+                    .addComponent(lblClass)
+                    .addComponent(lblName))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Spacespinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblClass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRange))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HPspinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSpaces1)
+                    .addComponent(Spacespinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblWelcome)
-                .addGap(132, 132, 132))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblName)
-                    .addComponent(lblClass))
+                .addGap(128, 128, 128)
+                .addComponent(lblWelcome)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ComboBoxClass, 0, 129, Short.MAX_VALUE)
-                    .addComponent(txtName))
-                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtRuteImgAtk)
                             .addComponent(txtRuteImgMov)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblImgMov)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnFileSelectorImgMov))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblImgAtk)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(btnFileSelectorImgAtk)))
-                                .addGap(0, 57, Short.MAX_VALUE)))
+                                .addComponent(lblImgMov)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnFileSelectorImgMov)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(61, 61, 61))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblImgAtk)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnFileSelectorImgAtk)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,27 +235,24 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblImgMov)
-                    .addComponent(btnFileSelectorImgMov))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblClass))
-                    .addComponent(txtRuteImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblImgAtk)
-                    .addComponent(btnFileSelectorImgAtk))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRuteImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblImgMov)
+                            .addComponent(btnFileSelectorImgMov))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRuteImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblImgAtk)
+                            .addComponent(btnFileSelectorImgAtk))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRuteImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
 
@@ -243,6 +319,26 @@ public class ClassCreator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuteImgAtkActionPerformed
 
+    private void ComboBoxClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxClassActionPerformed
+        // TODO add your handling code here:
+        int selection = ComboBoxClass.getSelectedIndex();
+        switch (selection) {
+            case 1:
+                txtRange.setText("5");
+                break;
+            case 2:
+                txtRange.setText("10");
+                break;
+            default:
+                txtRange.setText("1"); 
+                break;
+        }
+    }//GEN-LAST:event_ComboBoxClassActionPerformed
+
+    private void txtRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRangeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRangeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,18 +377,25 @@ public class ClassCreator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxClass;
+    private javax.swing.JSpinner HPspinner;
+    private javax.swing.JSpinner Spacespinner;
     private javax.swing.JButton btnFileSelectorImgAtk;
     private javax.swing.JButton btnFileSelectorImgMov;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblClass;
+    private javax.swing.JLabel lblHP;
     private javax.swing.JLabel lblImgAtk;
     private javax.swing.JLabel lblImgMov;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblRange;
+    private javax.swing.JLabel lblSpaces1;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel showImgAtk;
     private javax.swing.JLabel showImgMov;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtRange;
     private javax.swing.JTextField txtRuteImgAtk;
     private javax.swing.JTextField txtRuteImgMov;
     // End of variables declaration//GEN-END:variables

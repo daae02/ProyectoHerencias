@@ -28,8 +28,6 @@ public class Character extends Entity {
     public Character(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(GUIReference, Img1, damage, range, unlockLvl, index);
         this.ImgAtk = ImgAtk;
-        this.HP = HP;
-        this.spaces = spaces;
     }
 
 
