@@ -6,12 +6,15 @@
 package Interfaces;
 
 import java.awt.Color;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 /**
  *
  * @author Alejandra G
  */
 public class Menu extends javax.swing.JFrame {
-
+    LogIn log = new LogIn(this);
+    boolean first = true;
     /**
      * Creates new form Menu
      */
@@ -34,7 +37,13 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bntStart.setBackground(new java.awt.Color(100, 135, 0));
@@ -81,7 +90,7 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(bntNewCarac, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 130, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/me (3) (2).jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/BGMenu.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
         pack();
@@ -96,11 +105,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_bntLoadGameActionPerformed
 
     private void bntNewCaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNewCaracActionPerformed
-        // TODO add your handling code here:
-        ClassCreator crearPersonaje = new ClassCreator();
+        // TODO add your handling code here: 
         this.setVisible(false);
-        crearPersonaje.setVisible(true);
+        log.setVisible(true);
     }//GEN-LAST:event_bntNewCaracActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

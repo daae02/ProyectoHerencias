@@ -18,7 +18,7 @@ public class Character extends Entity {
     int    spaces;
     Character Objetive;
 
-    public Character() {
+    public Character() { 
     }
     public Character(GUI GUIreference, int index){
         super(GUIreference,index);
@@ -70,3 +70,4 @@ public class Character extends Entity {
         Objetive.HP -= damage; 
     }
 }
+    
