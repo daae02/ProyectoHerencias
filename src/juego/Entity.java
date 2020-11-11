@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  *
  * @author Diego Álvarez
  */
-public class Entity extends Thread{
+public abstract class Entity extends Thread{
   GUI GUIReference;
   public JLabel refLabel;
   int index;

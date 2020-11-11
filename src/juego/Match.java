@@ -21,12 +21,6 @@ public class Match {
         army = new ArrayList<Character>();
         Enemyarmy = new ArrayList<Character>();
     }
-    public void generateArmy(int cantidad){
-        for (int i = 0; i < cantidad; i++) {
-            army.add(new Character(GUIreference,i));
-            Enemyarmy.add(new Character(GUIreference,i));
-        }
-    }
     public void startArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).start();

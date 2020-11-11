@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  *
  * @author Diego Álvarez
  */
-public class Character extends Entity {
+public abstract class Character extends Entity {
     String ImgAtk;
     int    HP;
     int    spaces;

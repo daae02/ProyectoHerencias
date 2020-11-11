@@ -141,7 +141,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
 
-        currentMatch.generateArmy(5);
         currentMatch.startArmy();
     }//GEN-LAST:event_startActionPerformed
 

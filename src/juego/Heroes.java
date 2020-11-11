@@ -24,4 +24,7 @@ public class Heroes extends Character {
         super(ImgAtk, HP, spaces, GUIReference, Img1, damage, range, unlockLvl, index);
         this.sound = sound;
     }
+    public Heroes(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
+        super(name, Img1,ImgAtk, HP, damage, spaces, range, unlockLvl);
+    }
 }

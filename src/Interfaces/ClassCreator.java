@@ -5,7 +5,6 @@
  */
 package Interfaces;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,14 +12,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import juego.Character;
+import juego.AerialFighter;
+import juego.Beast;
 import juego.ContactFighter;
+import juego.Heroes;
+import juego.MediumRangeFighter;
 
 /**
  *
  * @author Diego Álvarez
  */
 public class ClassCreator extends javax.swing.JFrame {
-    private ArrayList<Character> created;
+    private ArrayList<Character> created = new ArrayList<Character>();
     private Menu menu;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagen","jpg","jpeg","gif");
     /**
@@ -407,10 +411,30 @@ public class ClassCreator extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+    Character agregarPersonas(String name,String imgM, String imgA,int healthPoints,int damage,int spaces,int unlockLvl){
+    int selection = ComboBoxClass.getSelectedIndex();
+    switch (selection) {
+            case 0:
+                ContactFighter contact = new ContactFighter(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
+                return contact;
+            case 1:
+                MediumRangeFighter range = new MediumRangeFighter(name, imgM,imgA, healthPoints, damage, spaces, 5, unlockLvl);
+                return range;
+            case 2:
+                AerialFighter aerial = new AerialFighter(name, imgM,imgA, healthPoints, damage, spaces, 10, unlockLvl);
+                return aerial;
+            case 3:
+                Beast beastFighter = new Beast(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
+                return beastFighter;
+            case 4:
+                Heroes hero = new Heroes(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
+                return hero;
 
+        }
+     return null;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int selection = ComboBoxClass.getSelectedIndex();
         String name = txtName.getText();
         int healthPoints = (Integer)HPspinner.getValue();
         int spaces = (Integer)Spacespinner.getValue();
@@ -418,29 +442,7 @@ public class ClassCreator extends javax.swing.JFrame {
         int damage = (Integer)damageSpinner.getValue();
         String imgM  = txtRuteImgMov.getText();
         String imgA  = txtRuteImgAtk.getText();
-        switch (selection) {
-            case 0:
-                ContactFighter contact = new ContactFighter(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
-                break;
-            case 1:
-                txtRange.setText("10");
-                break;
-            case 2:
-                txtRange.setText("10");
-                break;
-            case 3:
-                txtRange.setText("10");
-                break;
-            case 4:
-                txtRange.setText("10");
-                break;
-            case 5:
-                txtRange.setText("10");
-                break;
-            default:
-                txtRange.setText("1"); 
-                break;
-        }
+        created.add(agregarPersonas(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFileSelectorImgAtk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgAtk1ActionPerformed
