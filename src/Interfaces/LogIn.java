@@ -120,7 +120,7 @@ public class LogIn extends javax.swing.JFrame {
         lblError.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 192, -1));
 
-        lblLoginPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/Share-1.jpg"))); // NOI18N
+        lblLoginPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/loginPic.jpg"))); // NOI18N
         lblLoginPic.setText("jLabel3");
         getContentPane().add(lblLoginPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 230));
 

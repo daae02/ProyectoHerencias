@@ -449,6 +449,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFileSelectorImgAtk1ActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="ClassCreator_btnFileSelectorImgAtk1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

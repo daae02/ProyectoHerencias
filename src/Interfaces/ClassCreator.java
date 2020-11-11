@@ -446,7 +446,19 @@ public class ClassCreator extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFileSelectorImgAtk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgAtk1ActionPerformed
-        // TODO add your handling code here:
+          // TODO add your handling code here:
+        JFileChooser selector = new JFileChooser();//achu
+        selector.setFileFilter(filter);
+        int option = selector.showOpenDialog(this);
+        if(option==JFileChooser.APPROVE_OPTION){
+            txtRuteImgAtk.setText(selector.getSelectedFile().getPath());   
+            ImageIcon icon = new ImageIcon(txtRuteImgAtk.getText());
+            int width = 90;
+            int height = 90;
+            icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+            showImgAtk.setIcon(icon);   
+        }
+        
     }//GEN-LAST:event_btnFileSelectorImgAtk1ActionPerformed
 
     /**
