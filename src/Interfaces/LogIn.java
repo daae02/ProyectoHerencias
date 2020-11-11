@@ -44,24 +44,32 @@ public class LogIn extends javax.swing.JFrame {
         showPass = new javax.swing.JRadioButton();
         txtUser = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
+        lblLoginPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LogIn");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnLogIn.setBackground(new java.awt.Color(153, 0, 0));
+        btnLogIn.setForeground(new java.awt.Color(255, 255, 255));
         btnLogIn.setText("Entrar");
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogInActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
+        btnBack.setBackground(new java.awt.Color(153, 0, 0));
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Regresar");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,10 +81,13 @@ public class LogIn extends javax.swing.JFrame {
                 txtPassKeyPressed(evt);
             }
         });
+        getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 111, -1));
 
         jLabel1.setText("Contraseña: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
 
         jLabel2.setText("Usuario: ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 63, -1));
 
         showPass.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         showPass.setSelected(true);
@@ -88,63 +99,30 @@ public class LogIn extends javax.swing.JFrame {
                 showPassActionPerformed(evt);
             }
         });
+        getContentPane().add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, 20));
 
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
         txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserKeyPressed(evt);
             }
         });
+        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 111, -1));
 
         lblError.setVisible(false);
         lblError.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 0, 0));
         lblError.setText("Verifique su correo o contraseña");
         lblError.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 192, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtUser)
-                                .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                            .addComponent(btnBack)))
-                    .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(showPass)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(showPass, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblError)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogIn)
-                    .addComponent(btnBack))
-                .addContainerGap())
-        );
+        lblLoginPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/Share-1.jpg"))); // NOI18N
+        lblLoginPic.setText("jLabel3");
+        getContentPane().add(lblLoginPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,6 +166,8 @@ private static boolean isPasswordCorrect(char[] input) {
     }//GEN-LAST:event_showPassActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+       txtUser.setText(null);
+       txtPass.setText(null);
        this.setVisible(false);
        menu.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -201,6 +181,10 @@ private static boolean isPasswordCorrect(char[] input) {
         // TODO add your handling code here:
          lblError.setVisible(false);
     }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,6 +228,7 @@ private static boolean isPasswordCorrect(char[] input) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblLoginPic;
     private javax.swing.JRadioButton showPass;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
