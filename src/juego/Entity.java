@@ -44,6 +44,14 @@ public class Entity extends Thread{
         this.range = range;
         this.unlockLvl = unlockLvl;
     }
+    public Entity(String name,String Img1, int HP, int damage, int spaces, int range, int unlockLvl) {
+        this.Img1 = Img1;
+        this.HP = HP;
+        this.damage = damage;
+        this.spaces = spaces;
+        this.range = range;
+        this.unlockLvl = unlockLvl;
+    }    
      public void stopThread(){
         this.running = false;
     }

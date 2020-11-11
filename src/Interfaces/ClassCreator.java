@@ -7,17 +7,20 @@ package Interfaces;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import juego.ContactFighter;
 
 /**
  *
  * @author Diego Álvarez
  */
 public class ClassCreator extends javax.swing.JFrame {
+    private ArrayList<Character> created;
     private Menu menu;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagen","jpg","jpeg","gif");
     /**
@@ -46,7 +49,6 @@ public class ClassCreator extends javax.swing.JFrame {
         btnFileSelectorImgMov = new javax.swing.JButton();
         txtRuteImgMov = new javax.swing.JTextField();
         lblImgAtk = new javax.swing.JLabel();
-        btnFileSelectorImgAtk = new javax.swing.JButton();
         txtRuteImgAtk = new javax.swing.JTextField();
         showImgAtk = new javax.swing.JLabel();
         showImgMov = new javax.swing.JLabel();
@@ -63,6 +65,11 @@ public class ClassCreator extends javax.swing.JFrame {
         txtRange = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblUnlock = new javax.swing.JLabel();
+        unlockSpinner = new javax.swing.JSpinner();
+        lblDamage = new javax.swing.JLabel();
+        damageSpinner = new javax.swing.JSpinner();
+        btnFileSelectorImgAtk1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -91,13 +98,6 @@ public class ClassCreator extends javax.swing.JFrame {
         });
 
         lblImgAtk.setText("Imagen de Ataque: ");
-
-        btnFileSelectorImgAtk.setText("Seleccionar Imagen");
-        btnFileSelectorImgAtk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFileSelectorImgAtkActionPerformed(evt);
-            }
-        });
 
         txtRuteImgAtk.setEditable(false);
         txtRuteImgAtk.setText("Ruta de imagen");
@@ -163,6 +163,11 @@ public class ClassCreator extends javax.swing.JFrame {
         });
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +175,22 @@ public class ClassCreator extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        lblUnlock.setText("Desbloqueo:");
+
+        Spacespinner.setEditor(new javax.swing.JSpinner.DefaultEditor(Spacespinner));
+        unlockSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 15, 1));
+        unlockSpinner.setToolTipText("");
+        unlockSpinner.setAutoscrolls(true);
+        unlockSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblDamage.setText("Daño: ");
+
+        Spacespinner.setEditor(new javax.swing.JSpinner.DefaultEditor(Spacespinner));
+        damageSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 15, 1));
+        damageSpinner.setToolTipText("");
+        damageSpinner.setAutoscrolls(true);
+        damageSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,12 +200,19 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(25, 25, 25))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRange)
                             .addComponent(lblHP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSpaces1)
                             .addComponent(lblClass)
-                            .addComponent(lblName))
+                            .addComponent(lblName)
+                            .addComponent(lblUnlock)
+                            .addComponent(lblSpaces1)
+                            .addComponent(lblDamage))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,13 +220,10 @@ public class ClassCreator extends javax.swing.JFrame {
                             .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(Spacespinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                                .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(25, 25, 25))))
+                                .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(damageSpinner, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(unlockSpinner, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,12 +248,27 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSpaces1)
                     .addComponent(Spacespinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(damageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDamage))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUnlock)
+                    .addComponent(unlockSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addGap(29, 29, 29))
         );
+
+        btnFileSelectorImgAtk1.setText("Seleccionar Imagen");
+        btnFileSelectorImgAtk1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFileSelectorImgAtk1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -241,23 +281,23 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRuteImgAtk)
-                            .addComponent(txtRuteImgMov)
+                            .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblImgAtk)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnFileSelectorImgAtk1))
+                            .addComponent(txtRuteImgAtk, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRuteImgMov, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblImgMov)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnFileSelectorImgMov)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(61, 61, 61))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(showImgMov, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblImgAtk)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnFileSelectorImgAtk)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 44, Short.MAX_VALUE)))
+                        .addGap(61, 61, 61))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addComponent(lblWelcome)
@@ -281,10 +321,10 @@ public class ClassCreator extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblImgAtk)
-                            .addComponent(btnFileSelectorImgAtk))
+                            .addComponent(btnFileSelectorImgAtk1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtRuteImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
@@ -334,21 +374,6 @@ public class ClassCreator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void btnFileSelectorImgAtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgAtkActionPerformed
-        // TODO add your handling code here:
-        JFileChooser selector = new JFileChooser();
-        selector.setFileFilter(filter);
-        int option = selector.showOpenDialog(this);
-        if(option==JFileChooser.APPROVE_OPTION){
-            txtRuteImgAtk.setText(selector.getSelectedFile().getPath());
-            ImageIcon icon = new ImageIcon(txtRuteImgAtk.getText());
-            int width = 90;
-            int height = 90;
-            icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
-            showImgAtk.setIcon(icon);
-        }
-    }//GEN-LAST:event_btnFileSelectorImgAtkActionPerformed
-
     private void txtRuteImgAtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuteImgAtkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuteImgAtkActionPerformed
@@ -382,6 +407,45 @@ public class ClassCreator extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selection = ComboBoxClass.getSelectedIndex();
+        String name = txtName.getText();
+        int healthPoints = (Integer)HPspinner.getValue();
+        int spaces = (Integer)Spacespinner.getValue();
+        int unlockLvl = (Integer)unlockSpinner.getValue();
+        int damage = (Integer)damageSpinner.getValue();
+        String imgM  = txtRuteImgMov.getText();
+        String imgA  = txtRuteImgAtk.getText();
+        switch (selection) {
+            case 0:
+                ContactFighter contact = new ContactFighter(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
+                break;
+            case 1:
+                txtRange.setText("10");
+                break;
+            case 2:
+                txtRange.setText("10");
+                break;
+            case 3:
+                txtRange.setText("10");
+                break;
+            case 4:
+                txtRange.setText("10");
+                break;
+            case 5:
+                txtRange.setText("10");
+                break;
+            default:
+                txtRange.setText("1"); 
+                break;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnFileSelectorImgAtk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgAtk1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFileSelectorImgAtk1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -424,20 +488,23 @@ public class ClassCreator extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxClass;
     private javax.swing.JSpinner HPspinner;
     private javax.swing.JSpinner Spacespinner;
-    private javax.swing.JButton btnFileSelectorImgAtk;
+    private javax.swing.JButton btnFileSelectorImgAtk1;
     private javax.swing.JButton btnFileSelectorImgMov;
+    private javax.swing.JSpinner damageSpinner;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblClass;
+    private javax.swing.JLabel lblDamage;
     private javax.swing.JLabel lblHP;
     private javax.swing.JLabel lblImgAtk;
     private javax.swing.JLabel lblImgMov;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblRange;
     private javax.swing.JLabel lblSpaces1;
+    private javax.swing.JLabel lblUnlock;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel showImgAtk;
     private javax.swing.JLabel showImgMov;
@@ -445,5 +512,6 @@ public class ClassCreator extends javax.swing.JFrame {
     private javax.swing.JTextField txtRange;
     private javax.swing.JTextField txtRuteImgAtk;
     private javax.swing.JTextField txtRuteImgMov;
+    private javax.swing.JSpinner unlockSpinner;
     // End of variables declaration//GEN-END:variables
 }

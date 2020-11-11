@@ -14,7 +14,6 @@ import javafx.scene.media.MediaPlayer;
  */
 public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
-    boolean first = true;
     /**
      * Creates new form Menu
      */

@@ -29,8 +29,10 @@ public class Character extends Entity {
         super(GUIReference, Img1, damage, range, unlockLvl, index);
         this.ImgAtk = ImgAtk;
     }
-
-
+    public Character(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
+        super(name, Img1, HP, damage, spaces, range, unlockLvl);
+        this.ImgAtk = ImgAtk;
+    }
     @Override
     public void run(){
         int repeticiones = 100;
