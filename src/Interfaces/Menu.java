@@ -17,7 +17,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu() {      
         initComponents();
     }
 
@@ -31,18 +31,15 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         bntStart = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         bntLoadGame = new javax.swing.JButton();
         bntNewCarac = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bntStart.setBackground(new java.awt.Color(100, 135, 0));
@@ -60,6 +57,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bntStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 130, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/bomba.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 305, 70, 80));
 
         bntLoadGame.setBackground(new java.awt.Color(100, 135, 0));
         bntLoadGame.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
@@ -109,10 +109,6 @@ public class Menu extends javax.swing.JFrame {
         log.setVisible(true);
     }//GEN-LAST:event_bntNewCaracActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowActivated
-
     /**
      * @param args the command line arguments
      */
@@ -153,5 +149,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton bntNewCarac;
     private javax.swing.JButton bntStart;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
