@@ -5,13 +5,12 @@
  */
 package juego;
 
-import java.util.ArrayList;
 
 /**
  *
  * @author Diego Álvarez
  */
-public class Juego {
+public class Juego{
     /**
      * @param args the command line arguments
      */

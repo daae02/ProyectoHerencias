@@ -6,13 +6,14 @@
 package juego;
 
 import Interfaces.GUI;
+import java.io.Serializable;
 import javax.swing.JLabel;
 
 /**
  *
  * @author Diego Álvarez
  */
-public abstract class Character extends Entity {
+public abstract class Character extends Entity{
     String ImgAtk;
     int    HP;
     int    spaces;
