@@ -8,18 +8,24 @@ package Interfaces;
 import java.awt.Color;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import juego.Juego;
 /**
  *
  * @author Alejandra G
  */
 public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
+    Juego GameReference;
     /**
      * Creates new form Menu
      */
     public Menu() {      
         initComponents();
     }
+    public Menu( Juego GameReference) {      
+        initComponents();
+        this.GameReference = GameReference;
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,4 +157,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
 }
