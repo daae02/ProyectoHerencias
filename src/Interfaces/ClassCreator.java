@@ -66,6 +66,8 @@ public class ClassCreator extends javax.swing.JFrame {
         unlockSpinner = new javax.swing.JSpinner();
         lblDamage = new javax.swing.JLabel();
         damageSpinner = new javax.swing.JSpinner();
+        lblNotify = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
         lblWelcome = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblImgMov = new javax.swing.JLabel();
@@ -95,12 +97,12 @@ public class ClassCreator extends javax.swing.JFrame {
         lblSpaces1.setText("Espacios:");
 
         Spacespinner.setEditor(new javax.swing.JSpinner.DefaultEditor(Spacespinner));
-        Spacespinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        Spacespinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         Spacespinner.setAutoscrolls(true);
         Spacespinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         HPspinner.setEditor(new javax.swing.JSpinner.DefaultEditor(HPspinner));
-        HPspinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        HPspinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         HPspinner.setAutoscrolls(true);
         HPspinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HPspinner.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -155,7 +157,7 @@ public class ClassCreator extends javax.swing.JFrame {
         lblUnlock.setText("Desbloqueo:");
 
         unlockSpinner.setEditor(new javax.swing.JSpinner.DefaultEditor(unlockSpinner));
-        unlockSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 15, 1));
+        unlockSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         unlockSpinner.setToolTipText("");
         unlockSpinner.setAutoscrolls(true);
         unlockSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -163,43 +165,56 @@ public class ClassCreator extends javax.swing.JFrame {
         lblDamage.setText("Daño: ");
 
         damageSpinner.setEditor(new javax.swing.JSpinner.DefaultEditor(damageSpinner));
-        damageSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 15, 1));
+        damageSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         damageSpinner.setToolTipText("");
         damageSpinner.setAutoscrolls(true);
         damageSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblNotify.setForeground(new java.awt.Color(0, 255, 0));
+
+        btnSave.setText("Guardar cambios");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNotify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(25, 25, 25))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRange)
-                            .addComponent(lblHP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblClass)
-                            .addComponent(lblName)
-                            .addComponent(lblUnlock)
-                            .addComponent(lblSpaces1)
-                            .addComponent(lblDamage))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Spacespinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                                .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(damageSpinner, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(unlockSpinner, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblRange)
+                                    .addComponent(lblHP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblClass)
+                                    .addComponent(lblName)
+                                    .addComponent(lblUnlock)
+                                    .addComponent(lblSpaces1)
+                                    .addComponent(lblDamage))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ComboBoxClass, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Spacespinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                        .addComponent(HPspinner, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(damageSpinner, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(unlockSpinner, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,17 +247,20 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUnlock)
                     .addComponent(unlockSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(lblNotify, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(29, 29, 29))
+                .addGap(37, 37, 37)
+                .addComponent(btnSave)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, 390));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, 390));
 
         jPanel3.setBackground(new java.awt.Color(255,255,255,50));
-        lblWelcome.setBackground(null);
         lblWelcome.setFont(new java.awt.Font("Myanmar Text", 0, 18)); // NOI18N
         lblWelcome.setText("   Bienvenido al creador de personajes");
         lblWelcome.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -337,7 +355,7 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 350, 390));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 350, 390));
 
         lblBGpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/BGCreateCarac.jpg"))); // NOI18N
         getContentPane().add(lblBGpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
@@ -378,7 +396,16 @@ public class ClassCreator extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-    Character agregarPersonas(String name,String imgM, String imgA,int healthPoints,int damage,int spaces,int unlockLvl){
+    private void cleanAll(){
+        HPspinner.setValue(1);
+        Spacespinner.setValue(1);
+        unlockSpinner.setValue(1);
+        damageSpinner.setValue(1);
+        ComboBoxClass.setSelectedIndex(0);
+        txtRange.setText("1");
+        txtName.setText("");
+    }
+    private Character addCharacter(String name,String imgM, String imgA,int healthPoints,int damage,int spaces,int unlockLvl){
     int selection = ComboBoxClass.getSelectedIndex();
     switch (selection) {
             case 0:
@@ -409,7 +436,9 @@ public class ClassCreator extends javax.swing.JFrame {
         int damage = (Integer)damageSpinner.getValue();
         String imgM  = txtRuteImgMov.getText();
         String imgA  = txtRuteImgAtk.getText();
-        created.add(agregarPersonas(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
+        created.add(addCharacter(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
+        cleanAll();
+        lblNotify.setText(name+" creado con éxito");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFileSelectorImgAtk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgAtk1ActionPerformed
@@ -451,6 +480,10 @@ public class ClassCreator extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnFileSelectorImgMovActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,6 +528,7 @@ public class ClassCreator extends javax.swing.JFrame {
     private javax.swing.JSpinner Spacespinner;
     private javax.swing.JButton btnFileSelectorImgAtk1;
     private javax.swing.JButton btnFileSelectorImgMov;
+    private javax.swing.JButton btnSave;
     private javax.swing.JSpinner damageSpinner;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -509,6 +543,7 @@ public class ClassCreator extends javax.swing.JFrame {
     private javax.swing.JLabel lblImgAtk;
     private javax.swing.JLabel lblImgMov;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblNotify;
     private javax.swing.JLabel lblRange;
     private javax.swing.JLabel lblSpaces1;
     private javax.swing.JLabel lblUnlock;
