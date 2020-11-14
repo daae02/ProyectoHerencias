@@ -20,7 +20,7 @@ import juego.Juego;
 public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
     Juego GameReference;
-    ArrayList<Character> currentCharacters = new ArrayList<Character>();
+    ArrayList<Character> currentCharacters = new ArrayList<>();
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
     /**
      * Creates new form Menu
@@ -116,13 +116,19 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(bntNewCarac, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 130, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/BGMenu.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntStartActionPerformed
-
+        //currentCharacters =
+        for (int i = 0; i < currentCharacters.size(); i++) {
+            Character chara;
+            chara = currentCharacters.get(i);
+           // String img = chara.ImgAtk;
+            
+        }
     }//GEN-LAST:event_bntStartActionPerformed
 
     private void bntLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLoadGameActionPerformed

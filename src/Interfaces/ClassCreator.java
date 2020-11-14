@@ -99,11 +99,14 @@ public class ClassCreator extends javax.swing.JFrame {
         lblSpaces1.setText("Espacios:");
 
         Spacespinner.setEditor(new javax.swing.JSpinner.DefaultEditor(Spacespinner));
+        Spacespinner.setValue(1);
         Spacespinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         Spacespinner.setAutoscrolls(true);
         Spacespinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         HPspinner.setEditor(new javax.swing.JSpinner.DefaultEditor(HPspinner));
+        HPspinner.setValue(1);
+        HPspinner.setBackground(Color.white);
         HPspinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         HPspinner.setAutoscrolls(true);
         HPspinner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -117,6 +120,8 @@ public class ClassCreator extends javax.swing.JFrame {
 
         lblName.setText("Nombre : ");
 
+        txtName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(255, 255, 255), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
+        txtName.setText("");
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -125,7 +130,7 @@ public class ClassCreator extends javax.swing.JFrame {
 
         lblClass.setText("Clase : ");
 
-        ComboBoxClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contacto", "Rango", "Aereo", "Besia", "Heroe" }));
+        ComboBoxClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contacto", "Rango", "Aereo", "Bestia", "Heroe" }));
         ComboBoxClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxClassActionPerformed(evt);
@@ -136,6 +141,7 @@ public class ClassCreator extends javax.swing.JFrame {
 
         txtRange.setEditable(false);
         txtRange.setText("1");
+        txtRange.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(255, 255, 255), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
         txtRange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRangeActionPerformed(evt);
@@ -159,6 +165,7 @@ public class ClassCreator extends javax.swing.JFrame {
         lblUnlock.setText("Desbloqueo:");
 
         unlockSpinner.setEditor(new javax.swing.JSpinner.DefaultEditor(unlockSpinner));
+        unlockSpinner.setValue(1);
         unlockSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         unlockSpinner.setToolTipText("");
         unlockSpinner.setAutoscrolls(true);
@@ -167,6 +174,7 @@ public class ClassCreator extends javax.swing.JFrame {
         lblDamage.setText("Daño: ");
 
         damageSpinner.setEditor(new javax.swing.JSpinner.DefaultEditor(damageSpinner));
+        damageSpinner.setValue(1);
         damageSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         damageSpinner.setToolTipText("");
         damageSpinner.setAutoscrolls(true);
@@ -284,7 +292,9 @@ public class ClassCreator extends javax.swing.JFrame {
         });
 
         txtRuteImgMov.setEditable(false);
+        txtRuteImgMov.setBackground(new java.awt.Color(255, 255, 255));
         txtRuteImgMov.setText("Ruta de imagen");
+        txtRuteImgMov.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(255, 255, 255), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
         txtRuteImgMov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRuteImgMovActionPerformed(evt);
@@ -354,13 +364,13 @@ public class ClassCreator extends javax.swing.JFrame {
                 .addComponent(txtRuteImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showImgAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 350, 390));
 
         lblBGpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/BGCreateCarac.jpg"))); // NOI18N
-        getContentPane().add(lblBGpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
+        getContentPane().add(lblBGpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -406,6 +416,13 @@ public class ClassCreator extends javax.swing.JFrame {
         ComboBoxClass.setSelectedIndex(0);
         txtRange.setText("1");
         txtName.setText("");
+        txtRuteImgMov.setText("Ruta de imagen");
+        txtRuteImgAtk.setText("Ruta de imagen");
+        showImgMov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULL.png"))); 
+        showImgAtk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULLatk.png")));
+        showImgMov.setOpaque(false);
+        showImgAtk.setOpaque(false);
+
     }
     private Character addCharacter(String name,String imgM, String imgA,int healthPoints,int damage,int spaces,int unlockLvl){
     int selection = ComboBoxClass.getSelectedIndex();
@@ -431,22 +448,27 @@ public class ClassCreator extends javax.swing.JFrame {
     }
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getText();
+        String name =txtName.getText();
         int healthPoints = (Integer)HPspinner.getValue();
         int spaces = (Integer)Spacespinner.getValue();
         int unlockLvl = (Integer)unlockSpinner.getValue();
         int damage = (Integer)damageSpinner.getValue();
         String imgM  = txtRuteImgMov.getText();
         String imgA  = txtRuteImgAtk.getText();
-        if(name!=""&&imgM != "Ruta de imagen" && imgA!= "Ruta de imagen"){
-            created.add(addCharacter(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
-            cleanAll();
-            lblNotify.setForeground(Color.green);
-            lblNotify.setText(name+" creado con éxito");
+        if(name.isEmpty() || imgM.equals("Ruta de imagen") || imgA.equals("Ruta de imagen")){
+            lblNotify.setOpaque(true);
+            lblNotify.setBackground(new java.awt.Color(255, 255, 255,245));
+            lblNotify.setForeground(Color.yellow);
+            lblNotify.setText("No se puede agregar la clase si tiene espacios vacios");
         }
         else{
-            lblNotify.setForeground(Color.yellow);
-            lblNotify.setText("No se puede agregar la clase si tiene espacios vacios"); 
+            System.out.println(name);
+            created.add(addCharacter(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
+            cleanAll();
+            lblNotify.setOpaque(true);
+            lblNotify.setBackground(new java.awt.Color(255, 255, 255,245));
+            lblNotify.setForeground(Color.green);
+            lblNotify.setText(name+" creado con éxito");
         }
     }//GEN-LAST:event_btnaddActionPerformed
 
@@ -456,6 +478,8 @@ public class ClassCreator extends javax.swing.JFrame {
         selector.setFileFilter(filter);
         int option = selector.showOpenDialog(this);
         if(option==JFileChooser.APPROVE_OPTION){
+            showImgAtk.setOpaque(true);
+            showImgAtk.setBackground(new java.awt.Color(255, 255, 255,245));
             txtRuteImgAtk.setText(selector.getSelectedFile().getPath());
             ImageIcon icon = new ImageIcon(txtRuteImgAtk.getText());
             int width = 90;
@@ -480,6 +504,8 @@ public class ClassCreator extends javax.swing.JFrame {
         selector.setFileFilter(filter);
         int option = selector.showOpenDialog(this);
         if(option==JFileChooser.APPROVE_OPTION){
+            showImgMov.setOpaque(true);
+            showImgMov.setBackground(new java.awt.Color(255, 255, 255,245));
             txtRuteImgMov.setText(selector.getSelectedFile().getPath());
             ImageIcon icon = new ImageIcon(txtRuteImgMov.getText());
             int width = 90;
@@ -497,6 +523,8 @@ public class ClassCreator extends javax.swing.JFrame {
             menu.setVisible(true);
         }
         else{
+            lblNotify.setOpaque(true);
+            lblNotify.setBackground(new java.awt.Color(255, 255, 255,245));
             lblNotify.setForeground(Color.red);
             lblNotify.setText("No puede salvar un archivo vacío");
         }

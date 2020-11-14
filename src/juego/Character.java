@@ -13,11 +13,11 @@ import javax.swing.JLabel;
  *
  * @author Diego Álvarez
  */
-public abstract class Character extends Entity implements Serializable{
-    String ImgAtk;
-    int    HP;
-    int    spaces;
-    Character Objetive;
+public class Character extends Entity implements Serializable{
+    protected String ImgAtk;
+    protected int    HP;
+    protected int    spaces;
+    protected Character Objetive;
 
     public Character() { 
     }
@@ -71,6 +71,9 @@ public abstract class Character extends Entity implements Serializable{
     }
     void attack(int damage, Character Objetive){
         Objetive.HP -= damage; 
+    }
+    public String getImgAtk(){
+        return ImgAtk;
     }
 }
     
