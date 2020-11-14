@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,6 +20,7 @@ import juego.ContactFighter;
 import juego.Heroes;
 import juego.MediumRangeFighter;
 import javax.swing.border.LineBorder;
+import juego.FileManager;
 
 /**
  *
@@ -27,7 +29,7 @@ import javax.swing.border.LineBorder;
 public class ClassCreator extends javax.swing.JFrame {
     private ArrayList<Character> created = new ArrayList<Character>();
     private Menu menu;
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagen","jpg","jpeg","gif");
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagen","jpg","jpeg","gif","png");
     /**
      * Creates new form NewJFrame
      */
@@ -60,8 +62,8 @@ public class ClassCreator extends javax.swing.JFrame {
         ComboBoxClass = new javax.swing.JComboBox<>();
         lblRange = new javax.swing.JLabel();
         txtRange = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnadd = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         lblUnlock = new javax.swing.JLabel();
         unlockSpinner = new javax.swing.JSpinner();
         lblDamage = new javax.swing.JLabel();
@@ -140,17 +142,17 @@ public class ClassCreator extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnadd.setText("Agregar");
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnaddActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Regresar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Regresar");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -209,9 +211,9 @@ public class ClassCreator extends javax.swing.JFrame {
                                         .addComponent(damageSpinner, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(unlockSpinner, javax.swing.GroupLayout.Alignment.LEADING))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnadd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
+                                .addComponent(btnBack)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -249,16 +251,16 @@ public class ClassCreator extends javax.swing.JFrame {
                     .addComponent(unlockSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(lblNotify, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBack)
+                    .addComponent(btnadd))
+                .addGap(25, 25, 25)
                 .addComponent(btnSave)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, 390));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, 390));
 
         jPanel3.setBackground(new java.awt.Color(255,255,255,50));
         lblWelcome.setFont(new java.awt.Font("Myanmar Text", 0, 18)); // NOI18N
@@ -391,11 +393,11 @@ public class ClassCreator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_HPspinnerPropertyChange
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         menu.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
     private void cleanAll(){
         HPspinner.setValue(1);
         Spacespinner.setValue(1);
@@ -427,7 +429,7 @@ public class ClassCreator extends javax.swing.JFrame {
         }
      return null;
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
         String name = txtName.getText();
         int healthPoints = (Integer)HPspinner.getValue();
@@ -436,10 +438,17 @@ public class ClassCreator extends javax.swing.JFrame {
         int damage = (Integer)damageSpinner.getValue();
         String imgM  = txtRuteImgMov.getText();
         String imgA  = txtRuteImgAtk.getText();
-        created.add(addCharacter(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
-        cleanAll();
-        lblNotify.setText(name+" creado con éxito");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if(name!=""&&imgM != "Ruta de imagen" && imgA!= "Ruta de imagen"){
+            created.add(addCharacter(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
+            cleanAll();
+            lblNotify.setForeground(Color.green);
+            lblNotify.setText(name+" creado con éxito");
+        }
+        else{
+            lblNotify.setForeground(Color.yellow);
+            lblNotify.setText("No se puede agregar la clase si tiene espacios vacios"); 
+        }
+    }//GEN-LAST:event_btnaddActionPerformed
 
     private void btnFileSelectorImgAtk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSelectorImgAtk1ActionPerformed
         // TODO add your handling code here:
@@ -482,7 +491,15 @@ public class ClassCreator extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFileSelectorImgMovActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        if(created.size()>0){
+            FileManager.writeObject(created,"C:\\ClashOfClans\\currentArmy.arm");
+            this.setVisible(false);
+            menu.setVisible(true);
+        }
+        else{
+            lblNotify.setForeground(Color.red);
+            lblNotify.setText("No puede salvar un archivo vacío");
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
@@ -526,12 +543,12 @@ public class ClassCreator extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxClass;
     private javax.swing.JSpinner HPspinner;
     private javax.swing.JSpinner Spacespinner;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFileSelectorImgAtk1;
     private javax.swing.JButton btnFileSelectorImgMov;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnadd;
     private javax.swing.JSpinner damageSpinner;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -6,8 +6,12 @@
 package Interfaces;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import juego.FileManager;
 import juego.Juego;
 /**
  *
@@ -16,16 +20,24 @@ import juego.Juego;
 public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
     Juego GameReference;
+    ArrayList<Character> currentCharacters = new ArrayList<Character>();
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
     /**
      * Creates new form Menu
      */
-    public Menu() {      
+    public Menu() {
+        currentCharacters = (ArrayList<Character>)FileManager.readObject("C:\\ClashOfClans\\currentArmy.arm");
         initComponents();
+        
+         /*
+        try{
+            currentCharacters = (ArrayList<Character>)FileManager.readObject("C:\\ClashOfClans\\currentArmy.arm");
+        }
+        catch(e){
+            
+        }
+         */
     }
-    public Menu( Juego GameReference) {      
-        initComponents();
-        this.GameReference = GameReference;
-    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +58,14 @@ public class Menu extends javax.swing.JFrame {
         setTitle("Menu Principal");
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bntStart.setBackground(new java.awt.Color(100, 135, 0));
@@ -102,11 +122,18 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntStartActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_bntStartActionPerformed
 
     private void bntLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLoadGameActionPerformed
-        // TODO add your handling code here:
+      int loadedGame=2;
+      JFileChooser selector = new JFileChooser();//achu
+      selector.setFileFilter(filter);
+      int option = selector.showOpenDialog(this);
+      if(option==JFileChooser.APPROVE_OPTION){
+          loadedGame = (int)FileManager.readObject(selector.getSelectedFile().getAbsolutePath());
+          System.out.println(loadedGame);
+        }
     }//GEN-LAST:event_bntLoadGameActionPerformed
 
     private void bntNewCaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNewCaracActionPerformed
@@ -114,6 +141,14 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         log.setVisible(true);
     }//GEN-LAST:event_bntNewCaracActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        currentCharacters = (ArrayList<Character>)FileManager.readObject("C:\\ClashOfClans\\currentArmy.arm");
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
