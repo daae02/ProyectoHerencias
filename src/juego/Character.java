@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  * @author Diego Álvarez
  */
 public class Character extends Entity implements Serializable{
-    protected String ImgAtk;
+    public String ImgAtk;
     protected int    HP;
     protected int    spaces;
     protected Character Objetive;

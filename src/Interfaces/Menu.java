@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import juego.FileManager;
 import juego.Juego;
+import juego.Character;
 /**
  *
  * @author Alejandra G
@@ -20,7 +21,7 @@ import juego.Juego;
 public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
     Juego GameReference;
-    ArrayList<Character> currentCharacters = new ArrayList<>();
+    ArrayList<Character> currentCharacters = new ArrayList<Character>();
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
     /**
      * Creates new form Menu
@@ -126,8 +127,8 @@ public class Menu extends javax.swing.JFrame {
         for (int i = 0; i < currentCharacters.size(); i++) {
             Character chara;
             chara = currentCharacters.get(i);
-           // String img = chara.ImgAtk;
-            
+            String url = chara.ImgAtk; 
+                    
         }
     }//GEN-LAST:event_bntStartActionPerformed
 
