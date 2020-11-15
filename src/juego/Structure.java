@@ -12,11 +12,12 @@ import javax.swing.JLabel;
  *
  * @author Diego Álvarez
  */
+/*
 public class Structure extends Entity {
 
-    public Structure(GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
+    public Structure(String name,GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(GUIReference,Img1, damage, range, unlockLvl, index);
     }
 
 
-}
+}*/

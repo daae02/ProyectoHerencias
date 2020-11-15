@@ -4,16 +4,27 @@
  * and open the template in the editor.
  */
 package Interfaces;
-
+import java.awt.Color;
+import java.util.ArrayList;
+import juego.Character;
+import juego.Match;
 /**
  *
  * @author Alejandra G
  */
 public class ChooseFighter extends javax.swing.JFrame {
-
+    Match match = new Match();
+    Menu menuGUI;
     /**
      * Creates new form ChooseFighter
+     * @param menuGUI
      */
+    public ChooseFighter(Menu menuGUI) {
+        this.menuGUI = menuGUI;
+        initComponents();
+    }
+
+    
     public ChooseFighter() {
         initComponents();
     }
@@ -28,63 +39,96 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        spinCant = new javax.swing.JSpinner();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+        getContentPane().setLayout(new java.awt.GridLayout());
 
-        jButton1.setText("jButton1");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("jButton2");
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 222, -1));
 
-        jButton3.setText("jButton3");
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
-        jButton4.setText("jButton4");
+        jButton2.setText("Agregar");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jButton1)
-                .addGap(84, 84, 84)
-                .addComponent(jButton2)
-                .addGap(128, 128, 128)
-                .addComponent(jButton3)
-                .addGap(153, 153, 153)
-                .addComponent(jButton4)
-                .addContainerGap(194, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(403, Short.MAX_VALUE))
-        );
+        spinCant.setEditor(new javax.swing.JSpinner.DefaultEditor(spinCant));
+        spinCant.setValue(1);
+        spinCant.setBackground(Color.white);
+        spinCant.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        spinCant.setAutoscrolls(true);
+        spinCant.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        spinCant.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                spinCantPropertyChange(evt);
+            }
+        });
+        jPanel1.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 222, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jButton3.setText("!Luchar!");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 150, 60));
+
+        jLabel1.setText("Personaje: ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+
+        jLabel2.setText("Cantidad: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/BGCreateCarac.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 310));
+
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < menuGUI.currentCharacters.size(); i++) {
+            String url = menuGUI.currentCharacters.get(i).ImgAtk;
+            jComboBox1.addItem(menuGUI.currentCharacters.get(i).name);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // TODO add your handling code here
+    }//GEN-LAST:event_formMouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        menuGUI.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void spinCantPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinCantPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_spinCantPropertyChange
 
     /**
      * @param args the command line arguments
@@ -125,7 +169,11 @@ public class ChooseFighter extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner spinCant;
     // End of variables declaration//GEN-END:variables
 }

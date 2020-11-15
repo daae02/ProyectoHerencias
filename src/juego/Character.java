@@ -26,12 +26,12 @@ public class Character extends Entity implements Serializable{
         refLabel = GUIReference.generateLabel(index);
                 
     }
-    public Character(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
+ /*  public Character(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(GUIReference, Img1, damage, range, unlockLvl, index);
         this.ImgAtk = ImgAtk;
-    }
+    }*/
     public Character(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
-        super(name, Img1, HP, damage, spaces, range, unlockLvl);
+        super(name,Img1, HP, damage, spaces, range, unlockLvl);
         this.ImgAtk = ImgAtk;
     }
     @Override
@@ -71,9 +71,6 @@ public class Character extends Entity implements Serializable{
     }
     void attack(int damage, Character Objetive){
         Objetive.HP -= damage; 
-    }
-    public String getImgAtk(){
-        return ImgAtk;
     }
 }
     

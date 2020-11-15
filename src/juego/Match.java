@@ -16,6 +16,10 @@ public class Match {
     ArrayList<Character> army;
     ArrayList<Character> Enemyarmy;
     GUI GUIreference;
+    
+    public Match(){
+        
+    }
     public Match(GUI GUIreference) {
         this.GUIreference = GUIreference;
         army = new ArrayList<Character>();

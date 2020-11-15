@@ -93,10 +93,8 @@ public class FileManager {
             }
           }
           catch(ClassNotFoundException ex){
-           
           }
           catch(IOException ex){
-            
           }
         return null;
     }  

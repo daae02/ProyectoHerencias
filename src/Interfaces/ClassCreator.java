@@ -424,6 +424,7 @@ public class ClassCreator extends javax.swing.JFrame {
         showImgAtk.setOpaque(false);
 
     }
+
     private Character addCharacter(String name,String imgM, String imgA,int healthPoints,int damage,int spaces,int unlockLvl){
     int selection = ComboBoxClass.getSelectedIndex();
     switch (selection) {
@@ -462,7 +463,6 @@ public class ClassCreator extends javax.swing.JFrame {
             lblNotify.setText("No se puede agregar la clase si tiene espacios vacios");
         }
         else{
-            System.out.println(name);
             created.add(addCharacter(name,imgM,imgA,healthPoints,damage,spaces,unlockLvl));
             cleanAll();
             lblNotify.setOpaque(true);
@@ -564,7 +564,7 @@ public class ClassCreator extends javax.swing.JFrame {
                 
                 new ClassCreator().setVisible(true);
             }
-        });
+        }); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

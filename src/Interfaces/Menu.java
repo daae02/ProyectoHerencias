@@ -11,6 +11,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import juego.Beast;
 import juego.FileManager;
 import juego.Juego;
 import juego.Character;
@@ -23,11 +24,11 @@ public class Menu extends javax.swing.JFrame {
     Juego GameReference;
     ArrayList<Character> currentCharacters = new ArrayList<Character>();
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
+    ChooseFighter chooseFighterGUI = new ChooseFighter();
     /**
      * Creates new form Menu
      */
     public Menu() {
-        currentCharacters = (ArrayList<Character>)FileManager.readObject("C:\\ClashOfClans\\currentArmy.arm");
         initComponents();
         
          /*
@@ -123,13 +124,11 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntStartActionPerformed
-        //currentCharacters =
-        for (int i = 0; i < currentCharacters.size(); i++) {
-            Character chara;
-            chara = currentCharacters.get(i);
-            String url = chara.ImgAtk; 
-                    
-        }
+        chooseFighterGUI.menuGUI = this;
+        this.setVisible(false);
+        chooseFighterGUI.setVisible(true);
+
+        
     }//GEN-LAST:event_bntStartActionPerformed
 
     private void bntLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLoadGameActionPerformed
@@ -199,5 +198,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
 
 }

@@ -18,10 +18,10 @@ largo	alcance.	Estos	no	se	desplazan.	Estos	hacen	ruido. Crecen	con	cada
 nivel.*/
 public class AerialFighter  extends Character {
     
-    public AerialFighter(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
+   /* public AerialFighter(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(ImgAtk, HP, spaces, GUIReference, Img1, damage, range, unlockLvl, index);
 
-    }
+    }*/
     public AerialFighter(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
         super(name, Img1,ImgAtk, HP, damage, spaces, range, unlockLvl);
     }
