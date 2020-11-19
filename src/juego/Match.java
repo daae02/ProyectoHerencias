@@ -5,6 +5,7 @@
  */
 package juego;
 
+import Interfaces.ChooseFighter;
 import Interfaces.GUI;
 import java.util.ArrayList;
 
@@ -13,36 +14,41 @@ import java.util.ArrayList;
  * @author Diego Álvarez
  */
 public class Match {
-    ArrayList<Character> army;
-    ArrayList<Character> Enemyarmy;
+    public ArrayList<Character> army = new ArrayList<>();
+    ArrayList<Character> EnemyArmy = new ArrayList<>();
+    ChooseFighter chooseReference;
     GUI GUIreference;
+    int level;
     
+            
+            
     public Match(){
         
     }
-    public Match(GUI GUIreference) {
+    public Match( ChooseFighter chooseReference, int level, ArrayList<Character> army, ArrayList<Character> EnemyArmy) {
+        this.level = level;
+        this.chooseReference = chooseReference;
         this.GUIreference = GUIreference;
-        army = new ArrayList<Character>();
-        Enemyarmy = new ArrayList<Character>();
+        this.army = army;
     }
     public void startArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).start();
-            Enemyarmy.get(i).start();
+            EnemyArmy.get(i).start();
         }
     }
     
     public void pauseArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).setPause();
-            Enemyarmy.get(i).setPause();
+            EnemyArmy.get(i).setPause();
         }
     }
     
     public void stopArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).stopThread();
-            Enemyarmy.get(i).stopThread();
+            EnemyArmy.get(i).stopThread();
         }
     } 
 }

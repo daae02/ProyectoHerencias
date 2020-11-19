@@ -21,8 +21,8 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
-    public GUI() {
-        currentMatch = new Match(this);
+    public GUI(Match match) {
+        currentMatch = match;
         LabelArray = new ArrayList<JLabel> ();
         initComponents();
     }
@@ -178,7 +178,7 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                //new GUI().setVisible(true);
             }
         });
     }
