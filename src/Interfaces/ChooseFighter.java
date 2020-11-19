@@ -16,10 +16,11 @@ public class ChooseFighter extends javax.swing.JFrame {
     public ArrayList<Character> army = new ArrayList<>();
     ArrayList<Character> EnemyArmy = new ArrayList<>();
     Match match;
-    GUI GUIreference;
+    GUI GUIreference = new GUI();
     Menu menuGUI;
     protected int level = 1;
     private int counter = 5;
+    private int totalEntities = 0;
     
     /**
      * Creates new form ChooseFighter
@@ -175,7 +176,10 @@ public class ChooseFighter extends javax.swing.JFrame {
             int index = boxCharac.getSelectedIndex();
             if (index != -1){
                  for (int i = 0; i < cant; i++) {
-                    army.add(menuGUI.currentCharacters.get(index));      
+                    army.add(menuGUI.currentCharacters.get(index));
+                    army.get(i).index = totalEntities;
+                    army.get(index).GUIReference = GUIreference;
+                    totalEntities++;
                 }
             }
             counter -= cant;
@@ -188,7 +192,7 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void btbFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbFightActionPerformed
         // TODO add your handling code here:
         match = new Match(this,level,army,EnemyArmy);
-        GUIreference = new GUI(match);
+        GUIreference.currentMatch = match;
         this.setVisible(false);
         GUIreference.setVisible(true);
         

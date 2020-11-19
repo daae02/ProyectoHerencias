@@ -33,8 +33,9 @@ public class Match {
     }
     public void startArmy(){
         for (int i = 0; i < army.size(); i++) {
+            System.out.println("Hi :)");
             army.get(i).start();
-            EnemyArmy.get(i).start();
+         //   EnemyArmy.get(i).start();
         }
     }
     

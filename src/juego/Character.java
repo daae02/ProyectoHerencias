@@ -7,8 +7,8 @@ package juego;
 
 import Interfaces.GUI;
 import java.io.Serializable;
+import java.util.Random;
 import javax.swing.JLabel;
-
 /**
  *
  * @author Diego Álvarez
@@ -18,6 +18,7 @@ public class Character extends Entity implements Serializable{
     protected int    HP;
     protected int    spaces;
     protected Character Objetive;
+    protected int level = 1;
 
     public Character() { 
     }
@@ -36,14 +37,14 @@ public class Character extends Entity implements Serializable{
     }
     @Override
     public void run(){
+        refLabel = GUIReference.generateLabel(index);
         int repeticiones = 100;
         running = true;
         while (running){ 
             try {
                 if (repeticiones == 0) break;
                     sleep(1000);
-                    GUIReference.moveLabel(index);
-                    refLabel.setText("#" + this.index);         
+                    GUIReference.moveLabel(index);    
                     repeticiones--;
                 
             } 
@@ -71,6 +72,11 @@ public class Character extends Entity implements Serializable{
     }
     void attack(int damage, Character Objetive){
         Objetive.HP -= damage; 
+    }
+    void nextLevel(){
+        level++;
+        HP += new Random().nextInt(level);
+        damage += new Random().nextInt(level);
     }
 }
     

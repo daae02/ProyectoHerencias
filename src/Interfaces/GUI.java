@@ -26,18 +26,20 @@ public class GUI extends javax.swing.JFrame {
         LabelArray = new ArrayList<JLabel> ();
         initComponents();
     }
+    public GUI() {
+        LabelArray = new ArrayList<JLabel> ();
+        initComponents();
+    }
        public JLabel generateLabel(int numeroThread){
-        JLabel newLabel = new JLabel("#" + numeroThread);
-        newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        JLabel newLabel = new JLabel();
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
         newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         newLabel.setSize(40, 40);
         jPanel1.add(newLabel);
-        newLabel.setBackground(Color.red);
         newLabel.setOpaque(true);
         
-        int x = ((new Random()).nextInt(800)/40) * 40;
-        int y = ((new Random()).nextInt(800) / 40)* 40;
+        int x = ((new Random()).nextInt(1000)/20) * 20;
+        int y = ((new Random()).nextInt(1000) / 20)* 20;
         newLabel.setLocation(x , y);
         LabelArray.add(newLabel);
         return newLabel;
@@ -45,20 +47,20 @@ public class GUI extends javax.swing.JFrame {
         public void moveLabel (int labelIndex){
         
         JLabel refLabel = LabelArray.get(labelIndex);
-        
+            System.out.println("Hi :(");
         int direccion = (new Random()).nextInt(4);
         int x = refLabel.getLocation().x;
         int y = refLabel.getLocation().y;
         
         //sumo A x O y
-            if (direccion == 0 && y-40 >= 0) //arriba
-                y = y-40;
-            else if (direccion == 1 && y+40 <= 800)
-                y = y+40;
-            else if (direccion == 2 && x+40 <= 800)
-                x = x+40;
-            else if (direccion == 3 && x-40 >= 0)
-                x = x-40;
+            if (direccion == 0 && y-20 >= 0) //arriba
+                y = y-20;
+            else if (direccion == 1 && y+20 <= 800)
+                y = y+20;
+            else if (direccion == 2 && x+20 <= 800)
+                x = x+20;
+            else if (direccion == 3 && x-20 >= 0)
+                x = x-20;
             
         
         int ocupadoPor = isAvailablePostion(x, y, refLabel);
@@ -89,12 +91,19 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         start = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(1000, 1050));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(51, 255, 0));
+        jPanel1.setBackground(new java.awt.Color(240, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setToolTipText("");
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 80));
 
+        start.setBackground(new java.awt.Color(204, 153, 0));
         start.setText("START");
         start.setToolTipText("");
         start.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,28 +122,19 @@ public class GUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(342, 342, 342)
-                .addComponent(start)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGap(430, 430, 430)
+                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(766, Short.MAX_VALUE)
-                .addComponent(start)
-                .addContainerGap())
+            .addComponent(start, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 27));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/background.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,6 +184,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
