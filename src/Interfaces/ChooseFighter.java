@@ -176,9 +176,13 @@ public class ChooseFighter extends javax.swing.JFrame {
             int index = boxCharac.getSelectedIndex();
             if (index != -1){
                  for (int i = 0; i < cant; i++) {
-                    army.add(menuGUI.currentCharacters.get(index));
-                    army.get(i).index = totalEntities;
-                    army.get(index).GUIReference = GUIreference;
+                    Character nChar = menuGUI.currentCharacters.get(index);
+                    army.add(nChar);
+                    army.get(army.size()-1).index = totalEntities;
+                    army.get(army.size()-1).GUIReference = GUIreference;
+                    army.get(army.size()-1).name += i;
+                    army.get(army.size()-1).drawLabel();
+                    
                     totalEntities++;
                 }
             }
