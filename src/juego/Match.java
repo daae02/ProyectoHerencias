@@ -8,6 +8,7 @@ package juego;
 import Interfaces.ChooseFighter;
 import Interfaces.GUI;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -56,4 +57,10 @@ public class Match {
             EnemyArmy.get(i).stopThread();
         }
     } 
+    public Character getObjetive() {
+        int enemy = (new Random()).nextInt(EnemyArmy.size());
+        return EnemyArmy.get(enemy);
+ 
+        
+    }
 }

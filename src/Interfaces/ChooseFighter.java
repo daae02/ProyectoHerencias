@@ -6,8 +6,14 @@
 package Interfaces;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
+import juego.AerialFighter;
+import juego.Beast;
 import juego.Character;
+import juego.ContactFighter;
+import juego.Heroes;
 import juego.Match;
+import juego.MediumRangeFighter;
 /**
  *
  * @author Alejandra G
@@ -168,7 +174,62 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void spinCantPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinCantPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_spinCantPropertyChange
-
+    private Character generateFighter(Character c){
+        if(c.equals(new ContactFighter())){
+            ContactFighter tmpChar = new ContactFighter();
+            tmpChar.copy(c);
+            return tmpChar;
+        }
+        else if(c.equals(new MediumRangeFighter())){
+            MediumRangeFighter tmpChar = new MediumRangeFighter();
+            tmpChar.copy(c);
+            return tmpChar;
+        }
+        else if(c.equals(new AerialFighter())){
+            AerialFighter tmpChar = new AerialFighter();
+            tmpChar.copy(c);
+            return tmpChar;
+        }
+        else if(c.equals(new Beast())){
+            Beast tmpChar = new Beast(); 
+            tmpChar.copy(c);
+            return tmpChar;
+        }
+        else{
+            Heroes tmpChar = new Heroes();
+            tmpChar.copy(c);
+            return tmpChar;
+        }
+    }
+    private void addToArmy( ArrayList<Character> armyRef, int index){
+         armyRef.add(generateFighter(menuGUI.currentCharacters.get(index)));
+         armyRef.get(armyRef.size()-1).index = totalEntities;
+         armyRef.get(armyRef.size()-1).GUIReference = GUIreference;
+         armyRef.get(armyRef.size()-1).drawLabel();
+    }
+    private void generateEnemyArmy(){
+        int aSpaces;
+        int antiLoop=1;
+        if (level == 1){
+            aSpaces = 5;
+        }
+        else {
+            aSpaces = 5+3*level;
+        }
+        boolean generate = true;
+        while(generate){
+             antiLoop++;
+             int tmpIndex = new Random().nextInt(menuGUI.currentCharacters.size());
+             if(aSpaces - menuGUI.currentCharacters.get(tmpIndex).spaces>=0){
+                addToArmy(EnemyArmy,tmpIndex);
+                 System.out.println("Espacios de "+  menuGUI.currentCharacters.get(tmpIndex).name + " : "+menuGUI.currentCharacters.get(tmpIndex).spaces);
+                aSpaces -= menuGUI.currentCharacters.get(tmpIndex).spaces;
+                }
+             if(aSpaces <= 0 || antiLoop>10000){
+                 generate = false;
+             }
+        }
+    }
     private void btbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAddActionPerformed
         // TODO add your handling code here:
         int cant = (Integer)spinCant.getValue();
@@ -176,17 +237,11 @@ public class ChooseFighter extends javax.swing.JFrame {
             int index = boxCharac.getSelectedIndex();
             if (index != -1){
                  for (int i = 0; i < cant; i++) {
-                    Character nChar = menuGUI.currentCharacters.get(index);
-                    army.add(nChar);
-                    army.get(army.size()-1).index = totalEntities;
-                    army.get(army.size()-1).GUIReference = GUIreference;
-                    army.get(army.size()-1).name += i;
-                    army.get(army.size()-1).drawLabel();
-                    
-                    totalEntities++;
+                     addToArmy(army,index);
+                     totalEntities++;
                 }
             }
-            counter -= cant;
+            counter -= cant*menuGUI.currentCharacters.get(index).spaces;
             lblContador.setText(counter+"");
             btbFight.setEnabled(true);
         }
@@ -195,11 +250,11 @@ public class ChooseFighter extends javax.swing.JFrame {
 
     private void btbFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbFightActionPerformed
         // TODO add your handling code here:
+        generateEnemyArmy();
         match = new Match(this,level,army,EnemyArmy);
         GUIreference.currentMatch = match;
         this.setVisible(false);
         GUIreference.setVisible(true);
-        
     }//GEN-LAST:event_btbFightActionPerformed
 
     /**

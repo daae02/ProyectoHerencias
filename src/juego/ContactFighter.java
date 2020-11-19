@@ -21,4 +21,7 @@ public class ContactFighter extends Character {
     public ContactFighter(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
         super(name, Img1,ImgAtk, HP, damage, spaces, range, unlockLvl);
     }
+
+    public ContactFighter() {
+    }
 }

@@ -16,8 +16,8 @@ import juego.Match;
  * @author Diego Álvarez
  */
 public class GUI extends javax.swing.JFrame {
-    ArrayList<JLabel> LabelArray; 
-    Match currentMatch;
+    public ArrayList<JLabel> LabelArray; 
+    public Match currentMatch;
     /**
      * Creates new form GUI
      */
@@ -34,11 +34,11 @@ public class GUI extends javax.swing.JFrame {
         JLabel newLabel = new JLabel();
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
         newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        newLabel.setSize(40, 40);
+        newLabel.setSize(20, 20);
         jLabel2.add(newLabel);
         newLabel.setOpaque(true);
-        int x = ((new Random()).nextInt(1000)/20) * 20;
-        int y = ((new Random()).nextInt(1000) / 20)* 20;
+        int x = ((new Random()).nextInt(950)/20) * 20;
+        int y = ((new Random()).nextInt(950) / 20)* 20;
         newLabel.setLocation(x , y);
         LabelArray.add(numeroThread,newLabel);
         System.out.println("Labels: "+LabelArray.size());
@@ -47,7 +47,6 @@ public class GUI extends javax.swing.JFrame {
         public void moveLabel (int labelIndex){
         
         JLabel refLabel = LabelArray.get(labelIndex);
-            System.out.println("Hi :( "+labelIndex);
         int direccion = (new Random()).nextInt(4);
         int x = refLabel.getLocation().x;
         int y = refLabel.getLocation().y;
@@ -55,9 +54,9 @@ public class GUI extends javax.swing.JFrame {
         //sumo A x O y
             if (direccion == 0 && y-20 >= 0) //arriba
                 y = y-20;
-            else if (direccion == 1 && y+20 <= 800)
+            else if (direccion == 1 && y+20 <= 1000)
                 y = y+20;
-            else if (direccion == 2 && x+20 <= 800)
+            else if (direccion == 2 && x+20 <= 1000)
                 x = x+20;
             else if (direccion == 3 && x-20 >= 0)
                 x = x-20;
