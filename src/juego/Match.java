@@ -32,10 +32,14 @@ public class Match {
         this.army = army;
     }
     public void startArmy(){
+        System.out.println("Cantidad: "+army.size());
         for (int i = 0; i < army.size(); i++) {
-            System.out.println("Hi :)");
-            army.get(i).start();
+            try{
+                army.get(i).start();
          //   EnemyArmy.get(i).start();
+            }
+            catch(Exception e){
+            }
         }
     }
     

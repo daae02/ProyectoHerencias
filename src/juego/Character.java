@@ -37,7 +37,7 @@ public class Character extends Entity implements Serializable{
     }
     @Override
     public void run(){
-        refLabel = GUIReference.generateLabel(index);
+        System.out.println("Label "+index+" generada "+refLabel.toString());
         int repeticiones = 100;
         running = true;
         while (running){ 
@@ -63,7 +63,16 @@ public class Character extends Entity implements Serializable{
             
         }
      }
-       public void stopThread(){
+    public void copy(Character c){
+        this.name = c.name;
+        this.HP = c.HP;
+        
+    }
+    public void drawLabel(){
+        System.out.println("Nombre: "+name);
+        refLabel = GUIReference.generateLabel(index);
+    } 
+    public void stopThread(){
         this.running = false;
     }
     
