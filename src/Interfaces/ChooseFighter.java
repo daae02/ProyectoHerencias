@@ -221,7 +221,7 @@ public class ChooseFighter extends javax.swing.JFrame {
              antiLoop++;
              int tmpIndex = new Random().nextInt(menuGUI.currentCharacters.size());
              if(aSpaces - menuGUI.currentCharacters.get(tmpIndex).spaces>=0){
-                addToArmy(EnemyArmy,tmpIndex);
+                 addToArmy(EnemyArmy,tmpIndex);
                  System.out.println("Espacios de "+  menuGUI.currentCharacters.get(tmpIndex).name + " : "+menuGUI.currentCharacters.get(tmpIndex).spaces);
                 aSpaces -= menuGUI.currentCharacters.get(tmpIndex).spaces;
                 }
@@ -239,6 +239,7 @@ public class ChooseFighter extends javax.swing.JFrame {
                  for (int i = 0; i < cant; i++) {
                      addToArmy(army,index);
                      totalEntities++;
+                     System.out.println("Espacios de "+  menuGUI.currentCharacters.get(index).name + " : "+menuGUI.currentCharacters.get(index).spaces);
                 }
             }
             counter -= cant*menuGUI.currentCharacters.get(index).spaces;

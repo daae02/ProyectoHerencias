@@ -44,23 +44,27 @@ public class GUI extends javax.swing.JFrame {
         System.out.println("Labels: "+LabelArray.size());
         return newLabel;
     }
-        public void moveLabel (int labelIndex){
+        public void moveLabel (int labelIndex,int range,int enemyLabelIIndex){
         
         JLabel refLabel = LabelArray.get(labelIndex);
+        JLabel refEnemy = LabelArray.get(enemyLabelIIndex);
         int direccion = (new Random()).nextInt(4);
         int x = refLabel.getLocation().x;
         int y = refLabel.getLocation().y;
-        
-        //sumo A x O y
-            if (direccion == 0 && y-20 >= 0) //arriba
-                y = y-20;
-            else if (direccion == 1 && y+20 <= 1000)
-                y = y+20;
-            else if (direccion == 2 && x+20 <= 1000)
-                x = x+20;
-            else if (direccion == 3 && x-20 >= 0)
-                x = x-20;
-            
+        int xe = refEnemy.getLocation().x;
+        int ye = refEnemy.getLocation().y;
+        if (x-xe < 02 && x+20 <= 1000){
+            x = x+20;
+        }
+        else if(x-xe>0 && x-20 >= 0){
+            x = x-20;
+        }
+        if (y-ye< 0  && y-20 >= 0){
+            y = y-20;
+        }
+        else if (y-ye>0 && y+20 <= 1000){
+            y = y+20;
+        }
         
         int ocupadoPor = isAvailablePostion(x, y, refLabel);
         if (ocupadoPor == -1)
@@ -93,7 +97,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1050));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,7 +125,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/background.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1000, 930);
+        jLabel2.setBounds(0, 0, 1000, 1010);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 930));
 

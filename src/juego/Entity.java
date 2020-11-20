@@ -19,8 +19,8 @@ public class Entity extends Thread implements Serializable{
   public int index;
   String Img1;
   int    HP;
-  int    damage;
-  int    spaces;
+  public int    damage;
+  public int    spaces;
   int    range;
   int    unlockLvl;
   int    posX;

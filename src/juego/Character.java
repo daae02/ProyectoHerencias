@@ -16,10 +16,8 @@ import javax.swing.JLabel;
 public class Character extends Entity implements Serializable{
     public String ImgAtk;
     protected int    HP;
-    public int    spaces;
     protected Character Objetive;
     protected int level = 1;
-
     public Character() { 
     }
     public Character(GUI GUIreference, int index){
@@ -41,10 +39,8 @@ public class Character extends Entity implements Serializable{
         running = true;
         while (running){ 
             try {
-                    GUIReference.moveLabel(index);
-                    if (Objetive == null){
-                        Objetive = GUIReference.currentMatch.getObjetive();
-                    }
+                    GUIReference.currentMatch.getObjetive();
+                    GUIReference.moveLabel(index,range,Objetive.index); 
                     sleep(100);
                 
             } 

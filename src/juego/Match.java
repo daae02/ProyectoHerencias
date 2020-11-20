@@ -31,13 +31,14 @@ public class Match {
         this.chooseReference = chooseReference;
         this.GUIreference = GUIreference;
         this.army = army;
+        this.EnemyArmy = EnemyArmy;
     }
     public void startArmy(){
         System.out.println("Cantidad: "+army.size());
         for (int i = 0; i < army.size(); i++) {
             try{
                 army.get(i).start();
-         //   EnemyArmy.get(i).start();
+                EnemyArmy.get(i).start();
             }
             catch(Exception e){
             }
@@ -57,10 +58,19 @@ public class Match {
             EnemyArmy.get(i).stopThread();
         }
     } 
-    public Character getObjetive() {
-        int enemy = (new Random()).nextInt(EnemyArmy.size());
-        return EnemyArmy.get(enemy);
- 
-        
+    public void getObjetive() {
+        for (int i = 0; i < army.size(); i++) {
+            if (army.get(i).Objetive==null){
+                int enemy = (new Random()).nextInt(EnemyArmy.size());
+                army.get(i).Objetive = EnemyArmy.get(enemy);
+            }
+        }
+        for (int i = 0; i < EnemyArmy.size(); i++) {
+            if (EnemyArmy.get(i).Objetive==null){
+                int enemy = (new Random()).nextInt(army.size());
+                EnemyArmy.get(i).Objetive = army.get(enemy);
+            }        
+
+        }
     }
 }
