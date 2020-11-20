@@ -18,7 +18,7 @@ public class Entity extends Thread implements Serializable{
   public JLabel refLabel;
   public int index;
   String Img1;
-  int    HP;
+  public int    HP;
   public int    damage;
   public int    spaces;
   int    range;

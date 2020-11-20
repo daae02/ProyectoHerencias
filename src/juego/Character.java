@@ -7,6 +7,9 @@ package juego;
 
 import Interfaces.GUI;
 import java.io.Serializable;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 import java.util.Random;
 import javax.swing.JLabel;
 /**
@@ -39,9 +42,12 @@ public class Character extends Entity implements Serializable{
         running = true;
         while (running){ 
             try {
+                    System.out.println("Me queda: "+HP);
+                    die();
                     GUIReference.currentMatch.getObjetive();
-                    GUIReference.moveLabel(index,range,Objetive.index); 
-                    sleep(100);
+                    attack();
+                    GUIReference.moveLabel(index,Objetive.index);
+                    sleep(1000);
                 
             } 
             catch (InterruptedException ex) {
@@ -62,6 +68,12 @@ public class Character extends Entity implements Serializable{
     public void copy(Character c){
         this.name = c.name;
         this.HP = c.HP;
+        System.out.println("Me pasan:"+c.HP);
+        this.range = c.range;
+        this.Img1 = c.Img1;
+        this.ImgAtk = c.ImgAtk;
+        this.damage = c.damage;
+                
         
     }
     public void drawLabel(){
@@ -75,13 +87,24 @@ public class Character extends Entity implements Serializable{
     public void setPause(){
         this.pause = !this.pause;
     }
-    void attack(int damage, Character Objetive){
-        Objetive.HP -= damage; 
+    void attack(){
+        int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
+        distance = abs(distance)/50;
+        System.out.println("Distancia: "+distance+" mi distacia es "+ range);
+        if(distance <= range){
+            Objetive.HP -= damage;
+            System.out.println(name+" ataco a "+Objetive.name+" le quedan "+Objetive.HP+"HP");
+            if(Objetive.HP<=0){
+                Objetive = null;
+            }
     }
-    void nextLevel(){
-        level++;
-        HP += new Random().nextInt(level);
-        damage += new Random().nextInt(level);
+    }
+    void die(){
+        if(HP<=0){
+           //setPause();
+            setPause();
+            GUIReference.LabelArray.get(index).setVisible(false);
+        }
     }
 }
     

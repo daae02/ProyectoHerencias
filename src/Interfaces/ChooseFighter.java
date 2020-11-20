@@ -211,7 +211,7 @@ public class ChooseFighter extends javax.swing.JFrame {
         int aSpaces;
         int antiLoop=1;
         if (level == 1){
-            aSpaces = 5;
+            aSpaces = 1;
         }
         else {
             aSpaces = 5+3*level;

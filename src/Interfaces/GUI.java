@@ -34,17 +34,17 @@ public class GUI extends javax.swing.JFrame {
         JLabel newLabel = new JLabel();
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
         newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        newLabel.setSize(20, 20);
+        newLabel.setSize(50, 50);
         jLabel2.add(newLabel);
         newLabel.setOpaque(true);
-        int x = ((new Random()).nextInt(950)/20) * 20;
-        int y = ((new Random()).nextInt(950) / 20)* 20;
+        int x = ((new Random()).nextInt(950)/50) * 50;
+        int y = ((new Random()).nextInt(950) / 50)* 50;
         newLabel.setLocation(x , y);
         LabelArray.add(numeroThread,newLabel);
         System.out.println("Labels: "+LabelArray.size());
         return newLabel;
     }
-        public void moveLabel (int labelIndex,int range,int enemyLabelIIndex){
+        public void moveLabel (int labelIndex,int enemyLabelIIndex){
         
         JLabel refLabel = LabelArray.get(labelIndex);
         JLabel refEnemy = LabelArray.get(enemyLabelIIndex);
@@ -53,17 +53,17 @@ public class GUI extends javax.swing.JFrame {
         int y = refLabel.getLocation().y;
         int xe = refEnemy.getLocation().x;
         int ye = refEnemy.getLocation().y;
-        if (x-xe < 02 && x+20 <= 1000){
-            x = x+20;
+        if (x-xe < 0 && x+50 <= 950){
+            x = x+50;
         }
-        else if(x-xe>0 && x-20 >= 0){
-            x = x-20;
+        else if(x-xe>0 && x-50 >= 0){
+            x = x-50;
         }
-        if (y-ye< 0  && y-20 >= 0){
-            y = y-20;
+        if (y-ye> 0  && y-50 >= 0){
+            y = y-50;
         }
-        else if (y-ye>0 && y+20 <= 1000){
-            y = y+20;
+        else if (y-ye<0 && y+50 <= 950){
+            y = y+50;
         }
         
         int ocupadoPor = isAvailablePostion(x, y, refLabel);
@@ -177,7 +177,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
