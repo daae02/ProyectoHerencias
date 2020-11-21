@@ -154,6 +154,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         currentCharacters = (ArrayList<Character>)FileManager.readObject("C:\\ClashOfClans\\currentArmy.arm");
+        if (currentCharacters != null && !currentCharacters.isEmpty()){
+            bntStart.setEnabled(true);
+        }
  //       System.out.println("Nombre: " + currentCharacters.get(0).damage);
     }//GEN-LAST:event_formWindowActivated
 

@@ -21,20 +21,17 @@ public class Character extends Entity implements Serializable{
     protected int    HP;
     protected Character Objetive;
     protected int level = 1;
+    public boolean good;
     public Character() { 
-    }
-    public Character(GUI GUIreference, int index){
-        super(GUIreference,index);
-        refLabel = GUIReference.generateLabel(index);
-                
     }
  /*  public Character(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(GUIReference, Img1, damage, range, unlockLvl, index);
         this.ImgAtk = ImgAtk;
     }*/
     public Character(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
-        super(name,Img1, HP, damage, spaces, range, unlockLvl);
+        super(name,Img1, damage, spaces, range, unlockLvl);
         this.ImgAtk = ImgAtk;
+        this.HP = HP;
     }
     @Override
     public void run(){
@@ -42,12 +39,22 @@ public class Character extends Entity implements Serializable{
         running = true;
         while (running){ 
             try {
-                    System.out.println("Me queda: "+HP);
-                    die();
-                    GUIReference.currentMatch.getObjetive();
-                    attack();
-                    GUIReference.moveLabel(index,Objetive.index);
+                 if(!die()){
+                    checkEnemy(); 
+                    if(Objetive != null){
+                        GUIReference.moveLabel(index,Objetive.index);
+                        attack();
+                    }
+                    else{
+                        Objetive = GUIReference.currentMatch.getObjetive(this);
+                    }
                     sleep(1000);
+                 }
+                 else{
+                     GUIReference.LabelArray.get(index).setVisible(false);
+                     GUIReference.LabelArray.get(index).setLocation(1200,1200);
+                     setPause();
+                 }
                 
             } 
             catch (InterruptedException ex) {
@@ -77,8 +84,7 @@ public class Character extends Entity implements Serializable{
         
     }
     public void drawLabel(){
-        System.out.println("Nombre: "+name);
-        refLabel = GUIReference.generateLabel(index);
+        refLabel = GUIReference.generateLabel(index,name);
     } 
     public void stopThread(){
         this.running = false;
@@ -93,18 +99,20 @@ public class Character extends Entity implements Serializable{
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
             Objetive.HP -= damage;
-            System.out.println(name+" ataco a "+Objetive.name+" le quedan "+Objetive.HP+"HP");
+            System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
                 Objetive = null;
             }
     }
+    
     }
-    void die(){
-        if(HP<=0){
-           //setPause();
-            setPause();
-            GUIReference.LabelArray.get(index).setVisible(false);
+    void checkEnemy(){
+        if(Objetive != null && Objetive.HP <= 0){
+            Objetive = null;
         }
+    }
+    boolean die(){
+        return HP <= 0;
     }
 }
     

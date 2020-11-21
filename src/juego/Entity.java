@@ -18,7 +18,6 @@ public class Entity extends Thread implements Serializable{
   public JLabel refLabel;
   public int index;
   String Img1;
-  public int    HP;
   public int    damage;
   public int    spaces;
   int    range;
@@ -47,10 +46,9 @@ public class Entity extends Thread implements Serializable{
         this.range = range;
         this.unlockLvl = unlockLvl;
     }*/
-    public Entity(String name,String Img1, int HP, int damage, int spaces, int range, int unlockLvl) {
+    public Entity(String name,String Img1, int damage, int spaces, int range, int unlockLvl) {
         this.name = name;
         this.Img1 = Img1;
-        this.HP = HP;
         this.damage = damage;
         this.spaces = spaces;
         this.range = range;

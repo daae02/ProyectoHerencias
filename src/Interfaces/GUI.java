@@ -30,11 +30,12 @@ public class GUI extends javax.swing.JFrame {
         LabelArray = new ArrayList<JLabel> ();
         initComponents();
     }
-       public JLabel generateLabel(int numeroThread){
-        JLabel newLabel = new JLabel();
+       public JLabel generateLabel(int numeroThread,String name){
+        JLabel newLabel = new JLabel(name+" # " + numeroThread);
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
         newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         newLabel.setSize(50, 50);
+        newLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.add(newLabel);
         newLabel.setOpaque(true);
         int x = ((new Random()).nextInt(950)/50) * 50;

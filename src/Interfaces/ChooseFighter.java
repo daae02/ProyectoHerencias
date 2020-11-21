@@ -201,17 +201,19 @@ public class ChooseFighter extends javax.swing.JFrame {
             return tmpChar;
         }
     }
-    private void addToArmy( ArrayList<Character> armyRef, int index){
+    private void addToArmy( ArrayList<Character> armyRef, int index,boolean team){
          armyRef.add(generateFighter(menuGUI.currentCharacters.get(index)));
          armyRef.get(armyRef.size()-1).index = totalEntities;
          armyRef.get(armyRef.size()-1).GUIReference = GUIreference;
+         armyRef.get(armyRef.size()-1).good = team;
          armyRef.get(armyRef.size()-1).drawLabel();
+         totalEntities++;
     }
     private void generateEnemyArmy(){
         int aSpaces;
         int antiLoop=1;
         if (level == 1){
-            aSpaces = 1;
+            aSpaces = 5;
         }
         else {
             aSpaces = 5+3*level;
@@ -221,9 +223,9 @@ public class ChooseFighter extends javax.swing.JFrame {
              antiLoop++;
              int tmpIndex = new Random().nextInt(menuGUI.currentCharacters.size());
              if(aSpaces - menuGUI.currentCharacters.get(tmpIndex).spaces>=0){
-                 addToArmy(EnemyArmy,tmpIndex);
+                 addToArmy(EnemyArmy,tmpIndex,false);
                  System.out.println("Espacios de "+  menuGUI.currentCharacters.get(tmpIndex).name + " : "+menuGUI.currentCharacters.get(tmpIndex).spaces);
-                aSpaces -= menuGUI.currentCharacters.get(tmpIndex).spaces;
+                 aSpaces -= menuGUI.currentCharacters.get(tmpIndex).spaces;
                 }
              if(aSpaces <= 0 || antiLoop>10000){
                  generate = false;
@@ -233,12 +235,11 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void btbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAddActionPerformed
         // TODO add your handling code here:
         int cant = (Integer)spinCant.getValue();
-        if (cant <= counter){
-            int index = boxCharac.getSelectedIndex();
+        int index = boxCharac.getSelectedIndex();
+        if (counter >= (cant*menuGUI.currentCharacters.get(index).spaces)){
             if (index != -1){
                  for (int i = 0; i < cant; i++) {
-                     addToArmy(army,index);
-                     totalEntities++;
+                     addToArmy(army,index,true);
                      System.out.println("Espacios de "+  menuGUI.currentCharacters.get(index).name + " : "+menuGUI.currentCharacters.get(index).spaces);
                 }
             }
