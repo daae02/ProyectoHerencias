@@ -6,11 +6,13 @@
 package juego;
 
 import Interfaces.GUI;
+import java.awt.Image;
 import java.io.Serializable;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 /**
  *
@@ -48,7 +50,7 @@ public class Character extends Entity implements Serializable{
                     else{
                         Objetive = GUIReference.currentMatch.getObjetive(this);
                     }
-                    sleep(1000);
+                    sleep(200);
                  }
                  else{
                      GUIReference.LabelArray.get(index).setVisible(false);
@@ -84,7 +86,7 @@ public class Character extends Entity implements Serializable{
         
     }
     public void drawLabel(){
-        refLabel = GUIReference.generateLabel(index,name);
+        refLabel = GUIReference.generateLabel(index,Img1);
     } 
     public void stopThread(){
         this.running = false;
@@ -93,16 +95,24 @@ public class Character extends Entity implements Serializable{
     public void setPause(){
         this.pause = !this.pause;
     }
-    void attack(){
+    void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
+            ImageIcon icon = new ImageIcon(ImgAtk);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
+                GUIReference.currentMatch.checkVictory(good);
                 Objetive = null;
             }
+            sleep(100);
+            icon = new ImageIcon(Img1);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
     }
     
     }

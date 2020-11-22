@@ -74,10 +74,33 @@ public class Match {
         }
         else{
             int enemy = (new Random()).nextInt(army.size());
-                if (EnemyArmy.get(enemy).HP >= 0){
+                if (army.get(enemy).HP >= 0){
                     return army.get(enemy);
                 }
                 return null;
+        }
+    }
+    public void checkVictory(boolean team){
+        System.out.println("Entra");
+        ArrayList<Character> checkArmy = new ArrayList<Character>();
+        boolean end = true;
+        if (team){
+            checkArmy = EnemyArmy;        
+        }
+        else{
+            checkArmy = army;
+        }
+        for(int i = 0; i<checkArmy.size();i++){
+            if(checkArmy.get(i).HP > 0){
+               end = false;
+            }
+        }
+        if (end){
+        if(team)
+            System.out.println("Ganó");
+        else
+            System.out.println("Perdio");
+    
         }
     }
 }

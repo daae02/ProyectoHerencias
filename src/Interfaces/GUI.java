@@ -6,8 +6,10 @@
 package Interfaces;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import juego.Match;
 
@@ -30,12 +32,16 @@ public class GUI extends javax.swing.JFrame {
         LabelArray = new ArrayList<JLabel> ();
         initComponents();
     }
-       public JLabel generateLabel(int numeroThread,String name){
-        JLabel newLabel = new JLabel(name+" # " + numeroThread);
+       public JLabel generateLabel(int numeroThread,String direction){
+        JLabel newLabel = new JLabel();
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
         newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         newLabel.setSize(50, 50);
-        newLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ImageIcon icon = new ImageIcon(direction);
+        int width = 50;
+        int height = 50;
+        icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+        newLabel.setIcon(icon);
         jLabel2.add(newLabel);
         newLabel.setOpaque(true);
         int x = ((new Random()).nextInt(950)/50) * 50;
