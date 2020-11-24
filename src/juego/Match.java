@@ -41,6 +41,7 @@ public class Match {
         for (int i = 0; i <= army.size(); i++) {
             try{
                 army.get(i).start();
+                System.out.println(army.get(i).name+" #"+army.get(i).index+" empieza");
             }
             catch(Exception e){
             }
@@ -48,6 +49,7 @@ public class Match {
         for (int i = 0; i <= EnemyArmy.size(); i++) {
             try{
                 EnemyArmy.get(i).start();
+                System.out.println(EnemyArmy.get(i).name+" #"+EnemyArmy.get(i).index+" empieza");
             }
             catch(Exception e){
             }
@@ -64,7 +66,9 @@ public class Match {
     public void stopArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).stopThread();
-            EnemyArmy.get(i).stopThread();
+        }
+        for (int i = 0; i < EnemyArmy.size(); i++) {
+             EnemyArmy.get(i).stopThread();
         }
     } 
     public Character getObjetive(Character current) {
@@ -99,39 +103,43 @@ public class Match {
             }
         }
         if (end){
+            stopArmy();
+            GUIreference.hideLabels();
+            GUIreference.LabelArray.clear();
+            chooseReference.totalEntities = 0;
             GGend guiFinal;
-        if(team){
-            System.out.println("Ganó");
-            GUIreference.setVisible(false);
-            String url = "/Interfaces/resources/victory.gif";
-            guiFinal = new GGend(url);
-            guiFinal.setVisible(true);
-            try {
-                    sleep(2600);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
+            if(team){
+                System.out.println("Ganó");
+                GUIreference.setVisible(false);
+                String url = "/Interfaces/resources/victory.gif";
+                guiFinal = new GGend(url);
+                guiFinal.setVisible(true);
+                try {
+                        sleep(2600);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                guiFinal.dispose(); 
+                GUIreference.dispose();
+                chooseReference.levelUp();
+                chooseReference.setVisible(true);
+            }   
+
+            else{
+                System.out.println("Perdio");
+                GUIreference.setVisible(false);
+                String url = "/Interfaces/resources/defeat.gif";
+                guiFinal = new GGend(url);
+                guiFinal.setVisible(true);
+                try {
+                        sleep(2600);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                guiFinal.dispose(); 
+                GUIreference.dispose();
+                chooseReference.setVisible(true);
             }
-            guiFinal.dispose(); 
-            GUIreference.dispose();
-            chooseReference.levelUp();
-            chooseReference.setVisible(true);
-        }   
-            
-        else{
-            System.out.println("Perdio");
-            GUIreference.setVisible(false);
-            String url = "/Interfaces/resources/defeat.gif";
-            guiFinal = new GGend(url);
-            guiFinal.setVisible(true);
-            try {
-                    sleep(2600);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            guiFinal.dispose(); 
-            GUIreference.dispose();
-            chooseReference.setVisible(true);
-        }
     }
 }
 

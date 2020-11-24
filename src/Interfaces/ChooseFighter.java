@@ -28,7 +28,7 @@ public class ChooseFighter extends javax.swing.JFrame {
     Menu menuGUI;
     public int level = 1;
     private int counter = 5;
-    private int totalEntities = 0;
+    public int totalEntities = 0;
     
     /**
      * Creates new form ChooseFighter
@@ -151,7 +151,14 @@ public class ChooseFighter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private boolean checkNew(String name){
+        for(int i= 0; i < (boxCharac.getItemCount());i++){
+            if(name.equals(boxCharac.getItemAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         int x = 0;
         int y = 0;
@@ -170,8 +177,10 @@ public class ChooseFighter extends javax.swing.JFrame {
                 armyDisponible.add(menuGUI.currentCharacters.get(i));
         }        
         for (int i = 0; i < armyDisponible.size(); i++) {
-            if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
-                boxCharac.addItem(armyDisponible.get(i).name);
+            if (menuGUI.currentCharacters.get(i).unlockLvl <= level) 
+                if (checkNew(armyDisponible.get(i).name)){
+                    boxCharac.addItem(armyDisponible.get(i).name);
+                }
         } 
         
     }//GEN-LAST:event_formWindowActivated

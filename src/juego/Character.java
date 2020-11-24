@@ -102,16 +102,16 @@ public class Character extends Entity implements Serializable{
             ImageIcon icon = new ImageIcon(ImgAtk);
             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
             this.GUIReference.LabelArray.get(index).setIcon(icon);
+            sleep(100);
+            icon = new ImageIcon(Img1);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
                 GUIReference.currentMatch.checkVictory(good);
                 Objetive = null;
             }
-            sleep(100);
-            icon = new ImageIcon(Img1);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
     }
     
     }

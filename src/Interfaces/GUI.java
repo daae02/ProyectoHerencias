@@ -138,7 +138,11 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void hideLabels(){
+        for(int i = 0;i<LabelArray.size();i++){
+            LabelArray.get(i).setVisible(false);
+            }
+        }
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
 
         currentMatch.startArmy();
