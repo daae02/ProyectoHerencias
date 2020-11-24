@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  *
  * @author Diego Álvarez
  */
-public class Entity extends Thread implements Serializable{
+abstract public class Entity extends Thread implements Serializable{
   public String name;
   public GUI GUIReference;
   public JLabel refLabel;
@@ -21,7 +21,7 @@ public class Entity extends Thread implements Serializable{
   public int    damage;
   public int    spaces;
   int    range;
-  int    unlockLvl;
+  public int    unlockLvl;
   int    posX;
   int    posY;
   boolean running;
@@ -62,4 +62,6 @@ public class Entity extends Thread implements Serializable{
         this.pause = !this.pause;
     }
     
+    public void levelUp(int points){
+    }
 }

@@ -54,6 +54,7 @@
           <Color id="Cursor de Mano"/>
         </Property>
         <Property name="defaultCapable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>

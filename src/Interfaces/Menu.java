@@ -78,6 +78,7 @@ public class Menu extends javax.swing.JFrame {
         bntStart.setBorderPainted(false);
         bntStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bntStart.setDefaultCapable(false);
+        bntStart.setEnabled(false);
         bntStart.setFocusPainted(false);
         bntStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,9 +156,10 @@ public class Menu extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         currentCharacters = (ArrayList<Character>)FileManager.readObject("C:\\ClashOfClans\\currentArmy.arm");
         if (currentCharacters != null && !currentCharacters.isEmpty()){
+            
             bntStart.setEnabled(true);
         }
- //       System.out.println("Nombre: " + currentCharacters.get(0).damage);
+        //System.out.println("Nombre: " + currentCharacters.get(0).damage);
     }//GEN-LAST:event_formWindowActivated
 
     /**

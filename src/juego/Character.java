@@ -20,9 +20,8 @@ import javax.swing.JLabel;
  */
 public class Character extends Entity implements Serializable{
     public String ImgAtk;
-    protected int    HP;
+    public int    HP;
     protected Character Objetive;
-    protected int level = 1;
     public boolean good;
     public Character() { 
     }
@@ -123,6 +122,11 @@ public class Character extends Entity implements Serializable{
     }
     boolean die(){
         return HP <= 0;
+    }
+    
+    public void levelUp(int points){
+        damage = damage *(points/100);
+        HP = HP *(points/40);
     }
 }
     

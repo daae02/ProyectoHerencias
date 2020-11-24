@@ -21,10 +21,12 @@ import juego.MediumRangeFighter;
 public class ChooseFighter extends javax.swing.JFrame {
     public ArrayList<Character> army = new ArrayList<>();
     ArrayList<Character> EnemyArmy = new ArrayList<>();
+    ArrayList<Character> armyDisponible;
+    
     Match match;
     GUI GUIreference = new GUI();
     Menu menuGUI;
-    protected int level = 1;
+    public int level = 1;
     private int counter = 5;
     private int totalEntities = 0;
     
@@ -153,12 +155,25 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         int x = 0;
         int y = 0;
+        if (armyDisponible != null)
+            armyDisponible.clear();
+        if (army != null)
+            army.clear();
+        if (EnemyArmy != null)
+            EnemyArmy.clear();
+        btbFight.setEnabled(false);
+        armyDisponible = new ArrayList<>();
         actualizarContador();
         lblContador.setText(counter+"");
         for (int i = 0; i < menuGUI.currentCharacters.size(); i++) {
-            String url = menuGUI.currentCharacters.get(i).ImgAtk;
-            boxCharac.addItem(menuGUI.currentCharacters.get(i).name);
-        }        // TODO add your handling code here:
+            if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
+                armyDisponible.add(menuGUI.currentCharacters.get(i));
+        }        
+        for (int i = 0; i < armyDisponible.size(); i++) {
+            if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
+                boxCharac.addItem(armyDisponible.get(i).name);
+        } 
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
@@ -232,6 +247,21 @@ public class ChooseFighter extends javax.swing.JFrame {
              }
         }
     }
+    
+    public void levelUp(){
+        level++;
+        armyDisponible.clear();
+        army.clear();
+        EnemyArmy.clear();
+        for (int i = 0; i < menuGUI.currentCharacters.size(); i++) {
+            if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
+                armyDisponible.add(menuGUI.currentCharacters.get(i));
+        }
+        for (int i = 0; i < armyDisponible.size(); i++) {
+            armyDisponible.get(i).levelUp(level); 
+            armyDisponible.get(i).levelUp(level);
+        }
+    }
     private void btbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAddActionPerformed
         // TODO add your handling code here:
         int cant = (Integer)spinCant.getValue();
@@ -255,6 +285,7 @@ public class ChooseFighter extends javax.swing.JFrame {
         generateEnemyArmy();
         match = new Match(this,level,army,EnemyArmy);
         GUIreference.currentMatch = match;
+        match.GUIreference = GUIreference;
         this.setVisible(false);
         GUIreference.setVisible(true);
     }//GEN-LAST:event_btbFightActionPerformed

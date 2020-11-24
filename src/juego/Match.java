@@ -6,9 +6,13 @@
 package juego;
 
 import Interfaces.ChooseFighter;
+import Interfaces.GGend;
 import Interfaces.GUI;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +22,7 @@ public class Match {
     public ArrayList<Character> army = new ArrayList<>();
     ArrayList<Character> EnemyArmy = new ArrayList<>();
     ChooseFighter chooseReference;
-    GUI GUIreference;
+    public GUI GUIreference;
     int level;
     
             
@@ -29,7 +33,6 @@ public class Match {
     public Match( ChooseFighter chooseReference, int level, ArrayList<Character> army, ArrayList<Character> EnemyArmy) {
         this.level = level;
         this.chooseReference = chooseReference;
-        this.GUIreference = GUIreference;
         this.army = army;
         this.EnemyArmy = EnemyArmy;
     }
@@ -96,11 +99,40 @@ public class Match {
             }
         }
         if (end){
-        if(team)
+            GGend guiFinal;
+        if(team){
             System.out.println("Ganó");
-        else
+            GUIreference.setVisible(false);
+            String url = "/Interfaces/resources/victory.gif";
+            guiFinal = new GGend(url);
+            guiFinal.setVisible(true);
+            try {
+                    sleep(2600);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            guiFinal.dispose(); 
+            GUIreference.dispose();
+            chooseReference.levelUp();
+            chooseReference.setVisible(true);
+        }   
+            
+        else{
             System.out.println("Perdio");
-    
+            GUIreference.setVisible(false);
+            String url = "/Interfaces/resources/defeat.gif";
+            guiFinal = new GGend(url);
+            guiFinal.setVisible(true);
+            try {
+                    sleep(2600);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            guiFinal.dispose(); 
+            GUIreference.dispose();
+            chooseReference.setVisible(true);
         }
     }
+}
+
 }
