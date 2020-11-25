@@ -20,8 +20,8 @@ import juego.MediumRangeFighter;
  */
 public class ChooseFighter extends javax.swing.JFrame {
     public ArrayList<Character> army = new ArrayList<>();
-    ArrayList<Character> EnemyArmy = new ArrayList<>();
-    ArrayList<Character> armyDisponible;
+    public ArrayList<Character> EnemyArmy = new ArrayList<>();
+    public ArrayList<Character> armyDisponible = new ArrayList<>();
     
     Match match;
     GUI GUIreference = new GUI();
@@ -159,29 +159,27 @@ public class ChooseFighter extends javax.swing.JFrame {
         }
         return true;
     }
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        int x = 0;
-        int y = 0;
-        if (armyDisponible != null)
-            armyDisponible.clear();
-        if (army != null)
-            army.clear();
-        if (EnemyArmy != null)
-            EnemyArmy.clear();
-        btbFight.setEnabled(false);
-        armyDisponible = new ArrayList<>();
-        actualizarContador();
-        lblContador.setText(counter+"");
+    private void caractersAvailable(){
+        armyDisponible.clear();
+        boxCharac.removeAllItems();
         for (int i = 0; i < menuGUI.currentCharacters.size(); i++) {
             if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
                 armyDisponible.add(menuGUI.currentCharacters.get(i));
-        }        
+        }
         for (int i = 0; i < armyDisponible.size(); i++) {
             if (menuGUI.currentCharacters.get(i).unlockLvl <= level) 
                 if (checkNew(armyDisponible.get(i).name)){
                     boxCharac.addItem(armyDisponible.get(i).name);
                 }
-        } 
+        }
+    }
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        int x = 0;
+        int y = 0;
+        btbFight.setEnabled(false);
+        actualizarContador();
+        lblContador.setText(counter+"");
+        caractersAvailable();
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -259,13 +257,9 @@ public class ChooseFighter extends javax.swing.JFrame {
     
     public void levelUp(){
         level++;
-        armyDisponible.clear();
         army.clear();
         EnemyArmy.clear();
-        for (int i = 0; i < menuGUI.currentCharacters.size(); i++) {
-            if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
-                armyDisponible.add(menuGUI.currentCharacters.get(i));
-        }
+        caractersAvailable();
         for (int i = 0; i < armyDisponible.size(); i++) {
             armyDisponible.get(i).levelUp(level); 
             armyDisponible.get(i).levelUp(level);

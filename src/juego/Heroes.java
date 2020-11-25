@@ -30,4 +30,7 @@ public class Heroes extends Character {
 
     public Heroes() {
     }
+    @Override
+    public void levelUp(int points){
+    }
 }

@@ -301,8 +301,10 @@ public class ClassCreator extends javax.swing.JFrame {
             }
         });
 
-        showImgMov.setBackground(new java.awt.Color(255, 255, 255,200));
+        showImgMov.setBackground(new java.awt.Color(255, 255, 255,255));
+        showImgMov.setBackground(new java.awt.Color(255, 255, 255));
         showImgMov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULL.png"))); // NOI18N
+        showImgMov.setOpaque(true);
 
         lblImgAtk.setText("Imagen de Ataque: ");
 
@@ -321,7 +323,10 @@ public class ClassCreator extends javax.swing.JFrame {
             }
         });
 
+        showImgMov.setBackground(new java.awt.Color(255, 255, 255,255));
+        showImgAtk.setBackground(new java.awt.Color(255, 255, 255));
         showImgAtk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULLatk.png"))); // NOI18N
+        showImgAtk.setOpaque(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -420,8 +425,9 @@ public class ClassCreator extends javax.swing.JFrame {
         txtRuteImgAtk.setText("Ruta de imagen");
         showImgMov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULL.png"))); 
         showImgAtk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/NULLatk.png")));
-        showImgMov.setOpaque(false);
-        showImgAtk.setOpaque(false);
+        showImgMov.setOpaque(true);
+        showImgAtk.setOpaque(true);
+
 
     }
 

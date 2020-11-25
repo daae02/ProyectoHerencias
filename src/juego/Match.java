@@ -120,7 +120,8 @@ public class Match {
                     Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 guiFinal.dispose(); 
-                GUIreference.dispose();
+                GUIreference.dispose(); 
+                //GUIreference.setVisible(false);
                 chooseReference.levelUp();
                 chooseReference.setVisible(true);
             }   
@@ -136,8 +137,12 @@ public class Match {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                guiFinal.dispose(); 
-                GUIreference.dispose();
+                guiFinal.dispose();
+                GUIreference.dispose(); 
+                //GUIreference.setVisible(false);
+                chooseReference.armyDisponible.clear();
+                chooseReference.army.clear();
+                chooseReference.EnemyArmy.clear();
                 chooseReference.setVisible(true);
             }
     }

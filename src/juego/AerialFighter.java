@@ -28,4 +28,12 @@ public class AerialFighter  extends Character {
 
     public AerialFighter() {
     }
+            
+    @Override
+    public void levelUp(int points){
+        damage = damage *(points/100);
+        HP = HP *(points/40);
+    }
+    
+ 
 }

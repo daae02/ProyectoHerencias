@@ -18,7 +18,7 @@ import javax.swing.JLabel;
  *
  * @author Diego Álvarez
  */
-public class Character extends Entity implements Serializable{
+abstract public class Character extends Entity implements Serializable{
     public String ImgAtk;
     public int    HP;
     protected Character Objetive;
@@ -124,9 +124,8 @@ public class Character extends Entity implements Serializable{
         return HP <= 0;
     }
     
+    @Override
     public void levelUp(int points){
-        damage = damage *(points/100);
-        HP = HP *(points/40);
     }
 }
     

@@ -31,4 +31,10 @@ public class MediumRangeFighter extends Character {
     public MediumRangeFighter() {
     }
 
+    @Override
+    public void levelUp(int points){
+        range = range * (points/200);
+        damage = damage *(points/100);
+        HP = HP *(points/40);
+    }
 }

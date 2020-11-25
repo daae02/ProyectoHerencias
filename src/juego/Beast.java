@@ -27,4 +27,8 @@ public class Beast extends Character {
 
     public Beast() {
     }
+    
+    @Override
+    public void levelUp(int points){
+    }
 }
