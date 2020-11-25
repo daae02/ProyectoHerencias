@@ -167,7 +167,7 @@ public class ChooseFighter extends javax.swing.JFrame {
                 armyDisponible.add(menuGUI.currentCharacters.get(i));
         }
         for (int i = 0; i < armyDisponible.size(); i++) {
-            if (menuGUI.currentCharacters.get(i).unlockLvl <= level) 
+            if (armyDisponible.get(i).unlockLvl <= level) 
                 if (checkNew(armyDisponible.get(i).name)){
                     boxCharac.addItem(armyDisponible.get(i).name);
                 }
@@ -224,7 +224,7 @@ public class ChooseFighter extends javax.swing.JFrame {
         }
     }
     private void addToArmy( ArrayList<Character> armyRef, int index,boolean team){
-         armyRef.add(generateFighter(menuGUI.currentCharacters.get(index)));
+         armyRef.add(generateFighter(armyDisponible.get(index)));
          armyRef.get(armyRef.size()-1).index = totalEntities;
          armyRef.get(armyRef.size()-1).GUIReference = GUIreference;
          armyRef.get(armyRef.size()-1).good = team;
@@ -243,11 +243,11 @@ public class ChooseFighter extends javax.swing.JFrame {
         boolean generate = true;
         while(generate){
              antiLoop++;
-             int tmpIndex = new Random().nextInt(menuGUI.currentCharacters.size());
-             if(aSpaces - menuGUI.currentCharacters.get(tmpIndex).spaces>=0){
+             int tmpIndex = new Random().nextInt(armyDisponible.size());
+             if(aSpaces - armyDisponible.get(tmpIndex).spaces>=0){
                  addToArmy(EnemyArmy,tmpIndex,false);
-                 System.out.println("Espacios de "+  menuGUI.currentCharacters.get(tmpIndex).name + " : "+menuGUI.currentCharacters.get(tmpIndex).spaces);
-                 aSpaces -= menuGUI.currentCharacters.get(tmpIndex).spaces;
+                 System.out.println("Espacios de "+  armyDisponible.get(tmpIndex).name + " : "+armyDisponible.get(tmpIndex).spaces);
+                 aSpaces -= armyDisponible.get(tmpIndex).spaces;
                 }
              if(aSpaces <= 0 || antiLoop>10000){
                  generate = false;
@@ -259,24 +259,24 @@ public class ChooseFighter extends javax.swing.JFrame {
         level++;
         army.clear();
         EnemyArmy.clear();
-        caractersAvailable();
         for (int i = 0; i < armyDisponible.size(); i++) {
             armyDisponible.get(i).levelUp(level); 
-            armyDisponible.get(i).levelUp(level);
         }
+        armyDisponible.clear();
+        caractersAvailable();
     }
     private void btbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAddActionPerformed
         // TODO add your handling code here:
         int cant = (Integer)spinCant.getValue();
         int index = boxCharac.getSelectedIndex();
-        if (counter >= (cant*menuGUI.currentCharacters.get(index).spaces)){
+        if (counter >= (cant*armyDisponible.get(index).spaces)){
             if (index != -1){
                  for (int i = 0; i < cant; i++) {
                      addToArmy(army,index,true);
-                     System.out.println("Espacios de "+  menuGUI.currentCharacters.get(index).name + " : "+menuGUI.currentCharacters.get(index).spaces);
+                     System.out.println("Espacios de "+  armyDisponible.get(index).name + " : "+armyDisponible.get(index).spaces);
                 }
             }
-            counter -= cant*menuGUI.currentCharacters.get(index).spaces;
+            counter -= cant*armyDisponible.get(index).spaces;
             lblContador.setText(counter+"");
             btbFight.setEnabled(true);
         }

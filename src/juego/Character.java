@@ -94,18 +94,26 @@ abstract public class Character extends Entity implements Serializable{
     public void setPause(){
         this.pause = !this.pause;
     }
+    void animation() throws InterruptedException{
+    try{
+      ImageIcon icon = new ImageIcon(ImgAtk);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
+            sleep(100);  
+            icon = new ImageIcon(Img1);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
+    }
+    catch(Exception IndexOutOfBoundsException){
+        sleep(100);
+    }
+    }
     void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
-            ImageIcon icon = new ImageIcon(ImgAtk);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
-            sleep(100);
-            icon = new ImageIcon(Img1);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
+            animation();
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){

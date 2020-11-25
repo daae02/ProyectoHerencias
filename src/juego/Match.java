@@ -41,7 +41,7 @@ public class Match {
         for (int i = 0; i <= army.size(); i++) {
             try{
                 army.get(i).start();
-                System.out.println(army.get(i).name+" #"+army.get(i).index+" empieza");
+                System.out.println(army.get(i).name+" #"+army.get(i).index+" empieza "+army.get(i).GUIReference.LabelArray.get(army.get(i).index).getX());
             }
             catch(Exception e){
             }
