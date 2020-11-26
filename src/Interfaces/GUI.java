@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import juego.Bomb;
 import juego.Match;
 
 /**
@@ -43,6 +44,23 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         int width = 50;
         int height = 50;
         icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+        newLabel.setIcon(icon);
+        jLabel2.add(newLabel);
+        newLabel.setOpaque(true);
+        int x = ((new Random()).nextInt(950)/50) * 50;
+        int y = ((new Random()).nextInt(950) / 50)* 50;
+        newLabel.setLocation(x , y);
+        LabelArray.add(numeroThread,newLabel);
+        System.out.println("Labels: "+LabelArray.size());
+        return newLabel;
+    }
+     public JLabel generateStructureLabel(int numeroThread,String direction){
+        JLabel newLabel = new JLabel();
+        newLabel.setForeground(new java.awt.Color(255, 255, 255));
+        newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newLabel.setSize(50, 50);
+        ImageIcon icon = new ImageIcon(getClass().getResource(direction));
+        icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         newLabel.setIcon(icon);
         jLabel2.add(newLabel);
         newLabel.setOpaque(true);
@@ -91,7 +109,6 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         }
         return -1;
     }   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -20,6 +20,8 @@ import juego.FileManager;
 import juego.Heroes;
 import juego.Match;
 import juego.MediumRangeFighter;
+import juego.Mortar;
+import juego.Wall;
 /**
  *
  * @author Alejandra G
@@ -367,7 +369,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         
     }//GEN-LAST:event_btbAddActionPerformed
     private void generateStructure(){
-        matchStructures.add(new Canyon());
+        matchStructures.add(new Wall());
         matchStructures.get(0).index = totalEntities;
         matchStructures.get(0).GUIReference = GUIreference;
         System.out.println("Prueba: "+matchStructures.get(0).name+" "+matchStructures.get(0).index);
