@@ -15,6 +15,7 @@ import juego.Beast;
 import juego.FileManager;
 import juego.Juego;
 import juego.Character;
+import juego.Match;
 /**
  *
  * @author Alejandra G
@@ -138,8 +139,9 @@ public class Menu extends javax.swing.JFrame {
       selector.setFileFilter(filter);
       int option = selector.showOpenDialog(this);
       if(option==JFileChooser.APPROVE_OPTION){
-          loadedGame = (int)FileManager.readObject(selector.getSelectedFile().getAbsolutePath());
-          System.out.println(loadedGame);
+          Match match = (Match)FileManager.readObject(selector.getSelectedFile().getAbsolutePath());
+          this.setVisible(false);
+          match.GUIreference.setVisible(true);
         }
     }//GEN-LAST:event_bntLoadGameActionPerformed
 

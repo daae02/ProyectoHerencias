@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Interfaces;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -17,7 +19,7 @@ import juego.Match;
  *
  * @author Diego Álvarez
  */
-public class GUI extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame implements Serializable{
     public ArrayList<JLabel> LabelArray; 
     public Match currentMatch;
     /**
@@ -144,8 +146,7 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-
-        currentMatch.startArmy();
+       currentMatch.startArmy();
     }//GEN-LAST:event_startActionPerformed
 
     private void startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startMouseClicked

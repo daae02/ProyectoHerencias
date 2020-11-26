@@ -20,7 +20,7 @@ abstract public class Entity extends Thread implements Serializable{
   String Img1;
   public int    damage;
   public int    spaces;
-  int    range;
+  public int    range;
   public int    unlockLvl;
   int    posX;
   int    posY;

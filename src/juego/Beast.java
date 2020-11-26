@@ -6,6 +6,9 @@
 package juego;
 
 import Interfaces.GUI;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 /**
  *
@@ -30,5 +33,21 @@ public class Beast extends Character {
     
     @Override
     public void levelUp(int points){
+    }
+    
+    void attack() throws InterruptedException{
+        int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
+        distance = abs(distance)/50;
+        System.out.println("Distancia: "+distance+" mi distacia es "+ range);
+        if(distance <= range){
+            animation();
+            Objetive.HP -= damage;
+            System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
+            if(Objetive.HP<=0){
+                GUIReference.currentMatch.checkVictory(good);
+                Objetive = null;
+            }
+    }
+    
     }
 }

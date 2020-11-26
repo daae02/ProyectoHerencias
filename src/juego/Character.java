@@ -23,6 +23,7 @@ abstract public class Character extends Entity implements Serializable{
     public int    HP;
     protected Character Objetive;
     public boolean good;
+    public boolean moving = true;
     public Character() { 
     }
  /*  public Character(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
@@ -43,7 +44,8 @@ abstract public class Character extends Entity implements Serializable{
                  if(!die()){
                     checkEnemy(); 
                     if(Objetive != null){
-                        GUIReference.moveLabel(index,Objetive.index);
+                        if (moving)
+                            GUIReference.moveLabel(index,Objetive.index);
                         attack();
                     }
                     else{
@@ -108,21 +110,10 @@ abstract public class Character extends Entity implements Serializable{
         sleep(100);
     }
     }
+    
     void attack() throws InterruptedException{
-        int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
-        distance = abs(distance)/50;
-        System.out.println("Distancia: "+distance+" mi distacia es "+ range);
-        if(distance <= range){
-            animation();
-            Objetive.HP -= damage;
-            System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
-            if(Objetive.HP<=0){
-                GUIReference.currentMatch.checkVictory(good);
-                Objetive = null;
-            }
     }
     
-    }
     void checkEnemy(){
         if(Objetive != null && Objetive.HP <= 0){
             Objetive = null;
@@ -132,7 +123,7 @@ abstract public class Character extends Entity implements Serializable{
         return HP <= 0;
     }
     
-    @Override
+    
     public void levelUp(int points){
     }
 }

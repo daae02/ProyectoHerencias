@@ -8,6 +8,7 @@ package juego;
 import Interfaces.ChooseFighter;
 import Interfaces.GGend;
 import Interfaces.GUI;
+import java.io.Serializable;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,12 +19,12 @@ import java.util.logging.Logger;
  *
  * @author Diego Álvarez
  */
-public class Match {
-    public ArrayList<Character> army = new ArrayList<>();
-    ArrayList<Character> EnemyArmy = new ArrayList<>();
-    ChooseFighter chooseReference;
+public class Match implements Serializable{
+    public  ArrayList<Character> army = new ArrayList<>();
+    public ArrayList<Character> EnemyArmy = new ArrayList<>();
+    public ChooseFighter chooseReference;
     public GUI GUIreference;
-    int level;
+    public int level;
     
             
             

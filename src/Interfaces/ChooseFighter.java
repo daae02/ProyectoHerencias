@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 package Interfaces;
+import java.applet.AudioClip;
 import java.awt.Color;
+import java.awt.Component;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import juego.AerialFighter;
 import juego.Beast;
 import juego.Character;
 import juego.ContactFighter;
+import juego.FileManager;
 import juego.Heroes;
 import juego.Match;
 import juego.MediumRangeFighter;
@@ -18,7 +22,7 @@ import juego.MediumRangeFighter;
  *
  * @author Alejandra G
  */
-public class ChooseFighter extends javax.swing.JFrame {
+public class ChooseFighter extends javax.swing.JFrame implements Serializable {
     public ArrayList<Character> army = new ArrayList<>();
     public ArrayList<Character> EnemyArmy = new ArrayList<>();
     public ArrayList<Character> armyDisponible = new ArrayList<>();
@@ -65,15 +69,29 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblContador = new javax.swing.JLabel();
-        lblPContador = new javax.swing.JLabel();
-        boxCharac = new javax.swing.JComboBox<>();
-        btnBack = new javax.swing.JButton();
-        btbAdd = new javax.swing.JButton();
-        spinCant = new javax.swing.JSpinner();
         btbFight = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        boxCharac = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        spinCant = new javax.swing.JSpinner();
+        btbAdd = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblHP = new javax.swing.JLabel();
+        lbldamage = new javax.swing.JLabel();
+        lblRange = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        lblLevel = new javax.swing.JLabel();
+        lblPContador = new javax.swing.JLabel();
+        lblContador = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,29 +109,34 @@ public class ChooseFighter extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblContador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(lblContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 30, 20));
-
-        lblPContador.setText("Espacios disponibles:");
-        jPanel1.add(lblPContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
-
-        jPanel1.add(boxCharac, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 222, -1));
-
-        btnBack.setText("Regresar");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btbFight.setBackground(new java.awt.Color(100, 135, 0));
+        btbFight.setText("¡Luchar!");
+        btbFight.setEnabled(false);
+        btbFight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btbFightActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
+        jPanel1.add(btbFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 150, 60));
 
-        btbAdd.setText("Agregar");
-        btbAdd.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/CFcharac.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(230,230,230,230));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Personaje: ");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        boxCharac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btbAddActionPerformed(evt);
+                boxCharacActionPerformed(evt);
             }
         });
-        jPanel1.add(btbAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        jPanel2.add(boxCharac, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 222, -1));
+
+        jLabel2.setText("Cantidad: ");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         spinCant.setEditor(new javax.swing.JSpinner.DefaultEditor(spinCant));
         spinCant.setValue(1);
@@ -126,26 +149,78 @@ public class ChooseFighter extends javax.swing.JFrame {
                 spinCantPropertyChange(evt);
             }
         });
-        jPanel1.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 222, -1));
+        jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 222, -1));
 
-        btbFight.setText("¡Luchar!");
-        btbFight.setEnabled(false);
-        btbFight.addActionListener(new java.awt.event.ActionListener() {
+        btbAdd.setText("Agregar");
+        btbAdd.setEnabled(false);
+        btbAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btbFightActionPerformed(evt);
+                btbAddActionPerformed(evt);
             }
         });
-        jPanel1.add(btbFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 150, 60));
+        jPanel2.add(btbAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
-        jLabel1.setText("Personaje: ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+        btnBack.setText("Regresar");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
 
-        jLabel2.setText("Cantidad: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 400, 180));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/BGCreateCarac.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 310));
+        jPanel3.setBackground(new java.awt.Color(230,230,230,230));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setText("Información del personaje");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 20));
+
+        jLabel9.setText("Vida:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jLabel10.setText("Ataque:");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jLabel11.setText("Rango:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+
+        lblHP.setText("jLabel12");
+        jPanel3.add(lblHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
+
+        lbldamage.setText("jLabel12");
+        jPanel3.add(lbldamage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, -1));
+
+        lblRange.setText("jLabel12");
+        jPanel3.add(lblRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 330, 180));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("¡Construye tu ejercito!");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(230,230,230,230));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Nivel actual: ");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        lblLevel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(lblLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, 20));
+
+        lblPContador.setText("Espacios disponibles:");
+        jPanel4.add(lblPContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        lblContador.setAlignmentX(2.0F);
+        lblContador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(lblContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 40, 20));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 340, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/CFbackground.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
         getContentPane().add(jPanel1);
 
@@ -162,6 +237,7 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void caractersAvailable(){
         armyDisponible.clear();
         boxCharac.removeAllItems();
+        boxCharac.addItem("Seleccione el personaje: ");
         for (int i = 0; i < menuGUI.currentCharacters.size(); i++) {
             if (menuGUI.currentCharacters.get(i).unlockLvl <= level)
                 armyDisponible.add(menuGUI.currentCharacters.get(i));
@@ -172,13 +248,17 @@ public class ChooseFighter extends javax.swing.JFrame {
                     boxCharac.addItem(armyDisponible.get(i).name);
                 }
         }
+        //boxCharac.        
+        
     }
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         int x = 0;
         int y = 0;
+        spinCant.setValue(1);
         btbFight.setEnabled(false);
         actualizarContador();
         lblContador.setText(counter+"");
+        lblLevel.setText(level+"");
         caractersAvailable();
         
     }//GEN-LAST:event_formWindowActivated
@@ -268,7 +348,7 @@ public class ChooseFighter extends javax.swing.JFrame {
     private void btbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAddActionPerformed
         // TODO add your handling code here:
         int cant = (Integer)spinCant.getValue();
-        int index = boxCharac.getSelectedIndex();
+        int index = boxCharac.getSelectedIndex()-1;
         if (counter >= (cant*armyDisponible.get(index).spaces)){
             if (index != -1){
                  for (int i = 0; i < cant; i++) {
@@ -278,6 +358,7 @@ public class ChooseFighter extends javax.swing.JFrame {
             }
             counter -= cant*armyDisponible.get(index).spaces;
             lblContador.setText(counter+"");
+            spinCant.setValue(1);
             btbFight.setEnabled(true);
         }
         
@@ -289,9 +370,41 @@ public class ChooseFighter extends javax.swing.JFrame {
         match = new Match(this,level,army,EnemyArmy);
         GUIreference.currentMatch = match;
         match.GUIreference = GUIreference;
+        System.out.println("Aquiiiiiiiiiiiiiiiiiiiii"+match.EnemyArmy);
+        System.out.println(match.GUIreference);
+        System.out.println(match.army);
+        System.out.println(match.chooseReference);
+        System.out.println(match.level);
+        //FileManager.writeObject(match,"C:\\ClashOfClans\\currentLevel.arm");
+        System.out.println("Aquiiiiiiiiiiiiiiiiiiiii"+match.EnemyArmy);
+        System.out.println(match.GUIreference);
+        System.out.println(match.army);
+        System.out.println(match.chooseReference);
+        System.out.println(match.level);
         this.setVisible(false);
         GUIreference.setVisible(true);
     }//GEN-LAST:event_btbFightActionPerformed
+
+    private void boxCharacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxCharacActionPerformed
+        // TODO add your handling code here:
+        int index = boxCharac.getSelectedIndex()-1;
+        System.out.println(index);
+        if (index >= 0){
+            btbAdd.setEnabled(true);
+            System.out.println(index);
+            lblHP.setText(armyDisponible.get(index).HP+" golpes");
+            lbldamage.setText(armyDisponible.get(index).damage+" golpe por segundo");
+            lblRange.setText(armyDisponible.get(index).range+"");
+            
+        }
+        else{
+            btbAdd.setEnabled(false);
+            lblHP.setText("");
+            lbldamage.setText("");
+            lblRange.setText("");
+        }
+        
+    }//GEN-LAST:event_boxCharacActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,11 +447,25 @@ public class ChooseFighter extends javax.swing.JFrame {
     private javax.swing.JButton btbFight;
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblContador;
+    private javax.swing.JLabel lblHP;
+    private javax.swing.JLabel lblLevel;
     private javax.swing.JLabel lblPContador;
+    private javax.swing.JLabel lblRange;
+    private javax.swing.JLabel lbldamage;
     private javax.swing.JSpinner spinCant;
     // End of variables declaration//GEN-END:variables
 }

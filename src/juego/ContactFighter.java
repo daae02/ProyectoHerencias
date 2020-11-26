@@ -6,7 +6,10 @@
 package juego;
 
 import Interfaces.GUI;
-
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+import java.applet.AudioClip;
 /**
  *
  * @author Diego Álvarez
@@ -28,5 +31,24 @@ public class ContactFighter extends Character {
     public void levelUp(int points){
         damage += damage *(points/100);
         HP += HP *(points/40);
+    }
+    
+    void attack() throws InterruptedException{
+        //AudioClip sonido;
+        //sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
+        //sonido.play();
+        int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
+        distance = abs(distance)/50;
+        System.out.println("Distancia: "+distance+" mi distacia es "+ range);
+        if(distance <= range){
+            //sonido aqui
+            animation();
+            Objetive.HP -= damage;
+            System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
+            if(Objetive.HP<=0){
+                GUIReference.currentMatch.checkVictory(good);
+                Objetive = null;
+            }
+        }
     }
 }

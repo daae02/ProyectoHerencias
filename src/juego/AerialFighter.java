@@ -6,6 +6,9 @@
 package juego;
 
 import Interfaces.GUI;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 /**
  *
@@ -17,7 +20,7 @@ import Interfaces.GUI;
 largo	alcance.	Estos	no	se	desplazan.	Estos	hacen	ruido. Crecen	con	cada	
 nivel.*/
 public class AerialFighter  extends Character {
-    
+    boolean flag;
    /* public AerialFighter(String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(ImgAtk, HP, spaces, GUIReference, Img1, damage, range, unlockLvl, index);
 
@@ -35,5 +38,21 @@ public class AerialFighter  extends Character {
         HP = HP *(points/40);
     }
     
+    void attack() throws InterruptedException{
+        int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
+        distance = abs(distance)/50;
+        System.out.println("Distancia: "+distance+" mi distacia es "+ range);
+        if(distance <= range){
+            moving = false;
+            animation();
+            Objetive.HP -= damage;
+            System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
+            if(Objetive.HP<=0){
+                GUIReference.currentMatch.checkVictory(good);
+                Objetive = null;
+            }
+    }
+    
+    }
  
 }
