@@ -63,7 +63,7 @@ public class Structure extends Entity {
         }
     }
     private boolean generateTeam(){
-        int team = (new Random()).nextInt(1);
+        int team = (new Random()).nextInt(2);
         return (team<0);
     } 
     public void drawLabel(){

@@ -34,14 +34,12 @@ public class ContactFighter extends Character {
     }
     
     void attack() throws InterruptedException{
-        //AudioClip sonido;
-        //sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
-        //sonido.play();
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
             //sonido aqui
+            GUIReference.btnSound.doClick();
             animation();
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");

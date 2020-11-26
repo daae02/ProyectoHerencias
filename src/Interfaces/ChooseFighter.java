@@ -11,7 +11,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import juego.AerialFighter;
+import juego.AerialStructure;
+import juego.ArcherTower;
 import juego.Beast;
+import juego.Bomb;
 import juego.Canyon;
 import juego.Character;
 import juego.Structure;
@@ -280,23 +283,94 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
     private void spinCantPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinCantPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_spinCantPropertyChange
+        private void addStructure(){
+        matchStructures.get(matchStructures.size()-1).index = totalEntities;    
+        matchStructures.get(matchStructures.size()-1).GUIReference = GUIreference;
+        System.out.println("Prueba: "+matchStructures.get(matchStructures.size()-1).name+" "+matchStructures.get(matchStructures.size()-1).index);
+        matchStructures.get(matchStructures.size()-1).drawLabel();
+        totalEntities++;
+    }
+    private void generateStructure(){
+        int cant;
+        if (level == 1){
+            cant = 5;
+        }
+        else {
+            cant = 5+3*level;
+        }
+        boolean generate = true;
+        int antiloop = 0;
+        while(generate && antiloop < 10000){
+            int structure= new Random().nextInt(5);
+            switch (structure){
+                case 0:
+                    if(new Wall().unlockLvl <= level){
+                        matchStructures.add(new Wall());
+                        addStructure();
+                        cant --;
+                    }
+                    break;
+                case 1:
+                    if(new Canyon().unlockLvl <= level){
+                        matchStructures.add(new Canyon());
+                        addStructure();
+                        cant --;
+                    }
+                     break;
+                case 2:
+                     if(new Mortar().unlockLvl <= level){
+                        matchStructures.add(new Mortar());
+                        addStructure();
+                        cant --;
+                     }
+                      break;
+                case 3:
+                    if(new Bomb().unlockLvl <= level){
+                        matchStructures.add(new Bomb());
+                        addStructure();
+                        cant --;
+                    }
+                    break;
+                case 4:
+                    if(new AerialStructure().unlockLvl <= level){
+                        matchStructures.add(new AerialStructure());
+                        addStructure();
+                        cant --;
+                    }
+                     break;
+                case 5:
+                    if(new ArcherTower().unlockLvl <= level){
+                        matchStructures.add(new ArcherTower());
+                        addStructure();
+                        cant --;
+                    }
+                    break;
+            }
+            antiloop++;
+            if (cant<=0)
+                generate = false;
+        }
+    }
+    
+    
+    
     private Character generateFighter(Character c){
-        if(c.equals(new ContactFighter())){
+        if(c.getClass().equals(new ContactFighter().getClass())){
             ContactFighter tmpChar = new ContactFighter();
             tmpChar.copy(c);
             return tmpChar;
         }
-        else if(c.equals(new MediumRangeFighter())){
+        else if(c.getClass().equals(new MediumRangeFighter().getClass())){
             MediumRangeFighter tmpChar = new MediumRangeFighter();
             tmpChar.copy(c);
             return tmpChar;
         }
-        else if(c.equals(new AerialFighter())){
+        else if(c.getClass().equals(new AerialFighter().getClass())){
             AerialFighter tmpChar = new AerialFighter();
             tmpChar.copy(c);
             return tmpChar;
         }
-        else if(c.equals(new Beast())){
+        else if(c.getClass().equals(new Beast().getClass())){
             Beast tmpChar = new Beast(); 
             tmpChar.copy(c);
             return tmpChar;
@@ -368,14 +442,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         }
         
     }//GEN-LAST:event_btbAddActionPerformed
-    private void generateStructure(){
-        matchStructures.add(new Wall());
-        matchStructures.get(0).index = totalEntities;
-        matchStructures.get(0).GUIReference = GUIreference;
-        System.out.println("Prueba: "+matchStructures.get(0).name+" "+matchStructures.get(0).index);
-        matchStructures.get(0).drawLabel();
-        totalEntities++;
-    }
+
     private void btbFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbFightActionPerformed
         // TODO add your handling code here:
         generateEnemyArmy();

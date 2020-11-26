@@ -6,6 +6,7 @@
 
 package Interfaces;
 
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.Serializable;
@@ -121,6 +122,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         jPanel1 = new javax.swing.JPanel();
         start = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnSound = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 1050));
@@ -153,6 +155,15 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 0, 1000, 1010);
 
+        btnSound.setText("jButton1");
+        btnSound.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoundActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSound);
+        btnSound.setBounds(910, 30, 73, 23);
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 930));
 
         pack();
@@ -163,12 +174,19 @@ public class GUI extends javax.swing.JFrame implements Serializable{
             }
         }
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-       currentMatch.startArmy();
+        currentMatch.startArmy();
     }//GEN-LAST:event_startActionPerformed
 
     private void startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_startMouseClicked
+
+    private void btnSoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoundActionPerformed
+        // TODO add your handling code here:
+        AudioClip sonido;
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
+        sonido.play();
+    }//GEN-LAST:event_btnSoundActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +224,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnSound;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton start;

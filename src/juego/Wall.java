@@ -17,7 +17,7 @@ public class Wall extends Structure {
     public Wall() {
         name = "Muro";
         Img1 = "/Interfaces/resources/wall.png";
-        unlockLvl = 0;
+        unlockLvl = 1;
     }
     void attack() throws InterruptedException{
          sleep(100);   
