@@ -16,10 +16,10 @@ import static java.lang.Math.sqrt;
 public class Mortar  extends Structure{
      public Mortar() {
         name = "Mortero";
-        Img1 = "C:\\Users\\Diego Álvarez\\Documents\\NetBeansProjects\\Juego\\src\\Interfaces\\resources\\Mortar.png";
+        Img1 = "/Interfaces/resources/Mortar.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
-        damage = 2;
-        range = 5;
+        damage = 4;
+        range = 10;
         unlockLvl = 3;
     }
     void attack() throws InterruptedException{

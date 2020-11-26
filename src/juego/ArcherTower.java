@@ -5,7 +5,6 @@
  */
 package juego;
 
-import Interfaces.GUI;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -14,36 +13,27 @@ import static java.lang.Math.sqrt;
  *
  * @author Diego Álvarez
  */
-public class Canyon extends Structure{
-    
-    public Canyon() {
-        name = "Cañon";
-        Img1 = "/Interfaces/resources/can.png";
+public class ArcherTower extends Structure{
+        public ArcherTower()  {
+        name = "Torre de Arqueras";
+        Img1 = "/Interfaces/resources/archerTower.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
-        damage = 2;
-        range = 7;
+        damage = 8;
+        range = 6;
         unlockLvl = 2;
     }
     void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
-        if (!(Objetive.equals(new AerialFighter()))){
-            if(distance <= range){
-                //sonido aqui
-                animation();
-                Objetive.HP -= damage;
-                System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
-                if(Objetive.HP<=0){
-                    Objetive = null;
-                }
-            }
-            else{
+        if(distance <= range){
+            //sonido aqui
+            animation();
+            Objetive.HP -= damage;
+            System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
+            if(Objetive.HP<=0){
                 Objetive = null;
             }
-        }
-        else{
-            Objetive =null;
         }
     }
 }

@@ -9,11 +9,13 @@ import Interfaces.ChooseFighter;
 import Interfaces.GGend;
 import Interfaces.GUI;
 import java.io.Serializable;
+import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 
 /**
  *
@@ -84,22 +86,49 @@ public class Match implements Serializable{
        for (int i = 0; i < matchStructures.size(); i++) {
              matchStructures.get(i).stopThread();
         }
-    } 
+    }
+    public ArrayList<Character> explotion(Bomb currentBomb){
+        ArrayList<Character> objetiveCharacters = new ArrayList<Character>(); 
+        JLabel place = currentBomb.GUIReference.LabelArray.get(currentBomb.index);
+            for(int j = 0; j<army.size();j++){
+                JLabel current = army.get(j).GUIReference.LabelArray.get(army.get(j).index);
+                if(abs((current.getLocation().x - place.getLocation().x)) <= currentBomb.range &&
+                   abs((current.getLocation().y - place.getLocation().y)) <= currentBomb.range ){
+                    objetiveCharacters.add(army.get(j));
+                }
+            }
+            for(int j = 0; j<EnemyArmy.size();j++){
+                JLabel current = EnemyArmy.get(j).GUIReference.LabelArray.get(EnemyArmy.get(j).index);
+                if(abs((current.getLocation().x - place.getLocation().x)) <= currentBomb.range &&
+                   abs((current.getLocation().y - place.getLocation().y)) <= currentBomb.range ){
+                    objetiveCharacters.add(EnemyArmy.get(j));
+                }
+            }
+            return objetiveCharacters;
+    }
     public Character getObjetive(boolean team) {
+        boolean validObjetive = true;
+        int antiloop = 0;
         if (team){
-            int enemy = (new Random()).nextInt(EnemyArmy.size());
-            if (EnemyArmy.get(enemy).HP >= 0){
-                return EnemyArmy.get(enemy);
+            while(validObjetive && antiloop < 10000){
+                int enemy = (new Random()).nextInt(EnemyArmy.size());
+                if (EnemyArmy.get(enemy).HP >= 0){
+                    return EnemyArmy.get(enemy);
+                }
+                antiloop++;
             }
             return null;
         }
         else{
-            int enemy = (new Random()).nextInt(army.size());
+            while(validObjetive && antiloop < 10000){
+                int enemy = (new Random()).nextInt(army.size());
                 if (army.get(enemy).HP >= 0){
                     return army.get(enemy);
                 }
-                return null;
+                antiloop++;
+            }
         }
+        return null;
     }
     public void checkVictory(boolean team){
         System.out.println("Entra");
@@ -135,7 +164,6 @@ public class Match implements Serializable{
                 }
                 guiFinal.dispose(); 
                 GUIreference.dispose(); 
-                //GUIreference.setVisible(false);
                 chooseReference.levelUp();
                 chooseReference.setVisible(true);
             }   

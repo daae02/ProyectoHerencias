@@ -71,25 +71,14 @@ abstract public class Entity extends Thread implements Serializable{
         }
     }
     void animation() throws InterruptedException{
-        try{
-          ImageIcon icon = new ImageIcon(ImgAtk);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
-            sleep(100);  
-            icon = new ImageIcon(Img1);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
-        }
-        catch(Exception IndexOutOfBoundsException){
-            sleep(100);
-        }
     } 
+    void die(){
+    }
     void attack() throws InterruptedException{
     }
     public void levelUp(int points){
     }
     public void drawLabel(){
-        this.refLabel = GUIReference.generateLabel(index,Img1);
     }
     public void copy(Character c){
     }

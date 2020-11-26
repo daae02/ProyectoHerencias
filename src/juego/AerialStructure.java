@@ -5,7 +5,6 @@
  */
 package juego;
 
-import Interfaces.GUI;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -14,21 +13,20 @@ import static java.lang.Math.sqrt;
  *
  * @author Diego Álvarez
  */
-public class Canyon extends Structure{
-    
-    public Canyon() {
-        name = "Cañon";
-        Img1 = "/Interfaces/resources/can.png";
+public class AerialStructure extends Structure{
+  public AerialStructure() {
+        name = "Lanza Cohetes";
+        Img1 = "/Interfaces/resources/AirDefense.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
-        damage = 2;
-        range = 7;
-        unlockLvl = 2;
+        damage = 5;
+        range = 10;
+        unlockLvl = 4;
     }
     void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
-        if (!(Objetive.equals(new AerialFighter()))){
+        if (Objetive.equals(new AerialFighter())){
             if(distance <= range){
                 //sonido aqui
                 animation();
@@ -46,4 +44,5 @@ public class Canyon extends Structure{
             Objetive =null;
         }
     }
+
 }

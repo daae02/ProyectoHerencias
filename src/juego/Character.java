@@ -69,6 +69,23 @@ abstract public class Character extends Entity implements Serializable{
             
         }
      }
+     void animation() throws InterruptedException{
+        try{
+          ImageIcon icon = new ImageIcon(ImgAtk);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
+            sleep(100);  
+            icon = new ImageIcon(Img1);
+            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            this.GUIReference.LabelArray.get(index).setIcon(icon);
+        }
+        catch(Exception IndexOutOfBoundsException){
+            sleep(100);
+        }
+    }
+    public void drawLabel(){
+        this.refLabel = GUIReference.generateLabel(index,Img1);
+    }
     public void copy(Character c){
         this.name = c.name;
         this.HP = c.HP;
