@@ -19,9 +19,7 @@ import javax.swing.JLabel;
  * @author Diego Álvarez
  */
 abstract public class Character extends Entity implements Serializable{
-    public String ImgAtk;
     public int    HP;
-    protected Character Objetive;
     public boolean good;
     public boolean moving = true;
     public Character() { 
@@ -31,17 +29,15 @@ abstract public class Character extends Entity implements Serializable{
         this.ImgAtk = ImgAtk;
     }*/
     public Character(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
-        super(name,Img1, damage, spaces, range, unlockLvl);
-        this.ImgAtk = ImgAtk;
+        super(name,Img1,ImgAtk, damage, spaces, range, unlockLvl);
         this.HP = HP;
     }
     @Override
     public void run(){
-        System.out.println("Label "+index+" generada "+refLabel.toString());
         running = true;
         while (running){ 
             try {
-                 if(!die()){
+                 if(!imDeath()){
                     checkEnemy(); 
                     if(Objetive != null){
                         if (moving)
@@ -49,14 +45,12 @@ abstract public class Character extends Entity implements Serializable{
                         attack();
                     }
                     else{
-                        Objetive = GUIReference.currentMatch.getObjetive(this);
+                        Objetive = GUIReference.currentMatch.getObjetive(good);
                     }
                     sleep(200);
                  }
                  else{
-                     GUIReference.LabelArray.get(index).setVisible(false);
-                     GUIReference.LabelArray.get(index).setLocation(1200,1200);
-                     setPause();
+                    die();
                  }
                 
             } 
@@ -82,47 +76,24 @@ abstract public class Character extends Entity implements Serializable{
         this.range = c.range;
         this.Img1 = c.Img1;
         this.ImgAtk = c.ImgAtk;
-        this.damage = c.damage;
-                
-        
+        this.damage = c.damage;    
     }
-    public void drawLabel(){
-        refLabel = GUIReference.generateLabel(index,Img1);
-    } 
     public void stopThread(){
         this.running = false;
     }
     
     public void setPause(){
         this.pause = !this.pause;
-    }
-    void animation() throws InterruptedException{
-    try{
-      ImageIcon icon = new ImageIcon(ImgAtk);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
-            sleep(100);  
-            icon = new ImageIcon(Img1);
-            icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-            this.GUIReference.LabelArray.get(index).setIcon(icon);
-    }
-    catch(Exception IndexOutOfBoundsException){
-        sleep(100);
-    }
-    }
-    
-    void attack() throws InterruptedException{
-    }
-    
-    void checkEnemy(){
-        if(Objetive != null && Objetive.HP <= 0){
-            Objetive = null;
-        }
-    }
-    boolean die(){
+    }    
+    boolean imDeath(){
         return HP <= 0;
     }
-    
+    void die(){
+        GUIReference.LabelArray.get(index).setVisible(false);
+        GUIReference.LabelArray.get(index).setLocation(1200,1200);
+        GUIReference.currentMatch.checkVictory(!good);
+        setPause();
+    }
     
     public void levelUp(int points){
     }

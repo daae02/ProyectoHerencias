@@ -6,18 +6,52 @@
 package juego;
 
 import Interfaces.GUI;
+import java.util.Random;
 import javax.swing.JLabel;
 
 /**
  *
  * @author Diego Álvarez
  */
-/*
 public class Structure extends Entity {
 
-    public Structure(String name,GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
-        super(GUIReference,Img1, damage, range, unlockLvl, index);
+    public Structure() {
+    }
+    @Override
+    public void run(){
+        running = true;
+        while (running){ 
+            try {
+                checkEnemy(); 
+                    if(Objetive != null){
+                        attack();
+                    }
+                    else{
+                        Objetive = GUIReference.currentMatch.getObjetive(generateTeam());
+                    }
+                    sleep(200);
+                 }
+            catch (InterruptedException ex) {
+                
+            }
+            while(pause){
+                try {
+                    sleep(100);
+                } 
+                catch (InterruptedException ex) {
+                    
+                }
+            }
+            
+        }
+    }
+    private boolean generateTeam(){
+        int team = (new Random()).nextInt(1);
+        return (team<0);
+    }  
+    public void levelUp(int points){
     }
 
 
-}*/
+
+}

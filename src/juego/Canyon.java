@@ -12,36 +12,23 @@ import static java.lang.Math.sqrt;
 
 /**
  *
- * @author Alejandra G
+ * @author Diego Álvarez
  */
-
-/*Son	igual	que	los	de	contacto. Sin	embargo,	tienen	la	particularidad	de	que	
-no	crecen	conforme	avanza	el	nivel; el	nivel,	resistencia	y	daño	iniciales	lo	
-mantienen.*/
-
-
-public class Heroes extends Character {
-    String sound;
-
-   /* public Heroes(String sound, String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
-        super(ImgAtk, HP, spaces, GUIReference, Img1, damage, range, unlockLvl, index);
-        this.sound = sound;
-    }*/
-    public Heroes(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
-        super(name, Img1,ImgAtk, HP, damage, spaces, range, unlockLvl);
-    }
-
-    public Heroes() {
-    }
-    @Override
-    public void levelUp(int points){
-    }
+public class Canyon extends Structure{
     
+    public Canyon() {
+        name = "Cañon";
+        Img1 = "/Interfaces/resources/CFCharac.png";
+        ImgAtk = "/Interfaces/resources/bomba.png";
+        damage = 2;
+        range = 5;
+    }
     void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
+            //sonido aqui
             animation();
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
@@ -49,6 +36,5 @@ public class Heroes extends Character {
                 Objetive = null;
             }
         }
-    
     }
 }

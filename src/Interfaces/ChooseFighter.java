@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import juego.AerialFighter;
 import juego.Beast;
+import juego.Canyon;
 import juego.Character;
+import juego.Structure;
 import juego.ContactFighter;
 import juego.FileManager;
 import juego.Heroes;
@@ -26,7 +28,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
     public ArrayList<Character> army = new ArrayList<>();
     public ArrayList<Character> EnemyArmy = new ArrayList<>();
     public ArrayList<Character> armyDisponible = new ArrayList<>();
-    
+    public ArrayList<Structure> matchStructures = new ArrayList<>();
     Match match;
     GUI GUIreference = new GUI();
     Menu menuGUI;
@@ -339,6 +341,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         level++;
         army.clear();
         EnemyArmy.clear();
+        matchStructures.clear();
         for (int i = 0; i < armyDisponible.size(); i++) {
             armyDisponible.get(i).levelUp(level); 
         }
@@ -363,24 +366,22 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         }
         
     }//GEN-LAST:event_btbAddActionPerformed
-
+    private void generateStructure(){
+        matchStructures.add(new Canyon());
+        matchStructures.get(0).index = totalEntities;
+        matchStructures.get(0).GUIReference = GUIreference;
+        System.out.println("Prueba: "+matchStructures.get(0).name+" "+matchStructures.get(0).index);
+        matchStructures.get(0).drawLabel();
+        totalEntities++;
+    }
     private void btbFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbFightActionPerformed
         // TODO add your handling code here:
         generateEnemyArmy();
-        match = new Match(this,level,army,EnemyArmy);
+        generateStructure();
+        match = new Match(this,level,army,EnemyArmy,matchStructures);
         GUIreference.currentMatch = match;
         match.GUIreference = GUIreference;
-        System.out.println("Aquiiiiiiiiiiiiiiiiiiiii"+match.EnemyArmy);
-        System.out.println(match.GUIreference);
-        System.out.println(match.army);
-        System.out.println(match.chooseReference);
-        System.out.println(match.level);
         //FileManager.writeObject(match,"C:\\ClashOfClans\\currentLevel.arm");
-        System.out.println("Aquiiiiiiiiiiiiiiiiiiiii"+match.EnemyArmy);
-        System.out.println(match.GUIreference);
-        System.out.println(match.army);
-        System.out.println(match.chooseReference);
-        System.out.println(match.level);
         this.setVisible(false);
         GUIreference.setVisible(true);
     }//GEN-LAST:event_btbFightActionPerformed

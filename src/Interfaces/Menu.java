@@ -24,7 +24,7 @@ public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
     Juego GameReference;
     ArrayList<Character> currentCharacters = new ArrayList<Character>();
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","arm");
     ChooseFighter chooseFighterGUI = new ChooseFighter();
     /**
      * Creates new form Menu

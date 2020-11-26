@@ -20,10 +20,11 @@ import java.util.logging.Logger;
  * @author Diego Álvarez
  */
 public class Match implements Serializable{
-    public  ArrayList<Character> army = new ArrayList<>();
-    public ArrayList<Character> EnemyArmy = new ArrayList<>();
-    public ChooseFighter chooseReference;
-    public GUI GUIreference;
+    transient public  ArrayList<Character> army = new ArrayList<>();
+    transient public ArrayList<Character> EnemyArmy = new ArrayList<>();
+    public ArrayList<Structure> matchStructures = new ArrayList<>();
+    transient public ChooseFighter chooseReference;
+    transient public GUI GUIreference;
     public int level;
     
             
@@ -31,11 +32,12 @@ public class Match implements Serializable{
     public Match(){
         
     }
-    public Match( ChooseFighter chooseReference, int level, ArrayList<Character> army, ArrayList<Character> EnemyArmy) {
+    public Match( ChooseFighter chooseReference, int level, ArrayList<Character> army, ArrayList<Character>EnemyArmy, ArrayList<Structure> structures) {
         this.level = level;
         this.chooseReference = chooseReference;
         this.army = army;
         this.EnemyArmy = EnemyArmy;
+        this.matchStructures = structures;
     }
     public void startArmy(){
         System.out.println("Cantidad: "+army.size());
@@ -51,6 +53,14 @@ public class Match implements Serializable{
             try{
                 EnemyArmy.get(i).start();
                 System.out.println(EnemyArmy.get(i).name+" #"+EnemyArmy.get(i).index+" empieza");
+            }
+            catch(Exception e){
+            }
+        }
+       for (int i = 0; i <= matchStructures.size(); i++) {
+            try{
+                matchStructures.get(i).start();
+                System.out.println(matchStructures.get(i).name+" #"+matchStructures.get(i).index+" empieza");
             }
             catch(Exception e){
             }
@@ -71,9 +81,12 @@ public class Match implements Serializable{
         for (int i = 0; i < EnemyArmy.size(); i++) {
              EnemyArmy.get(i).stopThread();
         }
+       for (int i = 0; i < matchStructures.size(); i++) {
+             matchStructures.get(i).stopThread();
+        }
     } 
-    public Character getObjetive(Character current) {
-        if (current.good){
+    public Character getObjetive(boolean team) {
+        if (team){
             int enemy = (new Random()).nextInt(EnemyArmy.size());
             if (EnemyArmy.get(enemy).HP >= 0){
                 return EnemyArmy.get(enemy);
@@ -144,6 +157,7 @@ public class Match implements Serializable{
                 chooseReference.armyDisponible.clear();
                 chooseReference.army.clear();
                 chooseReference.EnemyArmy.clear();
+                chooseReference.matchStructures.clear();
                 chooseReference.setVisible(true);
             }
     }

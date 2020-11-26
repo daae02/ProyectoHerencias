@@ -44,7 +44,6 @@ public class Beast extends Character {
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
-                GUIReference.currentMatch.checkVictory(good);
                 Objetive = null;
             }
     }
