@@ -268,7 +268,6 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         lblContador.setText(counter+"");
         lblLevel.setText(level+"");
         caractersAvailable();
-        
     }//GEN-LAST:event_formWindowActivated
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered

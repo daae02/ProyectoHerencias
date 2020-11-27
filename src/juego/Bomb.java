@@ -30,7 +30,7 @@ public class Bomb extends Structure{
         if (Objetives.size()!=0){
             for (int i = 0; i<Objetives.size();i++){
                 System.out.println("Bomba ataca a "+Objetives.get(i).name+" #"+Objetives.get(i).index+" Le quedan: "+Objetives.get(i).HP);
-                Objetives.get(i).HP-=damage;
+                Objetives.get(i).decrementLifePoint(damage); 
             }
             die();
         }

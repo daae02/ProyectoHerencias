@@ -36,10 +36,13 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         LabelArray = new ArrayList<JLabel> ();
         initComponents();
     }
-       public JLabel generateLabel(int numeroThread,String direction){
+       public JLabel generateLabel(int numeroThread,String direction,int HP,boolean team){
+        Color col = new java.awt.Color(0, 0, 255);
+        if(!team){
+            col = new java.awt.Color(255, 0, 0);
+        }
         JLabel newLabel = new JLabel();
-        newLabel.setForeground(new java.awt.Color(255, 255, 255));
-        newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), HP+"", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Tahoma", 0, 11), col)); // NOI18N
         newLabel.setSize(50, 50);
         ImageIcon icon = new ImageIcon(direction);
         int width = 50;
@@ -47,9 +50,9 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         icon.setImage(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
         newLabel.setIcon(icon);
         jLabel2.add(newLabel);
-        newLabel.setOpaque(true);
-        int x = ((new Random()).nextInt(950)/50) * 50;
-        int y = ((new Random()).nextInt(950) / 50)* 50;
+        newLabel.setOpaque(false);
+        int x = ((new Random()).nextInt(1000)/50) * 50;
+        int y = ((new Random()).nextInt(1000) / 50)* 50;
         newLabel.setLocation(x , y);
         LabelArray.add(numeroThread,newLabel);
         System.out.println("Labels: "+LabelArray.size());
@@ -58,13 +61,12 @@ public class GUI extends javax.swing.JFrame implements Serializable{
      public JLabel generateStructureLabel(int numeroThread,String direction){
         JLabel newLabel = new JLabel();
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
-        newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         newLabel.setSize(50, 50);
         ImageIcon icon = new ImageIcon(getClass().getResource(direction));
         icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         newLabel.setIcon(icon);
         jLabel2.add(newLabel);
-        newLabel.setOpaque(true);
+        newLabel.setOpaque(false);
         int x = ((new Random()).nextInt(950)/50) * 50;
         int y = ((new Random()).nextInt(950) / 50)* 50;
         newLabel.setLocation(x , y);
@@ -129,7 +131,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         setSize(new java.awt.Dimension(1000, 1050));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(240, 153, 0));
+        jPanel1.setBackground(new java.awt.Color(145, 242, 113));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setToolTipText("");
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 80));

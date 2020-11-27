@@ -6,6 +6,7 @@
 package juego;
 
 import Interfaces.GUI;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.Serializable;
 import static java.lang.Math.abs;
@@ -84,7 +85,7 @@ abstract public class Character extends Entity implements Serializable{
         }
     }
     public void drawLabel(){
-        this.refLabel = GUIReference.generateLabel(index,Img1);
+        this.refLabel = GUIReference.generateLabel(index,Img1,HP,good);
     }
     public void copy(Character c){
         this.name = c.name;
@@ -114,5 +115,14 @@ abstract public class Character extends Entity implements Serializable{
     
     public void levelUp(int points){
     }
+    
+    public void decrementLifePoint(int damage){
+        Color col = new java.awt.Color(0, 0, 255);
+        if(!good){
+            col = new java.awt.Color(255, 0, 0);
+        }
+        HP -= damage;
+        GUIReference.LabelArray.get(index).setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), HP+"", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Tahoma", 0, 11), col)); // NOI18N
+          }
 }
     

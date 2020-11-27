@@ -8,6 +8,7 @@ package juego;
 import Interfaces.ChooseFighter;
 import Interfaces.GGend;
 import Interfaces.GUI;
+import Interfaces.LastLevel;
 import java.io.Serializable;
 import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
@@ -28,6 +29,7 @@ public class Match implements Serializable{
     transient public ChooseFighter chooseReference;
     transient public GUI GUIreference;
     public int level;
+    public LastLevel lastLvlWarn;
     
             
             
@@ -149,6 +151,7 @@ public class Match implements Serializable{
     }
     public void checkVictory(boolean team){
         System.out.println("Entra");
+        lastLvlWarn = new LastLevel(chooseReference);
         ArrayList<Character> checkArmy = new ArrayList<Character>();
         boolean end = true;
         if (team){
@@ -182,7 +185,15 @@ public class Match implements Serializable{
                 guiFinal.dispose(); 
                 GUIreference.dispose(); 
                 chooseReference.levelUp();
-                chooseReference.setVisible(true);
+                if (chooseReference.level > 14){
+                        lastLvlWarn.lblNivel.setText(chooseReference.level+"");
+                        lastLvlWarn.setVisible(true);
+                }
+        
+                
+                else{
+                    chooseReference.setVisible(true);
+                }
             }   
 
             else{

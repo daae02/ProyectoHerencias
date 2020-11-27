@@ -40,7 +40,7 @@ public class ContactFighter extends Character {
         if(distance <= range){
             //sonido aqui  
             animation();
-            Objetive.HP -= damage;
+            Objetive.decrementLifePoint(damage);
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
                 Objetive = null;

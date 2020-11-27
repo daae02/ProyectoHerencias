@@ -47,7 +47,7 @@ public class MediumRangeFighter extends Character {
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
             animation();
-            Objetive.HP -= damage;
+            Objetive.decrementLifePoint(damage);
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
                 Objetive = null;
