@@ -24,6 +24,8 @@ import juego.Match;
 public class GUI extends javax.swing.JFrame implements Serializable{
     public ArrayList<JLabel> LabelArray; 
     public Match currentMatch;
+    boolean easyBool = true;
+    boolean pauseBool = true;
     /**
      * Creates new form GUI
      */
@@ -122,6 +124,8 @@ public class GUI extends javax.swing.JFrame implements Serializable{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        pause = new javax.swing.JButton();
+        easyMode = new javax.swing.JButton();
         start = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnSound = new javax.swing.JButton();
@@ -137,6 +141,38 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 80));
         jPanel1.setLayout(null);
 
+        pause.setBackground(new java.awt.Color(204, 153, 0));
+        pause.setText("PAUSE");
+        pause.setToolTipText("");
+        pause.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pauseMouseClicked(evt);
+            }
+        });
+        pause.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pauseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pause);
+        pause.setBounds(160, 0, 99, 23);
+
+        easyMode.setBackground(new java.awt.Color(204, 153, 0));
+        easyMode.setText("EASY");
+        easyMode.setToolTipText("");
+        easyMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                easyModeMouseClicked(evt);
+            }
+        });
+        easyMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyModeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(easyMode);
+        easyMode.setBounds(440, 0, 99, 23);
+
         start.setBackground(new java.awt.Color(204, 153, 0));
         start.setText("START");
         start.setToolTipText("");
@@ -151,12 +187,12 @@ public class GUI extends javax.swing.JFrame implements Serializable{
             }
         });
         jPanel1.add(start);
-        start.setBounds(440, 10, 99, 23);
+        start.setBounds(750, 0, 99, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/background.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1000, 1010);
+        jLabel2.setBounds(0, 0, 1000, 1040);
 
         btnSound.setText("jButton1");
         btnSound.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +212,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         jPanel1.add(btnSound2);
         btnSound2.setBounds(910, 30, 73, 23);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 930));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1000));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +241,26 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
         sonido.play();
     }//GEN-LAST:event_btnSound2ActionPerformed
+
+    private void pauseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pauseMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pauseMouseClicked
+
+    private void pauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseActionPerformed
+        currentMatch.pauseArmy();
+        easyBool = !easyBool;
+        easyMode.setEnabled(easyBool);
+    }//GEN-LAST:event_pauseActionPerformed
+
+    private void easyModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_easyModeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_easyModeMouseClicked
+
+    private void easyModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyModeActionPerformed
+      currentMatch.easyMode();
+      pauseBool = !pauseBool;
+      pause.setEnabled(pauseBool);
+    }//GEN-LAST:event_easyModeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,8 +300,10 @@ public class GUI extends javax.swing.JFrame implements Serializable{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSound;
     public javax.swing.JButton btnSound2;
+    private javax.swing.JButton easyMode;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton pause;
     private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 }

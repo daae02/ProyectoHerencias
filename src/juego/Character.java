@@ -58,7 +58,6 @@ abstract public class Character extends Entity implements Serializable{
             catch (InterruptedException ex) {
                 
             }
-            
             while(pause){
                 try {
                     sleep(100);
@@ -67,7 +66,6 @@ abstract public class Character extends Entity implements Serializable{
                     
                 }
             }
-            
         }
      }
      void animation() throws InterruptedException{

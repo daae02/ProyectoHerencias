@@ -89,10 +89,22 @@ public class Match implements Serializable{
     public void pauseArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).setPause();
+        }
+        for (int i = 0; i < EnemyArmy.size(); i++) {
             EnemyArmy.get(i).setPause();
         }
+        for (int i = 0; i < matchStructures.size(); i++) {
+            matchStructures.get(i).setPause();
+        }
     }
-    
+    public void easyMode(){
+        for (int i = 0; i < EnemyArmy.size(); i++) {
+            EnemyArmy.get(i).setPause();
+        }
+        for (int i = 0; i < matchStructures.size(); i++) {
+            matchStructures.get(i).setPause();
+        }
+    }
     public void stopArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).stopThread();
@@ -168,7 +180,6 @@ public class Match implements Serializable{
         if (end){
             stopArmy();
             GUIreference.hideLabels();
-            GUIreference.LabelArray.clear();
             chooseReference.totalEntities = 0;
             GGend guiFinal;
             if(team){
