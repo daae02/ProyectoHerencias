@@ -24,6 +24,7 @@ import juego.Heroes;
 import juego.Match;
 import juego.MediumRangeFighter;
 import juego.Mortar;
+import juego.Save;
 import juego.Wall;
 /**
  *
@@ -35,7 +36,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
     public ArrayList<Character> armyDisponible = new ArrayList<>();
     public ArrayList<Structure> matchStructures = new ArrayList<>();
     Match match;
-    GUI GUIreference = new GUI();
+    public GUI GUIreference = new GUI();
     Menu menuGUI;
     public int level = 1;
     private int counter = 5;
@@ -450,7 +451,8 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         match = new Match(this,level,army,EnemyArmy,matchStructures);
         GUIreference.currentMatch = match;
         match.GUIreference = GUIreference;
-        //FileManager.writeObject(match,"C:\\ClashOfClans\\currentLevel.arm");
+        Save newSave = new Save(level,army,EnemyArmy,matchStructures);
+        FileManager.writeObject(newSave,"C:\\ClashOfClans\\currentLevel.sav");
         this.setVisible(false);
         GUIreference.setVisible(true);
     }//GEN-LAST:event_btbFightActionPerformed

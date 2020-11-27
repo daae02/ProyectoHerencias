@@ -64,7 +64,7 @@ public class Structure extends Entity {
     }
     private boolean generateTeam(){
         int team = (new Random()).nextInt(2);
-        return (team<0);
+        return (team == 0);
     } 
     public void drawLabel(){
         this.refLabel = GUIReference.generateStructureLabel(index,Img1);

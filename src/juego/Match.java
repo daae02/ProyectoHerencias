@@ -41,6 +41,21 @@ public class Match implements Serializable{
         this.EnemyArmy = EnemyArmy;
         this.matchStructures = structures;
     }
+    public void SetGUIToElements(){
+        for (int i = 0; i<army.size();i++){
+            army.get(i).GUIReference=this.GUIreference;
+            army.get(i).drawLabel();
+        }
+        for (int i = 0; i<EnemyArmy.size();i++){
+            EnemyArmy.get(i).GUIReference=this.GUIreference;
+            EnemyArmy.get(i).drawLabel();
+        }
+        for (int i = 0; i<matchStructures.size();i++){
+            matchStructures.get(i).GUIReference=this.GUIreference;
+            matchStructures.get(i).drawLabel();
+        }
+        chooseReference.GUIreference = this.GUIreference;
+    }
     public void startArmy(){
         System.out.println("Cantidad: "+army.size());
         for (int i = 0; i <= army.size(); i++) {
@@ -92,16 +107,18 @@ public class Match implements Serializable{
         JLabel place = currentBomb.GUIReference.LabelArray.get(currentBomb.index);
             for(int j = 0; j<army.size();j++){
                 JLabel current = army.get(j).GUIReference.LabelArray.get(army.get(j).index);
-                if(abs((current.getLocation().x - place.getLocation().x)) <= currentBomb.range &&
-                   abs((current.getLocation().y - place.getLocation().y)) <= currentBomb.range ){
+                if(abs((current.getLocation().x - place.getLocation().x)) <= currentBomb.range*50 &&
+                   abs((current.getLocation().y - place.getLocation().y)) <= currentBomb.range*50 ){
                     objetiveCharacters.add(army.get(j));
+                    System.out.println("Añadido");
                 }
             }
             for(int j = 0; j<EnemyArmy.size();j++){
                 JLabel current = EnemyArmy.get(j).GUIReference.LabelArray.get(EnemyArmy.get(j).index);
-                if(abs((current.getLocation().x - place.getLocation().x)) <= currentBomb.range &&
-                   abs((current.getLocation().y - place.getLocation().y)) <= currentBomb.range ){
+                if(abs((current.getLocation().x - place.getLocation().x)) <= currentBomb.range*50 &&
+                   abs((current.getLocation().y - place.getLocation().y)) <= currentBomb.range*50 ){
                     objetiveCharacters.add(EnemyArmy.get(j));
+                    System.out.println("Añadido");
                 }
             }
             return objetiveCharacters;

@@ -16,6 +16,7 @@ import juego.FileManager;
 import juego.Juego;
 import juego.Character;
 import juego.Match;
+import juego.Save;
 /**
  *
  * @author Alejandra G
@@ -24,7 +25,7 @@ public class Menu extends javax.swing.JFrame {
     LogIn log = new LogIn(this);
     Juego GameReference;
     ArrayList<Character> currentCharacters = new ArrayList<Character>();
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","arm");
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
     ChooseFighter chooseFighterGUI = new ChooseFighter();
     /**
      * Creates new form Menu
@@ -139,9 +140,13 @@ public class Menu extends javax.swing.JFrame {
       selector.setFileFilter(filter);
       int option = selector.showOpenDialog(this);
       if(option==JFileChooser.APPROVE_OPTION){
-          Match match = (Match)FileManager.readObject(selector.getSelectedFile().getAbsolutePath());
+          chooseFighterGUI.menuGUI = this;
+          Save loadedSave = (Save)FileManager.readObject(selector.getSelectedFile().getAbsolutePath());
+          Match loadedMatch = new Match(chooseFighterGUI,loadedSave.level,loadedSave.army,loadedSave.EnemyArmy,loadedSave.matchStructures);
+          loadedMatch.GUIreference = new GUI(loadedMatch);
+          loadedMatch.SetGUIToElements();
+          loadedMatch.GUIreference.setVisible(true);
           this.setVisible(false);
-          match.GUIreference.setVisible(true);
         }
     }//GEN-LAST:event_bntLoadGameActionPerformed
 

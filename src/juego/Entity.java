@@ -17,7 +17,7 @@ import javax.swing.JLabel;
  */
 abstract public class Entity extends Thread implements Serializable{
   public String name;
-  public GUI GUIReference;
+  public transient GUI GUIReference;
   public JLabel refLabel;
   public int index;
   String Img1;

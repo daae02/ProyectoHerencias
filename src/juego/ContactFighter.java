@@ -38,13 +38,13 @@ public class ContactFighter extends Character {
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
         if(distance <= range){
-            //sonido aqui
-            GUIReference.btnSound.doClick();
+            //sonido aqui  
             animation();
             Objetive.HP -= damage;
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
                 Objetive = null;
+                GUIReference.btnSound.doClick();
             }
         }
     }

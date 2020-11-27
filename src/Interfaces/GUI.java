@@ -123,6 +123,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         start = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnSound = new javax.swing.JButton();
+        btnSound2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 1050));
@@ -164,6 +165,15 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         jPanel1.add(btnSound);
         btnSound.setBounds(910, 30, 73, 23);
 
+        btnSound2.setText("jButton1");
+        btnSound2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSound2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSound2);
+        btnSound2.setBounds(910, 30, 73, 23);
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 930));
 
         pack();
@@ -187,6 +197,12 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
         sonido.play();
     }//GEN-LAST:event_btnSoundActionPerformed
+
+    private void btnSound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSound2ActionPerformed
+        AudioClip sonido;
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
+        sonido.play();
+    }//GEN-LAST:event_btnSound2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +241,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSound;
+    public javax.swing.JButton btnSound2;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton start;

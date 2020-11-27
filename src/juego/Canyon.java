@@ -20,8 +20,8 @@ public class Canyon extends Structure{
         name = "Cañon";
         Img1 = "/Interfaces/resources/can.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
-        damage = 2;
-        range = 7;
+        damage = 1;
+        range = 5;
         unlockLvl = 2;
     }
     void attack() throws InterruptedException{

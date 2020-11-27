@@ -6,8 +6,12 @@
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/Interfaces/GUI.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/Interfaces/ClassCreator.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/Interfaces/ChooseFighter.java</file>
+            <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/ArcherTower.java</file>
+            <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Wall.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Entity.java</file>
+            <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Bomb.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/Interfaces/Menu.java</file>
+            <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Juego.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Character.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Beast.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/ContactFighter.java</file>
@@ -15,9 +19,11 @@
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/MediumRangeFighter.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/Interfaces/LogIn.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Match.java</file>
+            <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Mortar.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Heroes.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/Interfaces/GGend.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/AerialFighter.java</file>
+            <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/AerialStructure.java</file>
             <file>file:/C:/Users/Diego%20Álvarez/Documents/NetBeansProjects/Juego/src/juego/Structure.java</file>
         </group>
     </open-files>

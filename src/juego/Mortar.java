@@ -18,8 +18,8 @@ public class Mortar  extends Structure{
         name = "Mortero";
         Img1 = "/Interfaces/resources/Mortar.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
-        damage = 4;
-        range = 10;
+        damage = 5;
+        range = 5;
         unlockLvl = 3;
     }
     void attack() throws InterruptedException{

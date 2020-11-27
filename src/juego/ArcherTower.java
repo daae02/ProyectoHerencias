@@ -18,7 +18,7 @@ public class ArcherTower extends Structure{
         name = "Torre de Arqueras";
         Img1 = "/Interfaces/resources/archerTower.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
-        damage = 8;
+        damage = 5;
         range = 6;
         unlockLvl = 2;
     }
