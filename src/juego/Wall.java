@@ -22,7 +22,7 @@ public class Wall extends Structure {
     @Override
     public void levelUp(){
     }
-    void attack() throws InterruptedException{
+    public void attack() throws InterruptedException{
          sleep(100);   
         }
     

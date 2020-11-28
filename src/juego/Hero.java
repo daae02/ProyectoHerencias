@@ -21,7 +21,7 @@ mantienen.*/
 
 
 public class Hero extends Character {
-    String sound;
+    public String sound;
 
    /* public Hero(String sound, String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(ImgAtk, HP, spaces, GUIReference, Img1, damage, range, unlockLvl, index);
@@ -37,7 +37,7 @@ public class Hero extends Character {
     public void levelUp(){
     }
     
-    void attack() throws InterruptedException{
+    public void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);

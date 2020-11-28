@@ -14,7 +14,7 @@ import static java.lang.Math.sqrt;
  * @author Diego Álvarez
  */
 public class ArcherTower extends Structure{
-        public ArcherTower()  {
+    public ArcherTower()  {
         name = "Torre de Arqueras";
         Img1 = "/Interfaces/resources/archerTower.png";
         ImgAtk = "/Interfaces/resources/bomba.png";
@@ -27,7 +27,7 @@ public class ArcherTower extends Structure{
         damage++;
         range++;
     }
-    void attack() throws InterruptedException{
+    public void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);

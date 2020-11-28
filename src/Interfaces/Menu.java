@@ -22,11 +22,11 @@ import juego.Save;
  * @author Alejandra G
  */
 public class Menu extends javax.swing.JFrame {
-    LogIn log = new LogIn(this);
-    Juego GameReference;
-    ArrayList<Character> currentCharacters = new ArrayList<Character>();
+    public LogIn log = new LogIn(this);
+    public Juego GameReference;
+    public ArrayList<Character> currentCharacters = new ArrayList<Character>();
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Partidas Salvadas","sav");
-    ChooseFighter chooseFighterGUI = new ChooseFighter();
+    public ChooseFighter chooseFighterGUI = new ChooseFighter();
     /**
      * Creates new form Menu
      */

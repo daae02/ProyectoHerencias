@@ -29,7 +29,7 @@ public class Bomb extends Structure{
         damage++;
         range++;
     }
-    void attack() throws InterruptedException{
+    public void attack() throws InterruptedException{
         System.out.println("Bomba #"+index+" ataca");
         Objetives = GUIReference.currentMatch.explotion(this);
         if (Objetives.size()!=0){

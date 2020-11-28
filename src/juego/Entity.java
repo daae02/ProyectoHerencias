@@ -20,7 +20,7 @@ abstract public class Entity extends Thread implements Serializable{
   public transient GUI GUIReference;
   public JLabel refLabel;
   public int index;
-  String Img1;
+  public String Img1;
   protected Character Objetive;
   public String ImgAtk;
   public int    damage;
@@ -65,16 +65,16 @@ abstract public class Entity extends Thread implements Serializable{
     public void setPause(){
         this.pause = !this.pause;
     }
-    void checkEnemy(){
+    public void checkEnemy(){
         if(Objetive != null && Objetive.HP <= 0){
             Objetive = null;
         }
     }
-    void animation() throws InterruptedException{
+    public void animation() throws InterruptedException{
     } 
-    void die(){
+    public void die(){
     }
-    void attack() throws InterruptedException{
+    public void attack() throws InterruptedException{
     }
     public void levelUp(){
     }

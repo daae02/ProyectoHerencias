@@ -41,7 +41,7 @@ public class MediumRangeFighter extends Character {
         HP += 2;
     }
     
-    void attack() throws InterruptedException{
+    public void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);

@@ -35,9 +35,9 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
     public ArrayList<Character> EnemyArmy = new ArrayList<>();
     public ArrayList<Character> armyDisponible = new ArrayList<>();
     public ArrayList<Structure> matchStructures = new ArrayList<>();
-    Match match;
+    public Match match;
     public GUI GUIreference = new GUI();
-    Menu menuGUI;
+    public Menu menuGUI;
     public int level = 1;
     private int counter = 5;
     public int totalEntities = 0;
@@ -425,10 +425,9 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         }
         armyDisponible.clear();
         generateStructure();
-        if (level <4){
         for (int i = 0; i < matchStructures.size(); i++) {
-            matchStructures.get(i).levelUp(); 
-        }
+            if(level > matchStructures.get(i).unlockLvl && matchStructures.get(i).unlockLvl+4 > level)
+                matchStructures.get(i).levelUp();
         }
         caractersAvailable();
     }

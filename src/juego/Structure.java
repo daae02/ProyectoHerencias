@@ -48,7 +48,7 @@ public class Structure extends Entity {
             
         }
     }
-    void animation() throws InterruptedException{
+    public void animation() throws InterruptedException{
         try{
             ImageIcon icon = new ImageIcon(getClass().getResource(ImgAtk));
             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
@@ -69,7 +69,7 @@ public class Structure extends Entity {
     public void drawLabel(){
         this.refLabel = GUIReference.generateStructureLabel(index,Img1);
     }
-    void die(){
+    public void die(){
         GUIReference.LabelArray.get(index).setVisible(false);
         GUIReference.LabelArray.get(index).setLocation(1200,1200);
         setPause();
