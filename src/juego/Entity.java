@@ -28,7 +28,7 @@ abstract public class Entity extends Thread implements Serializable{
   public int    range;
   public int    unlockLvl;
   boolean running;
-  boolean pause = false;
+  public boolean pause = false;
     public Entity() {
     }
     public Entity(GUI GUIReference, int index) {
@@ -59,7 +59,7 @@ abstract public class Entity extends Thread implements Serializable{
         this.unlockLvl = unlockLvl;
     }    
      public void stopThread(){
-        this.interrupt();
+        this.running = false;
     }
     
     public void setPause(){

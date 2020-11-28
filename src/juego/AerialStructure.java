@@ -31,7 +31,7 @@ public class AerialStructure extends Structure{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
-        if (Objetive.equals(new AerialFighter())){
+        if (Objetive.getClass().equals(new AerialFighter().getClass())){
             if(distance <= range){
                 //sonido aqui
                 animation();

@@ -120,7 +120,11 @@ abstract public class Character extends Entity implements Serializable{
             col = new java.awt.Color(255, 0, 0);
         }
         HP -= damage;
+        try{
         GUIReference.LabelArray.get(index).setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), HP+"", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Tahoma", 0, 11), col)); // NOI18N
           }
+        catch(Exception IndexOutOfBoundsException){
+        }
+    }
 }
     

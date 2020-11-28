@@ -284,9 +284,10 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
     private void spinCantPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinCantPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_spinCantPropertyChange
-        private void addStructure(){
+    private void addStructure(){
         matchStructures.get(matchStructures.size()-1).index = totalEntities;    
         matchStructures.get(matchStructures.size()-1).GUIReference = GUIreference;
+        matchStructures.get(matchStructures.size()-1).pause = false;
         System.out.println("Prueba: "+matchStructures.get(matchStructures.size()-1).name+" "+matchStructures.get(matchStructures.size()-1).index);
         matchStructures.get(matchStructures.size()-1).drawLabel();
         totalEntities++;
@@ -435,6 +436,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
         int cant = (Integer)spinCant.getValue();
         int index = boxCharac.getSelectedIndex()-1;
+        System.out.println("Disponibles: "+armyDisponible.size());
         if (counter >= (cant*armyDisponible.get(index).spaces)){
             if (index != -1){
                  for (int i = 0; i < cant; i++) {

@@ -44,17 +44,20 @@ public class Match implements Serializable{
         this.matchStructures = structures;
     }
     public void SetGUIToElements(){
+        System.out.println("Cargado: "+army.size());
         for (int i = 0; i<army.size();i++){
+             System.out.println("Cargado: "+army.get(i).name+" #"+army.get(i).index);
             army.get(i).GUIReference=this.GUIreference;
             army.get(i).drawLabel();
         }
+        for (int i = 0; i<matchStructures.size();i++){
+                    matchStructures.get(i).GUIReference=this.GUIreference;
+                    matchStructures.get(i).drawLabel();
+                }
         for (int i = 0; i<EnemyArmy.size();i++){
+            System.out.println("Cargado: "+EnemyArmy.get(i).name+" #"+EnemyArmy.get(i).index);
             EnemyArmy.get(i).GUIReference=this.GUIreference;
             EnemyArmy.get(i).drawLabel();
-        }
-        for (int i = 0; i<matchStructures.size();i++){
-            matchStructures.get(i).GUIReference=this.GUIreference;
-            matchStructures.get(i).drawLabel();
         }
         chooseReference.GUIreference = this.GUIreference;
     }
@@ -190,6 +193,7 @@ public class Match implements Serializable{
         if (end){
             stopArmy();
             GUIreference.hideLabels();
+            GUIreference.LabelArray.clear();
             chooseReference.totalEntities = 0;
             GGend guiFinal;
             if(team){
@@ -231,7 +235,6 @@ public class Match implements Serializable{
                 guiFinal.dispose();
                 GUIreference.dispose(); 
                 //GUIreference.setVisible(false);
-                chooseReference.armyDisponible.clear();
                 chooseReference.army.clear();
                 chooseReference.EnemyArmy.clear();
                 chooseReference.matchStructures.clear();
