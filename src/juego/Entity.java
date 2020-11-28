@@ -76,7 +76,7 @@ abstract public class Entity extends Thread implements Serializable{
     }
     void attack() throws InterruptedException{
     }
-    public void levelUp(int points){
+    public void levelUp(){
     }
     public void drawLabel(){
     }

@@ -17,7 +17,7 @@ import juego.Character;
 import juego.AerialFighter;
 import juego.Beast;
 import juego.ContactFighter;
-import juego.Heroes;
+import juego.Hero;
 import juego.MediumRangeFighter;
 import javax.swing.border.LineBorder;
 import juego.FileManager;
@@ -447,7 +447,7 @@ public class ClassCreator extends javax.swing.JFrame {
                 Beast beastFighter = new Beast(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
                 return beastFighter;
             case 4:
-                Heroes hero = new Heroes(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
+                Hero hero = new Hero(name, imgM,imgA, healthPoints, damage, spaces, 1, unlockLvl);
                 return hero;
 
         }

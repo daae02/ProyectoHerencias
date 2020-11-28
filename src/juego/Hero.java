@@ -20,33 +20,33 @@ no	crecen	conforme	avanza	el	nivel; el	nivel,	resistencia	y	daño	iniciales	lo
 mantienen.*/
 
 
-public class Heroes extends Character {
+public class Hero extends Character {
     String sound;
 
-   /* public Heroes(String sound, String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
+   /* public Hero(String sound, String ImgAtk, int HP, int spaces, GUI GUIReference, String Img1, int damage, int range, int unlockLvl, int index) {
         super(ImgAtk, HP, spaces, GUIReference, Img1, damage, range, unlockLvl, index);
         this.sound = sound;
     }*/
-    public Heroes(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
+    public Hero(String name,String Img1,String ImgAtk,int HP, int damage, int spaces, int range, int unlockLvl) {
         super(name, Img1,ImgAtk, HP, damage, spaces, range, unlockLvl);
     }
 
-    public Heroes() {
+    public Hero() {
     }
     @Override
-    public void levelUp(int points){
+    public void levelUp(){
     }
     
     void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;
         System.out.println("Distancia: "+distance+" mi distacia es "+ range);
-        GUIReference.btnSound2.doClick();
         if(distance <= range){
             animation();
             Objetive.decrementLifePoint(damage);
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
+                GUIReference.btnSound2.doClick();
                 Objetive = null;
             }
         }

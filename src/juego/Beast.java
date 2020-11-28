@@ -32,7 +32,7 @@ public class Beast extends Character {
     }
     
     @Override
-    public void levelUp(int points){
+    public void levelUp(){
     }
     
     void attack() throws InterruptedException{

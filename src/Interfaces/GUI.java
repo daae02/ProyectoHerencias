@@ -144,6 +144,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         pause.setBackground(new java.awt.Color(204, 153, 0));
         pause.setText("PAUSE");
         pause.setToolTipText("");
+        pause.setEnabled(false);
         pause.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pauseMouseClicked(evt);
@@ -160,6 +161,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         easyMode.setBackground(new java.awt.Color(204, 153, 0));
         easyMode.setText("EASY");
         easyMode.setToolTipText("");
+        easyMode.setEnabled(false);
         easyMode.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 easyModeMouseClicked(evt);
@@ -222,6 +224,8 @@ public class GUI extends javax.swing.JFrame implements Serializable{
             }
         }
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        pause.setEnabled(true);
+        easyMode.setEnabled(true);
         currentMatch.startArmy();
     }//GEN-LAST:event_startActionPerformed
 
@@ -238,7 +242,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
 
     private void btnSound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSound2ActionPerformed
         AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/barbarian.wav"));
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Interfaces/resources/hero.wav"));
         sonido.play();
     }//GEN-LAST:event_btnSound2ActionPerformed
 

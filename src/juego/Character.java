@@ -111,7 +111,7 @@ abstract public class Character extends Entity implements Serializable{
         setPause();
     }
     
-    public void levelUp(int points){
+    public void levelUp(){
     }
     
     public void decrementLifePoint(int damage){

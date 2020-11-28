@@ -28,9 +28,9 @@ public class ContactFighter extends Character {
     public ContactFighter() {
     }
     @Override
-    public void levelUp(int points){
-        damage += damage *(points/100);
-        HP += HP *(points/40);
+    public void levelUp(){
+        damage += 2;
+        HP += 2;
     }
     
     void attack() throws InterruptedException{

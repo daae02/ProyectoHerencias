@@ -141,25 +141,35 @@ public class Match implements Serializable{
         boolean validObjetive = true;
         int antiloop = 0;
         if (team){
+            try{
             while(validObjetive && antiloop < 10000){
                 int enemy = (new Random()).nextInt(EnemyArmy.size());
                 if (EnemyArmy.get(enemy).HP >= 0){
                     return EnemyArmy.get(enemy);
                 }
                 antiloop++;
+                }
+               return null;
             }
-            return null;
+            catch(Exception e){
+                return null;
+            }  
         }
         else{
-            while(validObjetive && antiloop < 10000){
-                int enemy = (new Random()).nextInt(army.size());
-                if (army.get(enemy).HP >= 0){
-                    return army.get(enemy);
+            try{
+                while(validObjetive && antiloop < 10000){
+                    int enemy = (new Random()).nextInt(army.size());
+                    if (army.get(enemy).HP >= 0){
+                        return army.get(enemy);
+                    }
+                    antiloop++;
                 }
-                antiloop++;
+            return null;
             }
-        }
-        return null;
+            catch(Exception e){
+                return null;
+            }
+    }
     }
     public void checkVictory(boolean team){
         System.out.println("Entra");

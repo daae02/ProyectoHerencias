@@ -22,6 +22,11 @@ public class ArcherTower extends Structure{
         range = 6;
         unlockLvl = 2;
     }
+    @Override
+    public void levelUp(){
+        damage++;
+        range++;
+    }
     void attack() throws InterruptedException{
         int distance = (int) sqrt(pow(refLabel.getLocation().x-Objetive.refLabel.getLocation().x,2)+pow(refLabel.getLocation().y-Objetive.refLabel.getLocation().y,2));
         distance = abs(distance)/50;

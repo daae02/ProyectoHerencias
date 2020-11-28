@@ -19,6 +19,9 @@ public class Wall extends Structure {
         Img1 = "/Interfaces/resources/wall.png";
         unlockLvl = 1;
     }
+    @Override
+    public void levelUp(){
+    }
     void attack() throws InterruptedException{
          sleep(100);   
         }

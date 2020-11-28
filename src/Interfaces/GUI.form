@@ -60,6 +60,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="PAUSE"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pauseMouseClicked"/>
@@ -78,6 +79,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="EASY"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="easyModeMouseClicked"/>

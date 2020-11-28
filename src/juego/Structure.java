@@ -74,7 +74,7 @@ public class Structure extends Entity {
         GUIReference.LabelArray.get(index).setLocation(1200,1200);
         setPause();
     }
-    public void levelUp(int points){
+    public void levelUp(){
     }
 
 

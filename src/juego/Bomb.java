@@ -24,6 +24,11 @@ public class Bomb extends Structure{
         range = 2;
         unlockLvl = 0;
     }
+    @Override
+    public void levelUp(){
+        damage++;
+        range++;
+    }
     void attack() throws InterruptedException{
         System.out.println("Bomba #"+index+" ataca");
         Objetives = GUIReference.currentMatch.explotion(this);

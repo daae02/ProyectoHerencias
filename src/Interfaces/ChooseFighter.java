@@ -20,7 +20,7 @@ import juego.Character;
 import juego.Structure;
 import juego.ContactFighter;
 import juego.FileManager;
-import juego.Heroes;
+import juego.Hero;
 import juego.Match;
 import juego.MediumRangeFighter;
 import juego.Mortar;
@@ -128,7 +128,8 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         jPanel1.add(btbFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 150, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/resources/CFcharac.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
+        jLabel4.setText("Texto");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 180, -1));
 
         jPanel2.setBackground(new java.awt.Color(230,230,230,230));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -376,7 +377,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
             return tmpChar;
         }
         else{
-            Heroes tmpChar = new Heroes();
+            Hero tmpChar = new Hero();
             tmpChar.copy(c);
             return tmpChar;
         }
@@ -419,9 +420,15 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         EnemyArmy.clear();
         matchStructures.clear();
         for (int i = 0; i < armyDisponible.size(); i++) {
-            armyDisponible.get(i).levelUp(level); 
+            armyDisponible.get(i).levelUp(); 
         }
         armyDisponible.clear();
+        generateStructure();
+        if (level <4){
+        for (int i = 0; i < matchStructures.size(); i++) {
+            matchStructures.get(i).levelUp(); 
+        }
+        }
         caractersAvailable();
     }
     private void btbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAddActionPerformed
@@ -445,8 +452,10 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
 
     private void btbFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbFightActionPerformed
         // TODO add your handling code here:
+        if (level == 1){
+           generateStructure();
+        }
         generateEnemyArmy();
-        generateStructure();
         match = new Match(this,level,army,EnemyArmy,matchStructures);
         GUIreference.currentMatch = match;
         match.GUIreference = GUIreference;
