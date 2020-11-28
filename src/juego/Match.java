@@ -59,6 +59,7 @@ public class Match implements Serializable{
             EnemyArmy.get(i).GUIReference=this.GUIreference;
             EnemyArmy.get(i).drawLabel();
         }
+        chooseReference.level = this.level;
         chooseReference.GUIreference = this.GUIreference;
     }
     public void startArmy(){

@@ -298,7 +298,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
             cant = 5;
         }
         else {
-            cant = 5+3*level;
+            cant = 5+1*level;
         }
         boolean generate = true;
         int antiloop = 0;
@@ -453,7 +453,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
 
     private void btbFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbFightActionPerformed
         // TODO add your handling code here:
-        if (level == 1){
+        if (matchStructures.size()==0){
            generateStructure();
         }
         generateEnemyArmy();

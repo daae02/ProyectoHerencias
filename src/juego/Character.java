@@ -13,6 +13,8 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 /**
@@ -107,7 +109,14 @@ abstract public class Character extends Entity implements Serializable{
     public void die(){
         GUIReference.LabelArray.get(index).setVisible(false);
         GUIReference.LabelArray.get(index).setLocation(1200,1200);
-        GUIReference.currentMatch.checkVictory(!good);
+        try {
+            sleep(new Random().nextInt(100));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Character.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(running){
+            GUIReference.currentMatch.checkVictory(!good);
+        }
         setPause();
     }
     
