@@ -17,7 +17,7 @@ public class Mortar  extends Structure{
      public Mortar() {
         name = "Mortero";
         Img1 = "/Interfaces/resources/Mortar.png";
-        ImgAtk = "/Interfaces/resources/bomba.png";
+        ImgAtk = "/Interfaces/resources/MortarAtk.png";
         damage = 5;
         range = 5;
         unlockLvl = 3;

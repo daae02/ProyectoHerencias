@@ -19,7 +19,7 @@ public class Canyon extends Structure{
     public Canyon() {
         name = "Cañon";
         Img1 = "/Interfaces/resources/can.png";
-        ImgAtk = "/Interfaces/resources/bomba.png";
+        ImgAtk = "/Interfaces/resources/canAtk.png";
         damage = 1;
         range = 5;
         unlockLvl = 2;

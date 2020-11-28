@@ -53,7 +53,7 @@ public class Structure extends Entity {
             ImageIcon icon = new ImageIcon(getClass().getResource(ImgAtk));
             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
             this.GUIReference.LabelArray.get(index).setIcon(icon);
-            sleep(100);  
+            sleep(200);  
             icon = new ImageIcon(getClass().getResource(Img1));
             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
             this.GUIReference.LabelArray.get(index).setIcon(icon);

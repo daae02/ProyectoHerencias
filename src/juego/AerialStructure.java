@@ -17,7 +17,7 @@ public class AerialStructure extends Structure{
   public AerialStructure() {
         name = "Lanza Cohetes";
         Img1 = "/Interfaces/resources/AirDefense.png";
-        ImgAtk = "/Interfaces/resources/bomba.png";
+        ImgAtk = "/Interfaces/resources/AirDefenseAtk.png";
         damage = 5;
         range = 10;
         unlockLvl = 4;

@@ -9,6 +9,7 @@ import Interfaces.GUI;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
+import java.util.Random;
 
 /**
  *
@@ -46,7 +47,9 @@ public class Hero extends Character {
             Objetive.decrementLifePoint(damage);
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
-                GUIReference.btnSound2.doClick();
+                if(new Random().nextInt(2)==1){
+                    GUIReference.btnSound2.doClick();
+                }
                 Objetive = null;
             }
         }

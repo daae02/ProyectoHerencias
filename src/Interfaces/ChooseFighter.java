@@ -303,7 +303,7 @@ public class ChooseFighter extends javax.swing.JFrame implements Serializable {
         boolean generate = true;
         int antiloop = 0;
         while(generate && antiloop < 10000){
-            int structure= new Random().nextInt(5);
+            int structure= new Random().nextInt(6);
             switch (structure){
                 case 0:
                     if(new Wall().unlockLvl <= level){

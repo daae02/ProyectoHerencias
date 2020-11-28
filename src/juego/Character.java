@@ -44,13 +44,15 @@ abstract public class Character extends Entity implements Serializable{
                     checkEnemy(); 
                     if(Objetive != null){
                         if (moving)
-                            GUIReference.moveLabel(index,Objetive.index);
+                            if(!GUIReference.moveLabel(index,Objetive.index)){
+                                Objetive = GUIReference.currentMatch.getObjetive(good);
+                            }
                         attack();
                     }
                     else{
                         Objetive = GUIReference.currentMatch.getObjetive(good);
                     }
-                    sleep(200);
+                    sleep(500);
                  }
                  else{
                     die();
@@ -75,7 +77,7 @@ abstract public class Character extends Entity implements Serializable{
           ImageIcon icon = new ImageIcon(ImgAtk);
             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
             this.GUIReference.LabelArray.get(index).setIcon(icon);
-            sleep(100);  
+            sleep(200);  
             icon = new ImageIcon(Img1);
             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
             this.GUIReference.LabelArray.get(index).setIcon(icon);

@@ -19,7 +19,7 @@ public class Bomb extends Structure{
    public Bomb() {
         name = "Bomba";
         Img1 = "/Interfaces/resources/bomba.png";
-        ImgAtk = "/Interfaces/resources/bomba.png";
+        ImgAtk = "/Interfaces/resources/Kaboom.png";
         damage = 2;
         range = 2;
         unlockLvl = 0;
@@ -33,6 +33,7 @@ public class Bomb extends Structure{
         System.out.println("Bomba #"+index+" ataca");
         Objetives = GUIReference.currentMatch.explotion(this);
         if (Objetives.size()!=0){
+            animation();
             for (int i = 0; i<Objetives.size();i++){
                 System.out.println("Bomba ataca a "+Objetives.get(i).name+" #"+Objetives.get(i).index+" Le quedan: "+Objetives.get(i).HP);
                 Objetives.get(i).decrementLifePoint(damage); 

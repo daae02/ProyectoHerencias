@@ -76,8 +76,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         System.out.println("Labels: "+LabelArray.size());
         return newLabel;
     }
-        public void moveLabel (int labelIndex,int enemyLabelIIndex){
-        
+        public boolean moveLabel (int labelIndex,int enemyLabelIIndex){
         JLabel refLabel = LabelArray.get(labelIndex);
         JLabel refEnemy = LabelArray.get(enemyLabelIIndex);
         int direccion = (new Random()).nextInt(4);
@@ -85,7 +84,7 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         int y = refLabel.getLocation().y;
         int xe = refEnemy.getLocation().x;
         int ye = refEnemy.getLocation().y;
-        if (x-xe < 0 && x+50 <= 950){
+        if (x-xe < 0 && x+50 <= 1000){
             x = x+50;
         }
         else if(x-xe>0 && x-50 >= 0){
@@ -94,15 +93,19 @@ public class GUI extends javax.swing.JFrame implements Serializable{
         if (y-ye> 0  && y-50 >= 0){
             y = y-50;
         }
-        else if (y-ye<0 && y+50 <= 950){
+        else if (y-ye<0 && y+50 <=1000){
             y = y+50;
         }
         
         int ocupadoPor = isAvailablePostion(x, y, refLabel);
-        if (ocupadoPor == -1)
+        if (ocupadoPor == -1){
             refLabel.setLocation(x, y);
-        else
+            return true;
+        }
+        else{
             System.out.println("Esta ocupada " + x + "," + y + " por " + LabelArray.get(ocupadoPor).getText());
+            return false;
+        }
     }
     
     public int isAvailablePostion(int x, int y, JLabel refLabel){      

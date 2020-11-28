@@ -10,6 +10,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.applet.AudioClip;
+import java.util.Random;
 /**
  *
  * @author Diego Álvarez
@@ -44,7 +45,9 @@ public class ContactFighter extends Character {
             System.out.println(name+" ataco a "+Objetive.name+" #"+Objetive.index+" le quedan "+Objetive.HP+"HP");
             if(Objetive.HP<=0){
                 Objetive = null;
-                GUIReference.btnSound.doClick();
+                if(new Random().nextInt(2)==1){
+                    GUIReference.btnSound.doClick();
+                }
             }
         }
     }
